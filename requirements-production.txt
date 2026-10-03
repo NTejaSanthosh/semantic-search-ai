@@ -1,0 +1,10 @@
+datasets
+google-genai
+python-dotenv
+faiss-cpu
+numpy
+pandas
+scikit-learn
+ollama
+fastapi
+uvicorn[standard]
