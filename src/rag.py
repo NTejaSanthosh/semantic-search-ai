@@ -1,6 +1,7 @@
 import os
 from dotenv import load_dotenv
-from ollama import chat
+from google import genai
+from google.genai import types
 
 from search import search
 
@@ -8,7 +9,12 @@ from search import search
 load_dotenv()
 
 
-LLM_MODEL = os.getenv(
+LLM_PROVIDER = os.getenv(
+    "LLM_PROVIDER",
+    "ollama"
+).lower()
+
+OLLAMA_MODEL = os.getenv(
     "OLLAMA_MODEL",
     "llama3.2"
 )
@@ -16,6 +22,15 @@ LLM_MODEL = os.getenv(
 OLLAMA_HOST = os.getenv(
     "OLLAMA_HOST",
     "http://localhost:11434"
+)
+
+GEMINI_LLM_MODEL = os.getenv(
+    "GEMINI_LLM_MODEL",
+    "gemini-3.6-flash"
+)
+
+GEMINI_API_KEY = os.getenv(
+    "GEMINI_API_KEY"
 )
 
 MIN_SIMILARITY = float(
@@ -151,16 +166,13 @@ Document Text:
     )
 
 
-def generate_answer(
-    question,
-    results
-):
+def build_prompt(question, results):
 
     context = build_context(
         results
     )
 
-    prompt = f"""
+    return f"""
 DOCUMENT CONTEXT
 ================
 
@@ -198,8 +210,13 @@ as the current information when appropriate.
 Always provide the supporting document IDs.
 """.strip()
 
+
+def generate_with_ollama(prompt):
+
+    from ollama import chat
+
     response = chat(
-        model=LLM_MODEL,
+        model=OLLAMA_MODEL,
         messages=[
             {
                 "role": "system",
@@ -222,6 +239,64 @@ Always provide the supporting document IDs.
 
     return (
         "I don't know based on the available documents."
+    )
+
+
+def generate_with_gemini(prompt):
+
+    if not GEMINI_API_KEY:
+        raise ValueError(
+            "GEMINI_API_KEY was not found."
+        )
+
+    client = genai.Client(
+        api_key=GEMINI_API_KEY
+    )
+
+    response = client.models.generate_content(
+        model=GEMINI_LLM_MODEL,
+        contents=prompt,
+        config=types.GenerateContentConfig(
+            system_instruction=SYSTEM_INSTRUCTION,
+            temperature=0
+        )
+    )
+
+    answer = response.text
+
+    if answer:
+        return answer.strip()
+
+    return (
+        "I don't know based on the available documents."
+    )
+
+
+def generate_answer(
+    question,
+    results
+):
+
+    prompt = build_prompt(
+        question,
+        results
+    )
+
+    if LLM_PROVIDER == "gemini":
+
+        return generate_with_gemini(
+            prompt
+        )
+
+    if LLM_PROVIDER == "ollama":
+
+        return generate_with_ollama(
+            prompt
+        )
+
+    raise ValueError(
+        f"Unsupported LLM_PROVIDER: {LLM_PROVIDER}. "
+        "Use 'ollama' or 'gemini'."
     )
 
 
@@ -280,7 +355,8 @@ def ask_question(
         }
 
     print(
-        f"\nGenerating grounded answer with Ollama ({LLM_MODEL})..."
+        f"\nGenerating grounded answer with "
+        f"{LLM_PROVIDER.upper()}..."
     )
 
     answer = generate_answer(
@@ -320,7 +396,7 @@ def main():
     )
 
     print(
-        "RAG QUESTION ANSWERING SYSTEM - OLLAMA"
+        "RAG QUESTION ANSWERING SYSTEM"
     )
 
     print(
@@ -328,18 +404,28 @@ def main():
     )
 
     print(
-        "LLM Provider: Ollama (local)"
+        "LLM Provider:",
+        LLM_PROVIDER
     )
 
-    print(
-        "LLM Model:",
-        LLM_MODEL
-    )
+    if LLM_PROVIDER == "ollama":
 
-    print(
-        "Ollama Host:",
-        OLLAMA_HOST
-    )
+        print(
+            "LLM Model:",
+            OLLAMA_MODEL
+        )
+
+        print(
+            "Ollama Host:",
+            OLLAMA_HOST
+        )
+
+    elif LLM_PROVIDER == "gemini":
+
+        print(
+            "LLM Model:",
+            GEMINI_LLM_MODEL
+        )
 
     print(
         "Minimum similarity:",
