@@ -1,0 +1,92 @@
+[
+  {
+    "project_id": "P001",
+    "project_name": "AI Customer Platform",
+    "manager_id": "E001",
+    "status": "Active",
+    "start_date": "2026-06-01",
+    "deadline": "2026-09-20",
+    "budget": 150000
+  },
+  {
+    "project_id": "P002",
+    "project_name": "Customer Analytics Platform",
+    "manager_id": "E009",
+    "status": "Active",
+    "start_date": "2026-05-15",
+    "deadline": "2026-09-10",
+    "budget": 180000
+  },
+  {
+    "project_id": "P003",
+    "project_name": "Internal Automation System",
+    "manager_id": "E002",
+    "status": "Active",
+    "start_date": "2026-07-01",
+    "deadline": "2026-10-15",
+    "budget": 120000
+  },
+  {
+    "project_id": "P004",
+    "project_name": "Mobile Banking Upgrade",
+    "manager_id": "E010",
+    "status": "Active",
+    "start_date": "2026-04-10",
+    "deadline": "2026-09-05",
+    "budget": 250000
+  },
+  {
+    "project_id": "P005",
+    "project_name": "HR Digital Portal",
+    "manager_id": "E003",
+    "status": "Active",
+    "start_date": "2026-07-10",
+    "deadline": "2026-11-01",
+    "budget": 90000
+  },
+  {
+    "project_id": "P006",
+    "project_name": "Data Warehouse Migration",
+    "manager_id": "E007",
+    "status": "Active",
+    "start_date": "2026-03-01",
+    "deadline": "2026-08-30",
+    "budget": 300000
+  },
+  {
+    "project_id": "P007",
+    "project_name": "Marketing Insights Dashboard",
+    "manager_id": "E015",
+    "status": "Active",
+    "start_date": "2026-08-01",
+    "deadline": "2026-12-01",
+    "budget": 75000
+  },
+  {
+    "project_id": "P008",
+    "project_name": "Security Compliance Upgrade",
+    "manager_id": "E014",
+    "status": "Active",
+    "start_date": "2026-05-01",
+    "deadline": "2026-09-25",
+    "budget": 200000
+  },
+  {
+    "project_id": "P009",
+    "project_name": "Legacy API Modernization",
+    "manager_id": "E018",
+    "status": "Active",
+    "start_date": "2026-02-15",
+    "deadline": "2026-10-05",
+    "budget": 175000
+  },
+  {
+    "project_id": "P010",
+    "project_name": "Employee Mobile App",
+    "manager_id": "E020",
+    "status": "Completed",
+    "start_date": "2026-01-15",
+    "deadline": "2026-08-15",
+    "budget": 100000
+  }
+]

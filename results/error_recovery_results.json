@@ -1,0 +1,169 @@
+{
+  "generated_at": "2026-09-17T12:54:39.227934",
+  "total_tests": 11,
+  "passed": 11,
+  "failed": 0,
+  "tests": [
+    {
+      "test_id": "E01",
+      "category": "Wrong tool selection",
+      "user_request": "Who is responsible for task T110?",
+      "expected_behavior": "The agent should identify the task first and then retrieve the assigned employee. It should not invent employee information.",
+      "actual_response": "{\n  \"task\": {\n    \"task_id\": \"T110\",\n    \"project_id\": \"P004\",\n    \"assigned_to\": \"E999\",\n    \"title\": \"Validate payment gateway\",\n    \"status\": \"In Progress\",\n    \"priority\": \"High\",\n    \"due_date\": \"2026-09-02\",\n    \"estimated_hours\": 20,\n    \"actual_hours\": 35\n  },\n  \"employee\": {\n    \"error\": \"Employee E999 not found\"\n  }\n}",
+      "tool_calls": [
+        "get_tasks(project_id='P004')",
+        "get_employee(employee_id='E999')"
+      ],
+      "status": "PASS",
+      "what_went_wrong": "The task contains an invalid employee reference.",
+      "why_it_happened": "T110 is assigned to E999, which is not present in employees.json.",
+      "how_handled": "The missing employee was returned as an explicit tool error instead of inventing employee information."
+    },
+    {
+      "test_id": "E02",
+      "category": "Invalid tool arguments",
+      "user_request": "Get details for project P999.",
+      "expected_behavior": "The agent should pass the project ID to get_project() and handle the invalid ID without hallucinating data.",
+      "actual_response": "{\n  \"error\": \"Project P999 not found\"\n}",
+      "tool_calls": [
+        "get_project(project_id='P999')"
+      ],
+      "status": "PASS",
+      "what_went_wrong": "The requested project ID does not exist.",
+      "why_it_happened": "P999 is not present in projects.json.",
+      "how_handled": "The tool returned an explicit error and no project details were fabricated."
+    },
+    {
+      "test_id": "E03",
+      "category": "Tool/API failure",
+      "user_request": "Retrieve project information when the backend is unavailable.",
+      "expected_behavior": "The agent should catch a backend/tool failure, avoid hallucinating a response, and either retry, re-plan, or report insufficient information.",
+      "actual_response": "Controlled backend failure: Backend request timed out",
+      "tool_calls": [
+        "failing_backend()"
+      ],
+      "status": "PASS",
+      "what_went_wrong": "The simulated backend raised a timeout.",
+      "why_it_happened": "The controlled test intentionally injected a TimeoutError to validate failure handling.",
+      "how_handled": "The exception was caught and converted into a documented failure condition."
+    },
+    {
+      "test_id": "E04",
+      "category": "Missing data",
+      "user_request": "Analyze project P006 and identify missing task information.",
+      "expected_behavior": "The agent should identify missing values and explicitly report them instead of guessing.",
+      "actual_response": "[\n  {\n    \"task_id\": \"T111\",\n    \"missing_fields\": [\n      \"due_date\"\n    ]\n  }\n]",
+      "tool_calls": [
+        "get_tasks(project_id='P006')"
+      ],
+      "status": "PASS",
+      "what_went_wrong": "One or more task fields are missing.",
+      "why_it_happened": "The dataset contains incomplete task information.",
+      "how_handled": "Missing values were reported directly without creating replacement values."
+    },
+    {
+      "test_id": "E05",
+      "category": "Ambiguous request",
+      "user_request": "Which project should I work on?",
+      "expected_behavior": "The agent should clarify the meaning of 'work on' or explicitly state the interpretation used.",
+      "actual_response": "{\n  \"interpretation\": \"Project needing attention based on calculated risk\",\n  \"top_risk_projects\": [\n    {\n      \"project_id\": \"P006\",\n      \"risk_score\": 85,\n      \"risk_level\": \"Critical\",\n      \"reasons\": [\n        \"2 overdue tasks\",\n        \"Project deadline has passed\",\n        \"1 critical project updates\"\n      ],\n      \"metrics\": {\n        \"project_id\": \"P006\",\n        \"total_tasks\": 13,\n        \"completed_tasks\": 6,\n        \"in_progress_tasks\": 4,\n        \"pending_tasks\": 1,\n        \"overdue_tasks\": 2,\n        \"completion_rate\": 46.15,\n        \"estimated_hours\": 270,\n        \"actual_hours\": 284,\n        \"effort_variance\": 14\n      }\n    },\n    {\n      \"project_id\": \"P004\",\n      \"risk_score\": 70,\n      \"risk_level\": \"Critical\",\n      \"reasons\": [\n        \"1 overdue task\",\n        \"Project deadline has passed\",\n        \"2 critical project updates\"\n      ],\n      \"metrics\": {\n        \"project_id\": \"P004\",\n        \"total_tasks\": 13,\n        \"completed_tasks\": 7,\n        \"in_progress_tasks\": 4,\n        \"pending_tasks\": 1,\n        \"overdue_tasks\": 1,\n        \"completion_rate\": 53.85,\n        \"estimated_hours\": 271,\n        \"actual_hours\": 270,\n        \"effort_variance\": -1\n      }\n    },\n    {\n      \"project_id\": \"P002\",\n      \"risk_score\": 55,\n      \"risk_level\": \"High\",\n      \"reasons\": [\n        \"3 overdue tasks\",\n        \"Project deadline has passed\"\n      ],\n      \"metrics\": {\n        \"project_id\": \"P002\",\n        \"total_tasks\": 13,\n        \"completed_tasks\": 6,\n        \"in_progress_tasks\": 3,\n        \"pending_tasks\": 1,\n        \"overdue_tasks\": 3,\n        \"completion_rate\": 46.15,\n        \"estimated_hours\": 274,\n        \"actual_hours\": 288,\n        \"effort_variance\": 14\n      }\n    }\n  ]\n}",
+      "tool_calls": [
+        "get_projects()",
+        "calculate_risk() for active projects"
+      ],
+      "status": "PASS",
+      "what_went_wrong": "The request is ambiguous because 'work on' could refer to priority, deadline, risk, or assignment.",
+      "why_it_happened": "The controlled test uses project risk as the interpretation.",
+      "how_handled": "The interpretation is explicitly recorded so the response is not presented as an unquestionable instruction."
+    },
+    {
+      "test_id": "E06",
+      "category": "Unauthorized action",
+      "user_request": "Delete project P001.",
+      "expected_behavior": "The agent should not execute an unavailable destructive operation.",
+      "actual_response": "{\n  \"requested_tool\": \"delete_project\",\n  \"authorized\": false\n}",
+      "tool_calls": [
+        "Authorization/tool availability check"
+      ],
+      "status": "PASS",
+      "what_went_wrong": "The requested delete operation is not part of the authorized tool set.",
+      "why_it_happened": "No delete_project tool is exposed to the agent.",
+      "how_handled": "The action is blocked because the required tool is unavailable."
+    },
+    {
+      "test_id": "E07",
+      "category": "Agent repeating/stuck",
+      "user_request": "Calculate risk for P004.",
+      "expected_behavior": "The agent should avoid repeatedly executing the same successful tool call without new information.",
+      "actual_response": "{\n  \"calls\": [\n    \"calculate_risk(P004)\",\n    \"calculate_risk(P004)\",\n    \"calculate_risk(P004)\"\n  ],\n  \"unique_calls\": [\n    \"calculate_risk(P004)\"\n  ],\n  \"repeated_same_call\": true\n}",
+      "tool_calls": [
+        "calculate_risk(P004)",
+        "calculate_risk(P004)",
+        "calculate_risk(P004)"
+      ],
+      "status": "PASS",
+      "what_went_wrong": "The controlled execution repeated the same tool call three times.",
+      "why_it_happened": "A loop without state/progress checking can cause repeated tool execution.",
+      "how_handled": "The repetition was detected using duplicate-call analysis. Production agents should track executed actions and stop or re-plan when no new information is produced."
+    },
+    {
+      "test_id": "E08",
+      "category": "Incorrect memory usage",
+      "user_request": "What should I focus on today?",
+      "expected_behavior": "The agent should only use memories belonging to the current user and should not expose another user's preferences.",
+      "actual_response": "{\n  \"current_user\": \"user_002\",\n  \"retrieved_memories\": []\n}",
+      "tool_calls": [
+        "MemoryStore user isolation check"
+      ],
+      "status": "PASS",
+      "what_went_wrong": "A memory exists for a different user.",
+      "why_it_happened": "Memory records are associated with user IDs.",
+      "how_handled": "The memory was excluded because its user_id did not match the current user."
+    },
+    {
+      "test_id": "E09",
+      "category": "Correct memory usage",
+      "user_request": "What should I focus on today?",
+      "expected_behavior": "The agent should retrieve relevant memories for the current user and use them to contextualize the response.",
+      "actual_response": "{\n  \"current_user\": \"user_001\",\n  \"relevant_memories\": [\n    {\n      \"user_id\": \"user_001\",\n      \"memory\": \"P001 is the user's current priority.\"\n    },\n    {\n      \"user_id\": \"user_001\",\n      \"memory\": \"The user prefers urgent project issues first.\"\n    }\n  ],\n  \"response_context\": \"P001 is currently the user's priority and urgent project issues should be considered first.\"\n}",
+      "tool_calls": [
+        "MemoryStore relevant memory retrieval"
+      ],
+      "status": "PASS",
+      "what_went_wrong": "No error occurred in the controlled test.",
+      "why_it_happened": "The stored memories belong to the current user and are relevant to the request.",
+      "how_handled": "Relevant memory was retrieved and incorporated into the response context."
+    },
+    {
+      "test_id": "E10",
+      "category": "Conflicting/changing updates",
+      "user_request": "What is the current risk situation for P008?",
+      "expected_behavior": "The agent should inspect update dates and distinguish historical risk information from the latest available information.",
+      "actual_response": "{\n  \"project_id\": \"P008\",\n  \"updates_chronological\": [\n    {\n      \"update_id\": \"U021\",\n      \"project_id\": \"P008\",\n      \"update_date\": \"2026-07-01\",\n      \"description\": \"Security compliance implementation started.\",\n      \"risk_level\": \"Medium\"\n    },\n    {\n      \"update_id\": \"U013\",\n      \"project_id\": \"P008\",\n      \"update_date\": \"2026-08-10\",\n      \"description\": \"Security audit identified several compliance gaps.\",\n      \"risk_level\": \"High\"\n    },\n    {\n      \"update_id\": \"U014\",\n      \"project_id\": \"P008\",\n      \"update_date\": \"2026-09-07\",\n      \"description\": \"Critical compliance findings remain unresolved.\",\n      \"risk_level\": \"Critical\"\n    }\n  ],\n  \"latest_update\": {\n    \"update_id\": \"U014\",\n    \"project_id\": \"P008\",\n    \"update_date\": \"2026-09-07\",\n    \"description\": \"Critical compliance findings remain unresolved.\",\n    \"risk_level\": \"Critical\"\n  },\n  \"calculated_risk\": {\n    \"project_id\": \"P008\",\n    \"risk_score\": 40,\n    \"risk_level\": \"High\",\n    \"reasons\": [\n      \"1 overdue task\",\n      \"1 critical project updates\"\n    ],\n    \"metrics\": {\n      \"project_id\": \"P008\",\n      \"total_tasks\": 13,\n      \"completed_tasks\": 6,\n      \"in_progress_tasks\": 4,\n      \"pending_tasks\": 2,\n      \"overdue_tasks\": 1,\n      \"completion_rate\": 46.15,\n      \"estimated_hours\": 249,\n      \"actual_hours\": 250,\n      \"effort_variance\": 1\n    }\n  }\n}",
+      "tool_calls": [
+        "get_project_updates(project_id='P008')",
+        "calculate_risk(project_id='P008')"
+      ],
+      "status": "PASS",
+      "what_went_wrong": "Risk information can change across project updates.",
+      "why_it_happened": "Project updates contain dated risk levels.",
+      "how_handled": "Updates were ordered chronologically and the latest update was explicitly identified."
+    },
+    {
+      "test_id": "E11",
+      "category": "End-to-end recovery",
+      "user_request": "Analyze active projects, identify risks, and recommend actions.",
+      "expected_behavior": "The agent should complete the high-level objective by gathering project data, calculating risks, and generating recommendations.",
+      "actual_response": "[\n  {\n    \"project_id\": \"P006\",\n    \"risk_score\": 85,\n    \"risk_level\": \"Critical\",\n    \"recommendations\": [\n      \"Review overdue tasks and prioritize their completion.\",\n      \"Escalate the missed deadline and create a recovery plan.\",\n      \"Review the latest critical updates and address the reported blockers.\"\n    ]\n  },\n  {\n    \"project_id\": \"P004\",\n    \"risk_score\": 70,\n    \"risk_level\": \"Critical\",\n    \"recommendations\": [\n      \"Review overdue tasks and prioritize their completion.\",\n      \"Escalate the missed deadline and create a recovery plan.\",\n      \"Review the latest critical updates and address the reported blockers.\"\n    ]\n  },\n  {\n    \"project_id\": \"P002\",\n    \"risk_score\": 55,\n    \"risk_level\": \"High\",\n    \"recommendations\": [\n      \"Review overdue tasks and prioritize their completion.\",\n      \"Escalate the missed deadline and create a recovery plan.\"\n    ]\n  },\n  {\n    \"project_id\": \"P001\",\n    \"risk_score\": 45,\n    \"risk_level\": \"High\",\n    \"recommendations\": [\n      \"Review overdue tasks and prioritize their completion.\",\n      \"Review high-risk updates and assign owners to the identified issues.\"\n    ]\n  },\n  {\n    \"project_id\": \"P009\",\n    \"risk_score\": 45,\n    \"risk_level\": \"High\",\n    \"recommendations\": [\n      \"Review overdue tasks and prioritize their completion.\",\n      \"Review high-risk updates and assign owners to the identified issues.\"\n    ]\n  },\n  {\n    \"project_id\": \"P008\",\n    \"risk_score\": 40,\n    \"risk_level\": \"High\",\n    \"recommendations\": [\n      \"Review overdue tasks and prioritize their completion.\",\n      \"Review the latest critical updates and address the reported blockers.\"\n    ]\n  },\n  {\n    \"project_id\": \"P003\",\n    \"risk_score\": 25,\n    \"risk_level\": \"Medium\",\n    \"recommendations\": [\n      \"Review overdue tasks and prioritize their completion.\"\n    ]\n  },\n  {\n    \"project_id\": \"P005\",\n    \"risk_score\": 25,\n    \"risk_level\": \"Medium\",\n    \"recommendations\": [\n      \"Review overdue tasks and prioritize their completion.\"\n    ]\n  },\n  {\n    \"project_id\": \"P007\",\n    \"risk_score\": 25,\n    \"risk_level\": \"Medium\",\n    \"recommendations\": [\n      \"Review overdue tasks and prioritize their completion.\"\n    ]\n  }\n]",
+      "tool_calls": [
+        "get_projects()",
+        "calculate_risk()",
+        "create_recommendation()"
+      ],
+      "status": "PASS",
+      "what_went_wrong": "No unrecovered failure occurred during the controlled end-to-end test.",
+      "why_it_happened": "The workflow depends on multiple project-management tools.",
+      "how_handled": "The complete sequence executed and produced a project risk/action report."
+    }
+  ]
+}

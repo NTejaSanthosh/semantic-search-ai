@@ -1,0 +1,24 @@
+RISK MANAGEMENT GUIDELINES
+
+Document Type: Project Guideline
+Category: Risk Management
+
+Project risks should be identified, reviewed, and monitored throughout the project lifecycle.
+
+Risk management guidelines:
+
+1. Identify risks that can affect project scope, schedule, quality, resources, or delivery.
+
+2. Critical risks should receive priority attention.
+
+3. Risks associated with overdue critical tasks should be reviewed promptly.
+
+4. The Project Manager should identify the likely cause of significant risks.
+
+5. Mitigation actions should be defined for important risks.
+
+6. Risk status should be reviewed after mitigation actions are implemented.
+
+7. Unresolved critical risks should be escalated according to the Project Escalation Policy.
+
+8. Risk analysis should use current project information whenever available.

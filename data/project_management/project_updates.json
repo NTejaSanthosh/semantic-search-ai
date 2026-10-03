@@ -1,0 +1,156 @@
+[
+  {
+    "update_id": "U001",
+    "project_id": "P001",
+    "update_date": "2026-09-01",
+    "description": "Dashboard development is behind schedule due to API integration delays.",
+    "risk_level": "High"
+  },
+  {
+    "update_id": "U002",
+    "project_id": "P001",
+    "update_date": "2026-09-08",
+    "description": "API integration improved but several dashboard tasks remain overdue.",
+    "risk_level": "High"
+  },
+  {
+    "update_id": "U003",
+    "project_id": "P002",
+    "update_date": "2026-08-15",
+    "description": "Analytics pipeline is stable and testing is progressing.",
+    "risk_level": "Low"
+  },
+  {
+    "update_id": "U004",
+    "project_id": "P002",
+    "update_date": "2026-09-05",
+    "description": "Several testing tasks are delayed and release deadline is approaching.",
+    "risk_level": "Medium"
+  },
+  {
+    "update_id": "U005",
+    "project_id": "P003",
+    "update_date": "2026-09-01",
+    "description": "Automation workflow development is progressing according to plan.",
+    "risk_level": "Low"
+  },
+  {
+    "update_id": "U006",
+    "project_id": "P004",
+    "update_date": "2026-08-20",
+    "description": "Payment integration has experienced repeated failures.",
+    "risk_level": "Critical"
+  },
+  {
+    "update_id": "U007",
+    "project_id": "P004",
+    "update_date": "2026-09-03",
+    "description": "Payment integration remains unstable and deadline is approaching.",
+    "risk_level": "Critical"
+  },
+  {
+    "update_id": "U008",
+    "project_id": "P005",
+    "update_date": "2026-08-20",
+    "description": "HR portal development is progressing with no major blockers.",
+    "risk_level": "Low"
+  },
+  {
+    "update_id": "U009",
+    "project_id": "P006",
+    "update_date": "2026-08-20",
+    "description": "Migration is experiencing data validation issues.",
+    "risk_level": "High"
+  },
+  {
+    "update_id": "U010",
+    "project_id": "P006",
+    "update_date": "2026-08-29",
+    "description": "Migration deadline has passed while validation remains incomplete.",
+    "risk_level": "Critical"
+  },
+  {
+    "update_id": "U011",
+    "project_id": "P007",
+    "update_date": "2026-08-25",
+    "description": "Dashboard requirements are still being finalized.",
+    "risk_level": "Medium"
+  },
+  {
+    "update_id": "U012",
+    "project_id": "P007",
+    "update_date": "2026-09-05",
+    "description": "Requirements finalized and development has started.",
+    "risk_level": "Low"
+  },
+  {
+    "update_id": "U013",
+    "project_id": "P008",
+    "update_date": "2026-08-10",
+    "description": "Security audit identified several compliance gaps.",
+    "risk_level": "High"
+  },
+  {
+    "update_id": "U014",
+    "project_id": "P008",
+    "update_date": "2026-09-07",
+    "description": "Critical compliance findings remain unresolved.",
+    "risk_level": "Critical"
+  },
+  {
+    "update_id": "U015",
+    "project_id": "P009",
+    "update_date": "2026-08-15",
+    "description": "Legacy authentication refactoring is taking longer than estimated.",
+    "risk_level": "High"
+  },
+  {
+    "update_id": "U016",
+    "project_id": "P009",
+    "update_date": "2026-09-02",
+    "description": "Refactoring effort has increased significantly and may affect the deadline.",
+    "risk_level": "High"
+  },
+  {
+    "update_id": "U017",
+    "project_id": "P010",
+    "update_date": "2026-08-10",
+    "description": "Mobile application successfully completed.",
+    "risk_level": "Low"
+  },
+  {
+    "update_id": "U018",
+    "project_id": "P001",
+    "update_date": "2026-07-01",
+    "description": "Project started with all initial requirements approved.",
+    "risk_level": "Low"
+  },
+  {
+    "update_id": "U019",
+    "project_id": "P004",
+    "update_date": "2026-06-01",
+    "description": "Initial development was progressing normally.",
+    "risk_level": "Low"
+  },
+  {
+    "update_id": "U020",
+    "project_id": "P006",
+    "update_date": "2026-06-01",
+    "description": "Migration began with no major issues.",
+    "risk_level": "Low"
+  },
+  {
+    "update_id": "U021",
+    "project_id": "P008",
+    "update_date": "2026-07-01",
+    "description": "Security compliance implementation started.",
+    "risk_level": "Medium"
+  },
+  {
+    "update_id": "U022",
+    "project_id": "P009",
+    "update_date": "2026-07-15",
+    "description": "Legacy API migration progressing normally.",
+    "risk_level": "Low"
+  }
+]

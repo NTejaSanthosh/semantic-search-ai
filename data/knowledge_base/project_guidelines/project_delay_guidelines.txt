@@ -1,0 +1,26 @@
+PROJECT DELAY GUIDELINES
+
+Document Type: Project Guideline
+Category: Project Delays
+
+When a project is delayed:
+
+1. Identify which tasks are overdue.
+
+2. Determine whether the overdue tasks are critical to project delivery.
+
+3. Review task assignments and identify whether additional support is required.
+
+4. Review dependencies and blockers.
+
+5. Identify whether delays are caused by resource constraints, technical blockers, dependencies, unclear requirements, or other project issues.
+
+6. Calculate or review project schedule and workload information when available.
+
+7. Define corrective actions for significant delays.
+
+8. Assign corrective actions to appropriate team members.
+
+9. Monitor the project after corrective actions are implemented.
+
+10. Escalate significant unresolved delays according to the Project Escalation Policy.

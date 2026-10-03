@@ -1,0 +1,1686 @@
+{
+  "total_questions": 40,
+  "questions_needing_review": 30,
+  "results": [
+    {
+      "question_number": 1,
+      "question": "What does the organization do to prevent discrimination against employees?",
+      "expected_doc_ids": [
+        "HR_001"
+      ],
+      "expected_documents": [
+        {
+          "doc_id": "HR_001",
+          "document_question": "What is the company's stance on discrimination?"
+        }
+      ],
+      "expected_score": 0.3,
+      "top_candidates": [
+        {
+          "doc_id": "HR_001",
+          "document_question": "What is the company's stance on discrimination?",
+          "score": 0.3
+        },
+        {
+          "doc_id": "HR_070",
+          "document_question": "What disciplinary actions does Certainty Infotech take against harassment?",
+          "score": 0.2444
+        },
+        {
+          "doc_id": "HR_002",
+          "document_question": "How does the company ensure fairness in employment-related decisions?",
+          "score": 0.0
+        },
+        {
+          "doc_id": "HR_003",
+          "document_question": "Are former employees considered differently in the hiring process?",
+          "score": 0.0
+        },
+        {
+          "doc_id": "HR_004",
+          "document_question": "What measures are in place to support diversity in the workplace?",
+          "score": 0.0
+        }
+      ],
+      "status": "LIKELY_OK"
+    },
+    {
+      "question_number": 2,
+      "question": "What rules ensure that employees are treated fairly at work?",
+      "expected_doc_ids": [
+        "HR_002"
+      ],
+      "expected_documents": [
+        {
+          "doc_id": "HR_002",
+          "document_question": "How does the company ensure fairness in employment-related decisions?"
+        }
+      ],
+      "expected_score": 0.14,
+      "top_candidates": [
+        {
+          "doc_id": "HR_007",
+          "document_question": "How does the company ensure that the recruitment process is fair?",
+          "score": 0.2889
+        },
+        {
+          "doc_id": "HR_002",
+          "document_question": "How does the company ensure fairness in employment-related decisions?",
+          "score": 0.14
+        },
+        {
+          "doc_id": "HR_019",
+          "document_question": "What is the protocol for reporting lateness or absence from work?",
+          "score": 0.14
+        },
+        {
+          "doc_id": "HR_033",
+          "document_question": "How does the company ensure fairness and transparency in the promotion process?",
+          "score": 0.14
+        },
+        {
+          "doc_id": "HR_041",
+          "document_question": "Is it possible for the organization to change the standard work hours?",
+          "score": 0.14
+        }
+      ],
+      "status": "LIKELY_OK"
+    },
+    {
+      "question_number": 3,
+      "question": "What is the company's approach to equal employment opportunities?",
+      "expected_doc_ids": [
+        "HR_003"
+      ],
+      "expected_documents": [
+        {
+          "doc_id": "HR_003",
+          "document_question": "Are former employees considered differently in the hiring process?"
+        }
+      ],
+      "expected_score": 0.0,
+      "top_candidates": [
+        {
+          "doc_id": "HR_002",
+          "document_question": "How does the company ensure fairness in employment-related decisions?",
+          "score": 0.2
+        },
+        {
+          "doc_id": "HR_035",
+          "document_question": "What types of training opportunities does Certainty Infotech offer to its employees?",
+          "score": 0.1944
+        },
+        {
+          "doc_id": "HR_001",
+          "document_question": "What is the company's stance on discrimination?",
+          "score": 0.0
+        },
+        {
+          "doc_id": "HR_003",
+          "document_question": "Are former employees considered differently in the hiring process?",
+          "score": 0.0
+        },
+        {
+          "doc_id": "HR_004",
+          "document_question": "What measures are in place to support diversity in the workplace?",
+          "score": 0.0
+        }
+      ],
+      "status": "REVIEW"
+    },
+    {
+      "question_number": 4,
+      "question": "How does the organization promote diversity and inclusion during hiring?",
+      "expected_doc_ids": [
+        "HR_004"
+      ],
+      "expected_documents": [
+        {
+          "doc_id": "HR_004",
+          "document_question": "What measures are in place to support diversity in the workplace?"
+        }
+      ],
+      "expected_score": 0.1644,
+      "top_candidates": [
+        {
+          "doc_id": "HR_003",
+          "document_question": "Are former employees considered differently in the hiring process?",
+          "score": 0.1644
+        },
+        {
+          "doc_id": "HR_004",
+          "document_question": "What measures are in place to support diversity in the workplace?",
+          "score": 0.1644
+        },
+        {
+          "doc_id": "HR_022",
+          "document_question": "How are interns evaluated during their internship period?",
+          "score": 0.1644
+        },
+        {
+          "doc_id": "HR_008",
+          "document_question": "What provisions are made for candidates with disabilities during the recruitment process?",
+          "score": 0.1564
+        },
+        {
+          "doc_id": "HR_062",
+          "document_question": "What happens to other types of leave accrual during Maternity Leave?",
+          "score": 0.1564
+        }
+      ],
+      "status": "LIKELY_OK"
+    },
+    {
+      "question_number": 5,
+      "question": "Can a person with a disability apply for any position offered by the company?",
+      "expected_doc_ids": [
+        "HR_005"
+      ],
+      "expected_documents": [
+        {
+          "doc_id": "HR_005",
+          "document_question": "Can individuals with disabilities apply for all roles in the company?"
+        }
+      ],
+      "expected_score": 0.14,
+      "top_candidates": [
+        {
+          "doc_id": "HR_006",
+          "document_question": "What information is provided to candidates when they apply for a position?",
+          "score": 0.28
+        },
+        {
+          "doc_id": "HR_005",
+          "document_question": "Can individuals with disabilities apply for all roles in the company?",
+          "score": 0.14
+        },
+        {
+          "doc_id": "HR_058",
+          "document_question": "What legislation governs Maternity Leave, and to whom does it apply?",
+          "score": 0.1364
+        },
+        {
+          "doc_id": "HR_009",
+          "document_question": "Is there any policy regarding employees referring candidates for open positions?",
+          "score": 0.1333
+        },
+        {
+          "doc_id": "HR_063",
+          "document_question": "What is the duration of paternity leave offered at Certainty Infotech, and when can it be availed?",
+          "score": 0.1308
+        }
+      ],
+      "status": "LIKELY_OK"
+    },
+    {
+      "question_number": 6,
+      "question": "What details does an applicant receive during the recruitment process?",
+      "expected_doc_ids": [
+        "HR_006"
+      ],
+      "expected_documents": [
+        {
+          "doc_id": "HR_006",
+          "document_question": "What information is provided to candidates when they apply for a position?"
+        }
+      ],
+      "expected_score": 0.0,
+      "top_candidates": [
+        {
+          "doc_id": "HR_008",
+          "document_question": "What provisions are made for candidates with disabilities during the recruitment process?",
+          "score": 0.42
+        },
+        {
+          "doc_id": "HR_007",
+          "document_question": "How does the company ensure that the recruitment process is fair?",
+          "score": 0.2889
+        },
+        {
+          "doc_id": "HR_030",
+          "document_question": "What is the companyâ€™s process for evaluating employees for promotion?",
+          "score": 0.15
+        },
+        {
+          "doc_id": "HR_018",
+          "document_question": "What should an employee do if they need to change their pay details?",
+          "score": 0.1444
+        },
+        {
+          "doc_id": "HR_003",
+          "document_question": "Are former employees considered differently in the hiring process?",
+          "score": 0.14
+        }
+      ],
+      "status": "REVIEW"
+    },
+    {
+      "question_number": 7,
+      "question": "What measures are used to keep employee selection unbiased?",
+      "expected_doc_ids": [
+        "HR_007"
+      ],
+      "expected_documents": [
+        {
+          "doc_id": "HR_007",
+          "document_question": "How does the company ensure that the recruitment process is fair?"
+        }
+      ],
+      "expected_score": 0.0,
+      "top_candidates": [
+        {
+          "doc_id": "HR_004",
+          "document_question": "What measures are in place to support diversity in the workplace?",
+          "score": 0.1644
+        },
+        {
+          "doc_id": "HR_028",
+          "document_question": "What measures are taken to ensure confidentiality and fairness during the appraisal meetings?",
+          "score": 0.1533
+        },
+        {
+          "doc_id": "HR_001",
+          "document_question": "What is the company's stance on discrimination?",
+          "score": 0.0
+        },
+        {
+          "doc_id": "HR_002",
+          "document_question": "How does the company ensure fairness in employment-related decisions?",
+          "score": 0.0
+        },
+        {
+          "doc_id": "HR_003",
+          "document_question": "Are former employees considered differently in the hiring process?",
+          "score": 0.0
+        }
+      ],
+      "status": "REVIEW"
+    },
+    {
+      "question_number": 8,
+      "question": "How are reasonable accommodations handled for disabled job applicants?",
+      "expected_doc_ids": [
+        "HR_008"
+      ],
+      "expected_documents": [
+        {
+          "doc_id": "HR_008",
+          "document_question": "What provisions are made for candidates with disabilities during the recruitment process?"
+        }
+      ],
+      "expected_score": 0.0,
+      "top_candidates": [
+        {
+          "doc_id": "HR_088",
+          "document_question": "How are the costs of Group Medical and Group Accidental Insurance Policies handled at Certainty Infotech?",
+          "score": 0.1286
+        },
+        {
+          "doc_id": "HR_001",
+          "document_question": "What is the company's stance on discrimination?",
+          "score": 0.0
+        },
+        {
+          "doc_id": "HR_002",
+          "document_question": "How does the company ensure fairness in employment-related decisions?",
+          "score": 0.0
+        },
+        {
+          "doc_id": "HR_003",
+          "document_question": "Are former employees considered differently in the hiring process?",
+          "score": 0.0
+        },
+        {
+          "doc_id": "HR_004",
+          "document_question": "What measures are in place to support diversity in the workplace?",
+          "score": 0.0
+        }
+      ],
+      "status": "REVIEW"
+    },
+    {
+      "question_number": 9,
+      "question": "Can current employees recommend people for vacancies?",
+      "expected_doc_ids": [
+        "HR_009"
+      ],
+      "expected_documents": [
+        {
+          "doc_id": "HR_009",
+          "document_question": "Is there any policy regarding employees referring candidates for open positions?"
+        }
+      ],
+      "expected_score": 0.0,
+      "top_candidates": [
+        {
+          "doc_id": "HR_001",
+          "document_question": "What is the company's stance on discrimination?",
+          "score": 0.0
+        },
+        {
+          "doc_id": "HR_002",
+          "document_question": "How does the company ensure fairness in employment-related decisions?",
+          "score": 0.0
+        },
+        {
+          "doc_id": "HR_003",
+          "document_question": "Are former employees considered differently in the hiring process?",
+          "score": 0.0
+        },
+        {
+          "doc_id": "HR_004",
+          "document_question": "What measures are in place to support diversity in the workplace?",
+          "score": 0.0
+        },
+        {
+          "doc_id": "HR_005",
+          "document_question": "Can individuals with disabilities apply for all roles in the company?",
+          "score": 0.0
+        }
+      ],
+      "status": "REVIEW"
+    },
+    {
+      "question_number": 10,
+      "question": "What reward is available when an employee successfully refers a candidate?",
+      "expected_doc_ids": [
+        "HR_010"
+      ],
+      "expected_documents": [
+        {
+          "doc_id": "HR_010",
+          "document_question": "What is the referral bonus, and who is eligible to receive it?"
+        }
+      ],
+      "expected_score": 0.0,
+      "top_candidates": [
+        {
+          "doc_id": "HR_006",
+          "document_question": "What information is provided to candidates when they apply for a position?",
+          "score": 0.1364
+        },
+        {
+          "doc_id": "HR_050",
+          "document_question": "What is Leave Without Pay (LWP), and when is it typically availed?",
+          "score": 0.1333
+        },
+        {
+          "doc_id": "HR_052",
+          "document_question": "What happens to an employee's leave balance when they go on Leave Without Pay (LWP)?",
+          "score": 0.1333
+        },
+        {
+          "doc_id": "HR_060",
+          "document_question": "When can an expectant woman employee start availing Maternity Leave?",
+          "score": 0.1333
+        },
+        {
+          "doc_id": "HR_063",
+          "document_question": "What is the duration of paternity leave offered at Certainty Infotech, and when can it be availed?",
+          "score": 0.1308
+        }
+      ],
+      "status": "REVIEW"
+    },
+    {
+      "question_number": 11,
+      "question": "Why does the company have an employee induction process?",
+      "expected_doc_ids": [
+        "HR_011"
+      ],
+      "expected_documents": [
+        {
+          "doc_id": "HR_011",
+          "document_question": "What is the purpose of the Company's Induction Policy?"
+        }
+      ],
+      "expected_score": 0.2167,
+      "top_candidates": [
+        {
+          "doc_id": "HR_014",
+          "document_question": "What responsibilities does the Human Resources Department have regarding the Induction Policy?",
+          "score": 0.3889
+        },
+        {
+          "doc_id": "HR_011",
+          "document_question": "What is the purpose of the Company's Induction Policy?",
+          "score": 0.2167
+        },
+        {
+          "doc_id": "HR_030",
+          "document_question": "What is the companyâ€™s process for evaluating employees for promotion?",
+          "score": 0.2167
+        },
+        {
+          "doc_id": "HR_012",
+          "document_question": "How does the Induction Policy benefit new employees?",
+          "score": 0.2071
+        },
+        {
+          "doc_id": "HR_003",
+          "document_question": "Are former employees considered differently in the hiring process?",
+          "score": 0.2
+        }
+      ],
+      "status": "LIKELY_OK"
+    },
+    {
+      "question_number": 12,
+      "question": "How does the onboarding process help someone who has just joined?",
+      "expected_doc_ids": [
+        "HR_012"
+      ],
+      "expected_documents": [
+        {
+          "doc_id": "HR_012",
+          "document_question": "How does the Induction Policy benefit new employees?"
+        }
+      ],
+      "expected_score": 0.0,
+      "top_candidates": [
+        {
+          "doc_id": "HR_030",
+          "document_question": "What is the companyâ€™s process for evaluating employees for promotion?",
+          "score": 0.115
+        },
+        {
+          "doc_id": "HR_003",
+          "document_question": "Are former employees considered differently in the hiring process?",
+          "score": 0.1083
+        },
+        {
+          "doc_id": "HR_007",
+          "document_question": "How does the company ensure that the recruitment process is fair?",
+          "score": 0.1083
+        },
+        {
+          "doc_id": "HR_010",
+          "document_question": "What is the referral bonus, and who is eligible to receive it?",
+          "score": 0.1083
+        },
+        {
+          "doc_id": "HR_026",
+          "document_question": "What is the role of self-assessment in the appraisal process?",
+          "score": 0.1083
+        }
+      ],
+      "status": "REVIEW"
+    },
+    {
+      "question_number": 13,
+      "question": "What benefits does the organization expect from its induction program?",
+      "expected_doc_ids": [
+        "HR_013"
+      ],
+      "expected_documents": [
+        {
+          "doc_id": "HR_013",
+          "document_question": "What are the expected outcomes of implementing the Induction Policy for the company?"
+        }
+      ],
+      "expected_score": 0.2,
+      "top_candidates": [
+        {
+          "doc_id": "HR_011",
+          "document_question": "What is the purpose of the Company's Induction Policy?",
+          "score": 0.2167
+        },
+        {
+          "doc_id": "HR_012",
+          "document_question": "How does the Induction Policy benefit new employees?",
+          "score": 0.2071
+        },
+        {
+          "doc_id": "HR_013",
+          "document_question": "What are the expected outcomes of implementing the Induction Policy for the company?",
+          "score": 0.2
+        },
+        {
+          "doc_id": "HR_065",
+          "document_question": "What documentation is required for an employee to avail of paternity leave benefits?",
+          "score": 0.1944
+        },
+        {
+          "doc_id": "HR_014",
+          "document_question": "What responsibilities does the Human Resources Department have regarding the Induction Policy?",
+          "score": 0.19
+        }
+      ],
+      "status": "LIKELY_OK"
+    },
+    {
+      "question_number": 14,
+      "question": "Which team is responsible for managing employee induction?",
+      "expected_doc_ids": [
+        "HR_014"
+      ],
+      "expected_documents": [
+        {
+          "doc_id": "HR_014",
+          "document_question": "What responsibilities does the Human Resources Department have regarding the Induction Policy?"
+        }
+      ],
+      "expected_score": 0.1564,
+      "top_candidates": [
+        {
+          "doc_id": "HR_011",
+          "document_question": "What is the purpose of the Company's Induction Policy?",
+          "score": 0.1771
+        },
+        {
+          "doc_id": "HR_012",
+          "document_question": "How does the Induction Policy benefit new employees?",
+          "score": 0.17
+        },
+        {
+          "doc_id": "HR_013",
+          "document_question": "What are the expected outcomes of implementing the Induction Policy for the company?",
+          "score": 0.1644
+        },
+        {
+          "doc_id": "HR_014",
+          "document_question": "What responsibilities does the Human Resources Department have regarding the Induction Policy?",
+          "score": 0.1564
+        },
+        {
+          "doc_id": "HR_082",
+          "document_question": "Who is responsible for the maintenance and safety of office assets allotted to employees?",
+          "score": 0.1564
+        }
+      ],
+      "status": "LIKELY_OK"
+    },
+    {
+      "question_number": 15,
+      "question": "What needs to be arranged before a new employee starts working?",
+      "expected_doc_ids": [
+        "HR_015"
+      ],
+      "expected_documents": [
+        {
+          "doc_id": "HR_015",
+          "document_question": "What preparations are made for a new employee before their arrival at the company?"
+        }
+      ],
+      "expected_score": 0.2889,
+      "top_candidates": [
+        {
+          "doc_id": "HR_015",
+          "document_question": "What preparations are made for a new employee before their arrival at the company?",
+          "score": 0.2889
+        },
+        {
+          "doc_id": "HR_012",
+          "document_question": "How does the Induction Policy benefit new employees?",
+          "score": 0.1444
+        },
+        {
+          "doc_id": "HR_039",
+          "document_question": "What is the policy regarding working hours on Saturdays and Sundays?",
+          "score": 0.14
+        },
+        {
+          "doc_id": "HR_042",
+          "document_question": "How are partial working days accounted for in terms of leave?",
+          "score": 0.1364
+        },
+        {
+          "doc_id": "HR_057",
+          "document_question": "Are there provisions for working from home after availing maternity benefits?",
+          "score": 0.1308
+        }
+      ],
+      "status": "LIKELY_OK"
+    },
+    {
+      "question_number": 16,
+      "question": "When and how are employees paid during the month?",
+      "expected_doc_ids": [
+        "HR_016"
+      ],
+      "expected_documents": [
+        {
+          "doc_id": "HR_016",
+          "document_question": "How is the pay cycle structured for employees at Certainty Infotech?"
+        }
+      ],
+      "expected_score": 0.0,
+      "top_candidates": [
+        {
+          "doc_id": "HR_022",
+          "document_question": "How are interns evaluated during their internship period?",
+          "score": 0.2
+        },
+        {
+          "doc_id": "HR_006",
+          "document_question": "What information is provided to candidates when they apply for a position?",
+          "score": 0.1944
+        },
+        {
+          "doc_id": "HR_008",
+          "document_question": "What provisions are made for candidates with disabilities during the recruitment process?",
+          "score": 0.19
+        },
+        {
+          "doc_id": "HR_050",
+          "document_question": "What is Leave Without Pay (LWP), and when is it typically availed?",
+          "score": 0.19
+        },
+        {
+          "doc_id": "HR_052",
+          "document_question": "What happens to an employee's leave balance when they go on Leave Without Pay (LWP)?",
+          "score": 0.19
+        }
+      ],
+      "status": "REVIEW"
+    },
+    {
+      "question_number": 17,
+      "question": "Does the company conduct periodic reviews of employee salaries?",
+      "expected_doc_ids": [
+        "HR_017"
+      ],
+      "expected_documents": [
+        {
+          "doc_id": "HR_017",
+          "document_question": "Are there scheduled salary reviews for employees at Certainty Infotech?"
+        }
+      ],
+      "expected_score": 0.1944,
+      "top_candidates": [
+        {
+          "doc_id": "HR_017",
+          "document_question": "Are there scheduled salary reviews for employees at Certainty Infotech?",
+          "score": 0.1944
+        },
+        {
+          "doc_id": "HR_001",
+          "document_question": "What is the company's stance on discrimination?",
+          "score": 0.0
+        },
+        {
+          "doc_id": "HR_002",
+          "document_question": "How does the company ensure fairness in employment-related decisions?",
+          "score": 0.0
+        },
+        {
+          "doc_id": "HR_003",
+          "document_question": "Are former employees considered differently in the hiring process?",
+          "score": 0.0
+        },
+        {
+          "doc_id": "HR_004",
+          "document_question": "What measures are in place to support diversity in the workplace?",
+          "score": 0.0
+        }
+      ],
+      "status": "LIKELY_OK"
+    },
+    {
+      "question_number": 18,
+      "question": "How are employee salary increases determined?",
+      "expected_doc_ids": [
+        "HR_018"
+      ],
+      "expected_documents": [
+        {
+          "doc_id": "HR_018",
+          "document_question": "What should an employee do if they need to change their pay details?"
+        }
+      ],
+      "expected_score": 0.0,
+      "top_candidates": [
+        {
+          "doc_id": "HR_017",
+          "document_question": "Are there scheduled salary reviews for employees at Certainty Infotech?",
+          "score": 0.25
+        },
+        {
+          "doc_id": "HR_001",
+          "document_question": "What is the company's stance on discrimination?",
+          "score": 0.0
+        },
+        {
+          "doc_id": "HR_002",
+          "document_question": "How does the company ensure fairness in employment-related decisions?",
+          "score": 0.0
+        },
+        {
+          "doc_id": "HR_003",
+          "document_question": "Are former employees considered differently in the hiring process?",
+          "score": 0.0
+        },
+        {
+          "doc_id": "HR_004",
+          "document_question": "What measures are in place to support diversity in the workplace?",
+          "score": 0.0
+        }
+      ],
+      "status": "REVIEW"
+    },
+    {
+      "question_number": 19,
+      "question": "What factors are considered when reviewing an employee's compensation?",
+      "expected_doc_ids": [
+        "HR_019"
+      ],
+      "expected_documents": [
+        {
+          "doc_id": "HR_019",
+          "document_question": "What is the protocol for reporting lateness or absence from work?"
+        }
+      ],
+      "expected_score": 0.0,
+      "top_candidates": [
+        {
+          "doc_id": "HR_029",
+          "document_question": "What are the basic qualifications for an employee to be considered for promotion at the company?",
+          "score": 0.17
+        },
+        {
+          "doc_id": "HR_003",
+          "document_question": "Are former employees considered differently in the hiring process?",
+          "score": 0.1644
+        },
+        {
+          "doc_id": "HR_006",
+          "document_question": "What information is provided to candidates when they apply for a position?",
+          "score": 0.16
+        },
+        {
+          "doc_id": "HR_050",
+          "document_question": "What is Leave Without Pay (LWP), and when is it typically availed?",
+          "score": 0.1564
+        },
+        {
+          "doc_id": "HR_052",
+          "document_question": "What happens to an employee's leave balance when they go on Leave Without Pay (LWP)?",
+          "score": 0.1564
+        }
+      ],
+      "status": "REVIEW"
+    },
+    {
+      "question_number": 20,
+      "question": "What is the company's policy concerning working hours?",
+      "expected_doc_ids": [
+        "HR_020"
+      ],
+      "expected_documents": [
+        {
+          "doc_id": "HR_020",
+          "document_question": "How does the company handle the reimbursement of expenses?"
+        }
+      ],
+      "expected_score": 0.0,
+      "top_candidates": [
+        {
+          "doc_id": "HR_039",
+          "document_question": "What is the policy regarding working hours on Saturdays and Sundays?",
+          "score": 0.65
+        },
+        {
+          "doc_id": "HR_011",
+          "document_question": "What is the purpose of the Company's Induction Policy?",
+          "score": 0.2167
+        },
+        {
+          "doc_id": "HR_012",
+          "document_question": "How does the Induction Policy benefit new employees?",
+          "score": 0.2071
+        },
+        {
+          "doc_id": "HR_013",
+          "document_question": "What are the expected outcomes of implementing the Induction Policy for the company?",
+          "score": 0.2
+        },
+        {
+          "doc_id": "HR_041",
+          "document_question": "Is it possible for the organization to change the standard work hours?",
+          "score": 0.2
+        }
+      ],
+      "status": "REVIEW"
+    },
+    {
+      "question_number": 21,
+      "question": "How should employees record their attendance?",
+      "expected_doc_ids": [
+        "HR_021"
+      ],
+      "expected_documents": [
+        {
+          "doc_id": "HR_021",
+          "document_question": "What is the initial duration of the internship at the company, and under what circumstances can it be extended or terminated early?"
+        }
+      ],
+      "expected_score": 0.0,
+      "top_candidates": [
+        {
+          "doc_id": "HR_001",
+          "document_question": "What is the company's stance on discrimination?",
+          "score": 0.0
+        },
+        {
+          "doc_id": "HR_002",
+          "document_question": "How does the company ensure fairness in employment-related decisions?",
+          "score": 0.0
+        },
+        {
+          "doc_id": "HR_003",
+          "document_question": "Are former employees considered differently in the hiring process?",
+          "score": 0.0
+        },
+        {
+          "doc_id": "HR_004",
+          "document_question": "What measures are in place to support diversity in the workplace?",
+          "score": 0.0
+        },
+        {
+          "doc_id": "HR_005",
+          "document_question": "Can individuals with disabilities apply for all roles in the company?",
+          "score": 0.0
+        }
+      ],
+      "status": "REVIEW"
+    },
+    {
+      "question_number": 22,
+      "question": "What should an employee do if they need to take time off?",
+      "expected_doc_ids": [
+        "HR_022"
+      ],
+      "expected_documents": [
+        {
+          "doc_id": "HR_022",
+          "document_question": "How are interns evaluated during their internship period?"
+        }
+      ],
+      "expected_score": 0.0,
+      "top_candidates": [
+        {
+          "doc_id": "HR_018",
+          "document_question": "What should an employee do if they need to change their pay details?",
+          "score": 0.2071
+        },
+        {
+          "doc_id": "HR_107",
+          "document_question": "How many days of earned leave can employees take annually?",
+          "score": 0.1944
+        },
+        {
+          "doc_id": "HR_070",
+          "document_question": "What disciplinary actions does Certainty Infotech take against harassment?",
+          "score": 0.19
+        },
+        {
+          "doc_id": "HR_101",
+          "document_question": "How many earned leave days can an employee take each year?",
+          "score": 0.19
+        },
+        {
+          "doc_id": "HR_115",
+          "document_question": "What is the total number of earned leave days employees can take each year?",
+          "score": 0.1864
+        }
+      ],
+      "status": "REVIEW"
+    },
+    {
+      "question_number": 23,
+      "question": "How does the organization handle employee leave requests?",
+      "expected_doc_ids": [
+        "HR_023"
+      ],
+      "expected_documents": [
+        {
+          "doc_id": "HR_023",
+          "document_question": "What happens after the completion of the internship period?"
+        }
+      ],
+      "expected_score": 0.0,
+      "top_candidates": [
+        {
+          "doc_id": "HR_056",
+          "document_question": "What is the procedure to apply for maternity leave, and how should an employee handle unforeseen circumstances requiring earlier leave?",
+          "score": 0.48
+        },
+        {
+          "doc_id": "HR_020",
+          "document_question": "How does the company handle the reimbursement of expenses?",
+          "score": 0.28
+        },
+        {
+          "doc_id": "HR_049",
+          "document_question": "How are leaves credited to an employee's leave balance?",
+          "score": 0.2667
+        },
+        {
+          "doc_id": "HR_100",
+          "document_question": "What is the annual earned leave entitlement for employees?",
+          "score": 0.2667
+        },
+        {
+          "doc_id": "HR_108",
+          "document_question": "What is the annual earned leave allowance for employees?",
+          "score": 0.2667
+        }
+      ],
+      "status": "REVIEW"
+    },
+    {
+      "question_number": 24,
+      "question": "What are the rules for taking annual leave?",
+      "expected_doc_ids": [
+        "HR_024"
+      ],
+      "expected_documents": [
+        {
+          "doc_id": "HR_024",
+          "document_question": "What is the primary goal of the Performance Appraisal Policy at Certainty Infotech?"
+        }
+      ],
+      "expected_score": 0.0,
+      "top_candidates": [
+        {
+          "doc_id": "HR_100",
+          "document_question": "What is the annual earned leave entitlement for employees?",
+          "score": 0.4333
+        },
+        {
+          "doc_id": "HR_108",
+          "document_question": "What is the annual earned leave allowance for employees?",
+          "score": 0.4333
+        },
+        {
+          "doc_id": "HR_049",
+          "document_question": "How are leaves credited to an employee's leave balance?",
+          "score": 0.2071
+        },
+        {
+          "doc_id": "HR_111",
+          "document_question": "What is the yearly earned leave quota for employees?",
+          "score": 0.2071
+        },
+        {
+          "doc_id": "HR_045",
+          "document_question": "What is the leave year period according to the policy?",
+          "score": 0.2
+        }
+      ],
+      "status": "REVIEW"
+    },
+    {
+      "question_number": 25,
+      "question": "How is sick leave managed for employees?",
+      "expected_doc_ids": [
+        "HR_025"
+      ],
+      "expected_documents": [
+        {
+          "doc_id": "HR_025",
+          "document_question": "How often do performance appraisals occur and what does the process entail?"
+        }
+      ],
+      "expected_score": 0.0,
+      "top_candidates": [
+        {
+          "doc_id": "HR_048",
+          "document_question": "What are the norms for carry-forward of accumulated Casual Leave (CL), Sick Leave (SL), and Earned Leave (EL)?",
+          "score": 0.4889
+        },
+        {
+          "doc_id": "HR_049",
+          "document_question": "How are leaves credited to an employee's leave balance?",
+          "score": 0.2667
+        },
+        {
+          "doc_id": "HR_100",
+          "document_question": "What is the annual earned leave entitlement for employees?",
+          "score": 0.2667
+        },
+        {
+          "doc_id": "HR_108",
+          "document_question": "What is the annual earned leave allowance for employees?",
+          "score": 0.2667
+        },
+        {
+          "doc_id": "HR_111",
+          "document_question": "What is the yearly earned leave quota for employees?",
+          "score": 0.2667
+        }
+      ],
+      "status": "REVIEW"
+    },
+    {
+      "question_number": 26,
+      "question": "What is the process for requesting maternity or parental leave?",
+      "expected_doc_ids": [
+        "HR_026"
+      ],
+      "expected_documents": [
+        {
+          "doc_id": "HR_026",
+          "document_question": "What is the role of self-assessment in the appraisal process?"
+        }
+      ],
+      "expected_score": 0.1644,
+      "top_candidates": [
+        {
+          "doc_id": "HR_055",
+          "document_question": "When can an expectant employee start her maternity leave, and what is the process for extending this leave?",
+          "score": 0.4691
+        },
+        {
+          "doc_id": "HR_058",
+          "document_question": "What legislation governs Maternity Leave, and to whom does it apply?",
+          "score": 0.3289
+        },
+        {
+          "doc_id": "HR_053",
+          "document_question": "Who is eligible for maternity leave at Certainty, and what are the eligibility requirements?",
+          "score": 0.32
+        },
+        {
+          "doc_id": "HR_054",
+          "document_question": "What is the maximum duration for maternity leave under this policy?",
+          "score": 0.32
+        },
+        {
+          "doc_id": "HR_059",
+          "document_question": "What is the maximum duration of Maternity Leave that a woman employee can avail?",
+          "score": 0.32
+        }
+      ],
+      "status": "REVIEW"
+    },
+    {
+      "question_number": 27,
+      "question": "What benefits are available to employees?",
+      "expected_doc_ids": [
+        "HR_027"
+      ],
+      "expected_documents": [
+        {
+          "doc_id": "HR_027",
+          "document_question": "How does the appraisal process support employee development and organizational planning?"
+        }
+      ],
+      "expected_score": 0.0,
+      "top_candidates": [
+        {
+          "doc_id": "HR_065",
+          "document_question": "What documentation is required for an employee to avail of paternity leave benefits?",
+          "score": 0.3571
+        },
+        {
+          "doc_id": "HR_034",
+          "document_question": "What are the main benefits of the Training and Development Policy at Certainty Infotech?",
+          "score": 0.35
+        },
+        {
+          "doc_id": "HR_057",
+          "document_question": "Are there provisions for working from home after availing maternity benefits?",
+          "score": 0.3444
+        },
+        {
+          "doc_id": "HR_001",
+          "document_question": "What is the company's stance on discrimination?",
+          "score": 0.0
+        },
+        {
+          "doc_id": "HR_002",
+          "document_question": "How does the company ensure fairness in employment-related decisions?",
+          "score": 0.0
+        }
+      ],
+      "status": "REVIEW"
+    },
+    {
+      "question_number": 28,
+      "question": "Does the company provide health-related benefits to its staff?",
+      "expected_doc_ids": [
+        "HR_028"
+      ],
+      "expected_documents": [
+        {
+          "doc_id": "HR_028",
+          "document_question": "What measures are taken to ensure confidentiality and fairness during the appraisal meetings?"
+        }
+      ],
+      "expected_score": 0.0,
+      "top_candidates": [
+        {
+          "doc_id": "HR_002",
+          "document_question": "How does the company ensure fairness in employment-related decisions?",
+          "score": 0.1644
+        },
+        {
+          "doc_id": "HR_065",
+          "document_question": "What documentation is required for an employee to avail of paternity leave benefits?",
+          "score": 0.16
+        },
+        {
+          "doc_id": "HR_083",
+          "document_question": "What is the procedure for addressing grievances related to IT assets and services?",
+          "score": 0.16
+        },
+        {
+          "doc_id": "HR_034",
+          "document_question": "What are the main benefits of the Training and Development Policy at Certainty Infotech?",
+          "score": 0.1564
+        },
+        {
+          "doc_id": "HR_057",
+          "document_question": "Are there provisions for working from home after availing maternity benefits?",
+          "score": 0.1533
+        }
+      ],
+      "status": "REVIEW"
+    },
+    {
+      "question_number": 29,
+      "question": "What retirement-related benefits does the organization offer?",
+      "expected_doc_ids": [
+        "HR_029"
+      ],
+      "expected_documents": [
+        {
+          "doc_id": "HR_029",
+          "document_question": "What are the basic qualifications for an employee to be considered for promotion at the company?"
+        }
+      ],
+      "expected_score": 0.0,
+      "top_candidates": [
+        {
+          "doc_id": "HR_002",
+          "document_question": "How does the company ensure fairness in employment-related decisions?",
+          "score": 0.2
+        },
+        {
+          "doc_id": "HR_035",
+          "document_question": "What types of training opportunities does Certainty Infotech offer to its employees?",
+          "score": 0.1944
+        },
+        {
+          "doc_id": "HR_065",
+          "document_question": "What documentation is required for an employee to avail of paternity leave benefits?",
+          "score": 0.1944
+        },
+        {
+          "doc_id": "HR_083",
+          "document_question": "What is the procedure for addressing grievances related to IT assets and services?",
+          "score": 0.1944
+        },
+        {
+          "doc_id": "HR_034",
+          "document_question": "What are the main benefits of the Training and Development Policy at Certainty Infotech?",
+          "score": 0.19
+        }
+      ],
+      "status": "REVIEW"
+    },
+    {
+      "question_number": 30,
+      "question": "What are the rules employees must follow regarding workplace behavior?",
+      "expected_doc_ids": [
+        "HR_030"
+      ],
+      "expected_documents": [
+        {
+          "doc_id": "HR_030",
+          "document_question": "What is the companyâ€™s process for evaluating employees for promotion?"
+        }
+      ],
+      "expected_score": 0.0,
+      "top_candidates": [
+        {
+          "doc_id": "HR_004",
+          "document_question": "What measures are in place to support diversity in the workplace?",
+          "score": 0.1644
+        },
+        {
+          "doc_id": "HR_092",
+          "document_question": "What criteria must be met for cab fare reimbursement under Certainty Infotech's Reimbursement Policy?",
+          "score": 0.1486
+        },
+        {
+          "doc_id": "HR_001",
+          "document_question": "What is the company's stance on discrimination?",
+          "score": 0.0
+        },
+        {
+          "doc_id": "HR_002",
+          "document_question": "How does the company ensure fairness in employment-related decisions?",
+          "score": 0.0
+        },
+        {
+          "doc_id": "HR_003",
+          "document_question": "Are former employees considered differently in the hiring process?",
+          "score": 0.0
+        }
+      ],
+      "status": "REVIEW"
+    },
+    {
+      "question_number": 31,
+      "question": "How should employees report inappropriate behavior at work?",
+      "expected_doc_ids": [
+        "HR_031"
+      ],
+      "expected_documents": [
+        {
+          "doc_id": "HR_031",
+          "document_question": "Can promotions occur outside the standard annual review process?"
+        }
+      ],
+      "expected_score": 0.0,
+      "top_candidates": [
+        {
+          "doc_id": "HR_019",
+          "document_question": "What is the protocol for reporting lateness or absence from work?",
+          "score": 0.2
+        },
+        {
+          "doc_id": "HR_041",
+          "document_question": "Is it possible for the organization to change the standard work hours?",
+          "score": 0.2
+        },
+        {
+          "doc_id": "HR_068",
+          "document_question": "Give me the brief of Work from Home policy",
+          "score": 0.2
+        },
+        {
+          "doc_id": "HR_067",
+          "document_question": "How does the paternity leave policy integrate with the companyâ€™s overall Work-Life Balance policy?",
+          "score": 0.1864
+        },
+        {
+          "doc_id": "HR_066",
+          "document_question": "Are there any special provisions for work arrangements after the paternity leave period?",
+          "score": 0.1808
+        }
+      ],
+      "status": "REVIEW"
+    },
+    {
+      "question_number": 32,
+      "question": "What procedure should an employee follow when raising a workplace complaint?",
+      "expected_doc_ids": [
+        "HR_032"
+      ],
+      "expected_documents": [
+        {
+          "doc_id": "HR_032",
+          "document_question": "What steps are involved in the decision-making process for promoting an employee?"
+        }
+      ],
+      "expected_score": 0.0,
+      "top_candidates": [
+        {
+          "doc_id": "HR_004",
+          "document_question": "What measures are in place to support diversity in the workplace?",
+          "score": 0.14
+        },
+        {
+          "doc_id": "HR_006",
+          "document_question": "What information is provided to candidates when they apply for a position?",
+          "score": 0.1364
+        },
+        {
+          "doc_id": "HR_083",
+          "document_question": "What is the procedure for addressing grievances related to IT assets and services?",
+          "score": 0.1364
+        },
+        {
+          "doc_id": "HR_050",
+          "document_question": "What is Leave Without Pay (LWP), and when is it typically availed?",
+          "score": 0.1333
+        },
+        {
+          "doc_id": "HR_052",
+          "document_question": "What happens to an employee's leave balance when they go on Leave Without Pay (LWP)?",
+          "score": 0.1333
+        }
+      ],
+      "status": "REVIEW"
+    },
+    {
+      "question_number": 33,
+      "question": "How does the company handle complaints made by employees?",
+      "expected_doc_ids": [
+        "HR_033"
+      ],
+      "expected_documents": [
+        {
+          "doc_id": "HR_033",
+          "document_question": "How does the company ensure fairness and transparency in the promotion process?"
+        }
+      ],
+      "expected_score": 0.0,
+      "top_candidates": [
+        {
+          "doc_id": "HR_020",
+          "document_question": "How does the company handle the reimbursement of expenses?",
+          "score": 0.28
+        },
+        {
+          "doc_id": "HR_015",
+          "document_question": "What preparations are made for a new employee before their arrival at the company?",
+          "score": 0.2571
+        },
+        {
+          "doc_id": "HR_008",
+          "document_question": "What provisions are made for candidates with disabilities during the recruitment process?",
+          "score": 0.2444
+        },
+        {
+          "doc_id": "HR_056",
+          "document_question": "What is the procedure to apply for maternity leave, and how should an employee handle unforeseen circumstances requiring earlier leave?",
+          "score": 0.2364
+        },
+        {
+          "doc_id": "HR_077",
+          "document_question": "How does Certainty Infotech handle grievances that are not resolved at the initial level?",
+          "score": 0.2364
+        }
+      ],
+      "status": "REVIEW"
+    },
+    {
+      "question_number": 34,
+      "question": "What guidelines apply to employees using company technology?",
+      "expected_doc_ids": [
+        "HR_034"
+      ],
+      "expected_documents": [
+        {
+          "doc_id": "HR_034",
+          "document_question": "What are the main benefits of the Training and Development Policy at Certainty Infotech?"
+        }
+      ],
+      "expected_score": 0.0,
+      "top_candidates": [
+        {
+          "doc_id": "HR_005",
+          "document_question": "Can individuals with disabilities apply for all roles in the company?",
+          "score": 0.2
+        },
+        {
+          "doc_id": "HR_006",
+          "document_question": "What information is provided to candidates when they apply for a position?",
+          "score": 0.1944
+        },
+        {
+          "doc_id": "HR_058",
+          "document_question": "What legislation governs Maternity Leave, and to whom does it apply?",
+          "score": 0.1944
+        },
+        {
+          "doc_id": "HR_056",
+          "document_question": "What is the procedure to apply for maternity leave, and how should an employee handle unforeseen circumstances requiring earlier leave?",
+          "score": 0.1833
+        },
+        {
+          "doc_id": "HR_081",
+          "document_question": "What action should be taken if an employee is found using a cracked version or unlicensed software on the company's systems?",
+          "score": 0.1833
+        }
+      ],
+      "status": "REVIEW"
+    },
+    {
+      "question_number": 35,
+      "question": "What are employees expected to do to protect company information?",
+      "expected_doc_ids": [
+        "HR_035"
+      ],
+      "expected_documents": [
+        {
+          "doc_id": "HR_035",
+          "document_question": "What types of training opportunities does Certainty Infotech offer to its employees?"
+        }
+      ],
+      "expected_score": 0.0,
+      "top_candidates": [
+        {
+          "doc_id": "HR_013",
+          "document_question": "What are the expected outcomes of implementing the Induction Policy for the company?",
+          "score": 0.2571
+        },
+        {
+          "doc_id": "HR_006",
+          "document_question": "What information is provided to candidates when they apply for a position?",
+          "score": 0.25
+        },
+        {
+          "doc_id": "HR_001",
+          "document_question": "What is the company's stance on discrimination?",
+          "score": 0.0
+        },
+        {
+          "doc_id": "HR_002",
+          "document_question": "How does the company ensure fairness in employment-related decisions?",
+          "score": 0.0
+        },
+        {
+          "doc_id": "HR_003",
+          "document_question": "Are former employees considered differently in the hiring process?",
+          "score": 0.0
+        }
+      ],
+      "status": "REVIEW"
+    },
+    {
+      "question_number": 36,
+      "question": "What rules apply to confidential information belonging to the organization?",
+      "expected_doc_ids": [
+        "HR_036"
+      ],
+      "expected_documents": [
+        {
+          "doc_id": "HR_036",
+          "document_question": "How does Certainty Infotech encourage employees to engage in personal development?"
+        }
+      ],
+      "expected_score": 0.0,
+      "top_candidates": [
+        {
+          "doc_id": "HR_006",
+          "document_question": "What information is provided to candidates when they apply for a position?",
+          "score": 0.3289
+        },
+        {
+          "doc_id": "HR_005",
+          "document_question": "Can individuals with disabilities apply for all roles in the company?",
+          "score": 0.1644
+        },
+        {
+          "doc_id": "HR_058",
+          "document_question": "What legislation governs Maternity Leave, and to whom does it apply?",
+          "score": 0.16
+        },
+        {
+          "doc_id": "HR_056",
+          "document_question": "What is the procedure to apply for maternity leave, and how should an employee handle unforeseen circumstances requiring earlier leave?",
+          "score": 0.1508
+        },
+        {
+          "doc_id": "HR_001",
+          "document_question": "What is the company's stance on discrimination?",
+          "score": 0.0
+        }
+      ],
+      "status": "REVIEW"
+    },
+    {
+      "question_number": 37,
+      "question": "What is the company's approach to employee training and development?",
+      "expected_doc_ids": [
+        "HR_037"
+      ],
+      "expected_documents": [
+        {
+          "doc_id": "HR_037",
+          "document_question": "What type of specialized training is provided to improve technical competencies at Certainty Infotech?"
+        }
+      ],
+      "expected_score": 0.2364,
+      "top_candidates": [
+        {
+          "doc_id": "HR_034",
+          "document_question": "What are the main benefits of the Training and Development Policy at Certainty Infotech?",
+          "score": 0.5
+        },
+        {
+          "doc_id": "HR_027",
+          "document_question": "How does the appraisal process support employee development and organizational planning?",
+          "score": 0.25
+        },
+        {
+          "doc_id": "HR_035",
+          "document_question": "What types of training opportunities does Certainty Infotech offer to its employees?",
+          "score": 0.25
+        },
+        {
+          "doc_id": "HR_036",
+          "document_question": "How does Certainty Infotech encourage employees to engage in personal development?",
+          "score": 0.25
+        },
+        {
+          "doc_id": "HR_037",
+          "document_question": "What type of specialized training is provided to improve technical competencies at Certainty Infotech?",
+          "score": 0.2364
+        }
+      ],
+      "status": "LIKELY_OK"
+    },
+    {
+      "question_number": 38,
+      "question": "Are employees provided opportunities to improve their professional skills?",
+      "expected_doc_ids": [
+        "HR_038"
+      ],
+      "expected_documents": [
+        {
+          "doc_id": "HR_038",
+          "document_question": "What are the standard office timings from Monday to Friday?"
+        }
+      ],
+      "expected_score": 0.0,
+      "top_candidates": [
+        {
+          "doc_id": "HR_037",
+          "document_question": "What type of specialized training is provided to improve technical competencies at Certainty Infotech?",
+          "score": 0.3067
+        },
+        {
+          "doc_id": "HR_006",
+          "document_question": "What information is provided to candidates when they apply for a position?",
+          "score": 0.16
+        },
+        {
+          "doc_id": "HR_035",
+          "document_question": "What types of training opportunities does Certainty Infotech offer to its employees?",
+          "score": 0.16
+        },
+        {
+          "doc_id": "HR_112",
+          "document_question": "How many days of earned leave are employees provided with each year?",
+          "score": 0.1564
+        },
+        {
+          "doc_id": "HR_080",
+          "document_question": "What technological assets and services are provided to Certainty Infotech employees for official use?",
+          "score": 0.1533
+        }
+      ],
+      "status": "REVIEW"
+    },
+    {
+      "question_number": 39,
+      "question": "How does the organization support employee career development?",
+      "expected_doc_ids": [
+        "HR_039"
+      ],
+      "expected_documents": [
+        {
+          "doc_id": "HR_039",
+          "document_question": "What is the policy regarding working hours on Saturdays and Sundays?"
+        }
+      ],
+      "expected_score": 0.0,
+      "top_candidates": [
+        {
+          "doc_id": "HR_027",
+          "document_question": "How does the appraisal process support employee development and organizational planning?",
+          "score": 0.5143
+        },
+        {
+          "doc_id": "HR_004",
+          "document_question": "What measures are in place to support diversity in the workplace?",
+          "score": 0.2571
+        },
+        {
+          "doc_id": "HR_036",
+          "document_question": "How does Certainty Infotech encourage employees to engage in personal development?",
+          "score": 0.25
+        },
+        {
+          "doc_id": "HR_034",
+          "document_question": "What are the main benefits of the Training and Development Policy at Certainty Infotech?",
+          "score": 0.2444
+        },
+        {
+          "doc_id": "HR_001",
+          "document_question": "What is the company's stance on discrimination?",
+          "score": 0.0
+        }
+      ],
+      "status": "REVIEW"
+    },
+    {
+      "question_number": 40,
+      "question": "What opportunities are available for employees who want to develop their careers?",
+      "expected_doc_ids": [
+        "HR_040"
+      ],
+      "expected_documents": [
+        {
+          "doc_id": "HR_040",
+          "document_question": "Can employees adjust their reporting times within a one-hour window of their normal duty hours?"
+        }
+      ],
+      "expected_score": 0.0,
+      "top_candidates": [
+        {
+          "doc_id": "HR_010",
+          "document_question": "What is the referral bonus, and who is eligible to receive it?",
+          "score": 0.14
+        },
+        {
+          "doc_id": "HR_035",
+          "document_question": "What types of training opportunities does Certainty Infotech offer to its employees?",
+          "score": 0.1364
+        },
+        {
+          "doc_id": "HR_053",
+          "document_question": "Who is eligible for maternity leave at Certainty, and what are the eligibility requirements?",
+          "score": 0.1333
+        },
+        {
+          "doc_id": "HR_082",
+          "document_question": "Who is responsible for the maintenance and safety of office assets allotted to employees?",
+          "score": 0.1333
+        },
+        {
+          "doc_id": "HR_097",
+          "document_question": "Who is responsible for organizing and coordinating exit interviews at Certainty Infotech?",
+          "score": 0.1308
+        }
+      ],
+      "status": "REVIEW"
+    }
+  ]
+}

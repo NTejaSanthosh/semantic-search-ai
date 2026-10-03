@@ -1,0 +1,177 @@
+[
+  {
+    "employee_id": "E001",
+    "name": "John Smith",
+    "department": "Engineering",
+    "role": "Project Manager",
+    "access_role": "PROJECT_MANAGER"
+  },
+  {
+    "employee_id": "E002",
+    "name": "John Kumar",
+    "department": "Engineering",
+    "role": "AI Engineer",
+    "access_role": "TEAM_MEMBER"
+  },
+  {
+    "employee_id": "E003",
+    "name": "Priya Sharma",
+    "department": "Engineering",
+    "role": "Backend Developer",
+    "access_role": "TEAM_MEMBER"
+  },
+  {
+    "employee_id": "E004",
+    "name": "Rahul Verma",
+    "department": "Engineering",
+    "role": "Frontend Developer",
+    "access_role": "TEAM_MEMBER"
+  },
+  {
+    "employee_id": "E005",
+    "name": "Ananya Reddy",
+    "department": "Engineering",
+    "role": "QA Engineer",
+    "access_role": "TEAM_MEMBER"
+  },
+  {
+    "employee_id": "E006",
+    "name": "Arjun Rao",
+    "department": "Engineering",
+    "role": "DevOps Engineer",
+    "access_role": "TEAM_MEMBER"
+  },
+  {
+    "employee_id": "E007",
+    "name": "Sneha Patel",
+    "department": "Engineering",
+    "role": "Data Engineer",
+    "access_role": "TEAM_MEMBER"
+  },
+  {
+    "employee_id": "E008",
+    "name": "Vikram Singh",
+    "department": "Engineering",
+    "role": "Software Engineer",
+    "access_role": "TEAM_MEMBER"
+  },
+  {
+    "employee_id": "E009",
+    "name": "Neha Kapoor",
+    "department": "Product",
+    "role": "Product Manager",
+    "access_role": "PROJECT_MANAGER"
+  },
+  {
+    "employee_id": "E010",
+    "name": "Karthik Reddy",
+    "department": "Engineering",
+    "role": "Backend Developer",
+    "access_role": "TEAM_MEMBER"
+  },
+  {
+    "employee_id": "E011",
+    "name": "Meera Nair",
+    "department": "Design",
+    "role": "UX Designer",
+    "access_role": "TEAM_MEMBER"
+  },
+  {
+    "employee_id": "E012",
+    "name": "Aditya Verma",
+    "department": "Engineering",
+    "role": "Software Engineer",
+    "access_role": "TEAM_MEMBER"
+  },
+  {
+    "employee_id": "E013",
+    "name": "Pooja Rao",
+    "department": "Engineering",
+    "role": "QA Engineer",
+    "access_role": "TEAM_MEMBER"
+  },
+  {
+    "employee_id": "E014",
+    "name": "Rohit Sharma",
+    "department": "Engineering",
+    "role": "DevOps Engineer",
+    "access_role": "TEAM_MEMBER"
+  },
+  {
+    "employee_id": "E015",
+    "name": "Divya Iyer",
+    "department": "Data",
+    "role": "Data Scientist",
+    "access_role": "TEAM_MEMBER"
+  },
+  {
+    "employee_id": "E016",
+    "name": "Manish Gupta",
+    "department": "Engineering",
+    "role": "Software Engineer",
+    "access_role": "TEAM_MEMBER"
+  },
+  {
+    "employee_id": "E017",
+    "name": "Aisha Khan",
+    "department": "Product",
+    "role": "Business Analyst",
+    "access_role": "TEAM_MEMBER"
+  },
+  {
+    "employee_id": "E018",
+    "name": "Sanjay Kumar",
+    "department": "Engineering",
+    "role": "Backend Developer",
+    "access_role": "TEAM_MEMBER"
+  },
+  {
+    "employee_id": "E019",
+    "name": "Lakshmi Devi",
+    "department": "Engineering",
+    "role": "QA Engineer",
+    "access_role": "TEAM_MEMBER"
+  },
+  {
+    "employee_id": "E020",
+    "name": "Varun Reddy",
+    "department": "Engineering",
+    "role": "Frontend Developer",
+    "access_role": "TEAM_MEMBER"
+  },
+  {
+    "employee_id": "E021",
+    "name": "Nikhil Joshi",
+    "department": "Engineering",
+    "role": "Software Engineer",
+    "access_role": "TEAM_MEMBER"
+  },
+  {
+    "employee_id": "E022",
+    "name": "Swathi Rao",
+    "department": "Design",
+    "role": "UX Designer",
+    "access_role": "TEAM_MEMBER"
+  },
+  {
+    "employee_id": "E023",
+    "name": "Harish Babu",
+    "department": "Engineering",
+    "role": "DevOps Engineer",
+    "access_role": "TEAM_MEMBER"
+  },
+  {
+    "employee_id": "E024",
+    "name": "Kavya Reddy",
+    "department": "Data",
+    "role": "Data Engineer",
+    "access_role": "TEAM_MEMBER"
+  },
+  {
+    "employee_id": "E025",
+    "name": "Mohammed Ali",
+    "department": "Engineering",
+    "role": "Software Engineer",
+    "access_role": "TEAM_MEMBER"
+  }
+]

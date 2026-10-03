@@ -1,0 +1,20 @@
+TEAM WORKLOAD GUIDELINES
+
+Document Type: Team Guideline
+Category: Employee Workload
+
+Workload should be monitored to reduce delivery risks and uneven task distribution.
+
+Guidelines:
+
+1. Project Managers should review employee workload when projects contain multiple overdue tasks.
+
+2. Employees with a high number of active tasks should be reviewed for possible workload constraints.
+
+3. Task reassignment may be considered when workload imbalance is affecting delivery.
+
+4. Critical tasks should be assigned to appropriate employees based on skills and availability.
+
+5. Workload information should be considered together with project deadlines and task priorities.
+
+6. Workload alone should not be treated as proof of project failure. It should be considered along with current project and task information.

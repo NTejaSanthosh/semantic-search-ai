@@ -1,0 +1,27 @@
+question_number,question,relevant_doc_ids,basic_top_result,improved_top_result,basic_hit_at_1,improved_hit_at_1,basic_mrr,improved_mrr
+3,What is the company's approach to equal employment opportunities?,HR_003,HR_004,HR_004,0,0,0.1111111111111111,0.1111111111111111
+7,What measures are used to keep employee selection unbiased?,HR_007,HR_007,HR_004,1,0,1.0,0.25
+9,Can current employees recommend people for vacancies?,HR_009,HR_009,HR_032,1,0,1.0,0.3333333333333333
+18,How are employee salary increases determined?,HR_018,HR_017,HR_017,0,0,0.0,0.125
+19,What factors are considered when reviewing an employee's compensation?,HR_019,HR_017,HR_030,0,0,0.0,0.0
+20,What is the company's policy concerning working hours?,HR_020,HR_039,HR_039,0,0,0.0,0.0
+21,How should employees record their attendance?,HR_021,HR_019,HR_019,0,0,0.0,0.0
+22,What should an employee do if they need to take time off?,HR_022,HR_019,HR_050,0,0,0.0,0.0
+23,How does the organization handle employee leave requests?,HR_023,HR_056,HR_056,0,0,0.0,0.0
+24,What are the rules for taking annual leave?,HR_024,HR_108,HR_108,0,0,0.0,0.0
+25,How is sick leave managed for employees?,HR_025,HR_019,HR_102,0,0,0.0,0.0
+26,What is the process for requesting maternity or parental leave?,HR_026,HR_056,HR_056,0,0,0.0,0.0
+27,What benefits are available to employees?,HR_027,HR_088,HR_012,0,0,0.0,0.0
+28,Does the company provide health-related benefits to its staff?,HR_028,HR_088,HR_012,0,0,0.0,0.0
+29,What retirement-related benefits does the organization offer?,HR_029,HR_098,HR_098,0,0,0.0,0.0
+30,What are the rules employees must follow regarding workplace behavior?,HR_030,HR_069,HR_071,0,0,0.0,0.0
+31,How should employees report inappropriate behavior at work?,HR_031,HR_071,HR_019,0,0,0.0,0.0
+32,What procedure should an employee follow when raising a workplace complaint?,HR_032,HR_083,HR_083,0,0,0.16666666666666666,0.16666666666666666
+33,How does the company handle complaints made by employees?,HR_033,HR_076,HR_020,0,0,0.1111111111111111,0.2
+34,What guidelines apply to employees using company technology?,HR_034,HR_080,HR_083,0,0,0.0,0.0
+35,What are employees expected to do to protect company information?,HR_035,HR_082,HR_078,0,0,0.0,0.0
+36,What rules apply to confidential information belonging to the organization?,HR_036,HR_028,HR_028,0,0,0.0,0.0
+37,What is the company's approach to employee training and development?,HR_037,HR_035,HR_034,0,0,0.25,0.14285714285714285
+38,Are employees provided opportunities to improve their professional skills?,HR_038,HR_035,HR_035,0,0,0.0,0.0
+39,How does the organization support employee career development?,HR_039,HR_036,HR_027,0,0,0.0,0.0
+40,What opportunities are available for employees who want to develop their careers?,HR_040,HR_035,HR_032,0,0,0.0,0.0

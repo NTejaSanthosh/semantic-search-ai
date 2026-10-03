@@ -1,0 +1,29 @@
+TASK MANAGEMENT POLICY
+
+Document Type: Company Policy
+Category: Task Management
+
+Purpose:
+This document defines general guidelines for managing project tasks.
+
+Task Management Guidelines:
+
+1. Every active task should have a responsible employee whenever possible.
+
+2. Tasks should have a meaningful title that clearly describes the work.
+
+3. Task priorities should reflect the business or project impact.
+
+4. Critical tasks should receive appropriate attention from the responsible team.
+
+5. Overdue tasks should be reviewed by the Project Manager.
+
+6. When a task is blocked, the responsible employee should communicate the blocker.
+
+7. Task status should be updated when meaningful progress occurs.
+
+8. When responsibility for a task changes, the assignment should be updated in the project management system.
+
+9. Completed tasks should have their status updated to Completed.
+
+10. Project Managers should periodically review overdue and high-priority tasks.

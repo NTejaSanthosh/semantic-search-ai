@@ -1,0 +1,248 @@
+[
+  {
+    "question": "What does the organization do to prevent discrimination against employees?",
+    "relevant_doc_ids": [
+      "HR_001"
+    ]
+  },
+  {
+    "question": "What rules ensure that employees are treated fairly at work?",
+    "relevant_doc_ids": [
+      "HR_002"
+    ]
+  },
+  {
+    "question": "What is the company's approach to equal employment opportunities?",
+    "relevant_doc_ids": [
+      "HR_002"
+    ]
+  },
+  {
+    "question": "How does the organization promote diversity and inclusion during hiring?",
+    "relevant_doc_ids": [
+      "HR_004"
+    ]
+  },
+  {
+    "question": "Can a person with a disability apply for any position offered by the company?",
+    "relevant_doc_ids": [
+      "HR_005"
+    ]
+  },
+  {
+    "question": "What details does an applicant receive during the recruitment process?",
+    "relevant_doc_ids": [
+      "HR_006"
+    ]
+  },
+  {
+    "question": "What measures are used to keep employee selection unbiased?",
+    "relevant_doc_ids": [
+      "HR_007"
+    ]
+  },
+  {
+    "question": "How are reasonable accommodations handled for disabled job applicants?",
+    "relevant_doc_ids": [
+      "HR_008"
+    ]
+  },
+  {
+    "question": "Can current employees recommend people for vacancies?",
+    "relevant_doc_ids": [
+      "HR_009"
+    ]
+  },
+  {
+    "question": "What reward is available when an employee successfully refers a candidate?",
+    "relevant_doc_ids": [
+      "HR_010"
+    ]
+  },
+  {
+    "question": "Why does the company have an employee induction process?",
+    "relevant_doc_ids": [
+      "HR_011"
+    ]
+  },
+  {
+    "question": "How does the onboarding process help someone who has just joined?",
+    "relevant_doc_ids": [
+      "HR_012"
+    ]
+  },
+  {
+    "question": "What benefits does the organization expect from its induction program?",
+    "relevant_doc_ids": [
+      "HR_013"
+    ]
+  },
+  {
+    "question": "Which team is responsible for managing employee induction?",
+    "relevant_doc_ids": [
+      "HR_014"
+    ]
+  },
+  {
+    "question": "What needs to be arranged before a new employee starts working?",
+    "relevant_doc_ids": [
+      "HR_015"
+    ]
+  },
+  {
+    "question": "When and how are employees paid during the month?",
+    "relevant_doc_ids": [
+      "HR_016"
+    ]
+  },
+  {
+    "question": "Does the company conduct periodic reviews of employee salaries?",
+    "relevant_doc_ids": [
+      "HR_017"
+    ]
+  },
+  {
+    "question": "How are employee salary increases determined?",
+    "relevant_doc_ids": [
+      "HR_017"
+    ]
+  },
+  {
+    "question": "What factors are considered when reviewing an employee's compensation?",
+    "relevant_doc_ids": [
+      "HR_017"
+    ]
+  },
+  {
+    "question": "What is the company's policy concerning working hours?",
+    "relevant_doc_ids": [
+      "HR_038"
+    ]
+  },
+  {
+    "question": "How should employees record their attendance?",
+    "relevant_doc_ids": [
+      "HR_019"
+    ]
+  },
+  {
+    "question": "What should an employee do if they need to take time off?",
+    "relevant_doc_ids": [
+      "HR_050"
+    ]
+  },
+  {
+    "question": "How does the organization handle employee leave requests?",
+    "relevant_doc_ids": [
+      "HR_049"
+    ]
+  },
+  {
+    "question": "What are the rules for taking annual leave?",
+    "relevant_doc_ids": [
+      "HR_046"
+    ]
+  },
+  {
+    "question": "How is sick leave managed for employees?",
+    "relevant_doc_ids": [
+      "HR_048"
+    ]
+  },
+  {
+    "question": "What is the process for requesting maternity or parental leave?",
+    "relevant_doc_ids": [
+      "HR_056"
+    ]
+  },
+  {
+    "question": "What benefits are available to employees?",
+    "relevant_doc_ids": [
+      "HR_087",
+      "HR_088"
+    ]
+  },
+  {
+    "question": "Does the company provide health-related benefits to its staff?",
+    "relevant_doc_ids": [
+      "HR_087",
+      "HR_088"
+    ]
+  },
+  {
+    "question": "What retirement-related benefits does the organization offer?",
+    "relevant_doc_ids": [
+      "HR_089",
+      "HR_090"
+    ]
+  },
+  {
+    "question": "What are the rules employees must follow regarding workplace behavior?",
+    "relevant_doc_ids": [
+      "HR_069"
+    ]
+  },
+  {
+    "question": "How should employees report inappropriate behavior at work?",
+    "relevant_doc_ids": [
+      "HR_071"
+    ]
+  },
+  {
+    "question": "What procedure should an employee follow when raising a workplace complaint?",
+    "relevant_doc_ids": [
+      "HR_076",
+      "HR_077"
+    ]
+  },
+  {
+    "question": "How does the company handle complaints made by employees?",
+    "relevant_doc_ids": [
+      "HR_076",
+      "HR_077"
+    ]
+  },
+  {
+    "question": "What guidelines apply to employees using company technology?",
+    "relevant_doc_ids": [
+      "HR_079"
+    ]
+  },
+  {
+    "question": "What are employees expected to do to protect company information?",
+    "relevant_doc_ids": [
+      "HR_079"
+    ]
+  },
+  {
+    "question": "What rules apply to confidential information belonging to the organization?",
+    "relevant_doc_ids": [
+      "HR_079"
+    ]
+  },
+  {
+    "question": "What is the company's approach to employee training and development?",
+    "relevant_doc_ids": [
+      "HR_034"
+    ]
+  },
+  {
+    "question": "Are employees provided opportunities to improve their professional skills?",
+    "relevant_doc_ids": [
+      "HR_035"
+    ]
+  },
+  {
+    "question": "How does the organization support employee career development?",
+    "relevant_doc_ids": [
+      "HR_036"
+    ]
+  },
+  {
+    "question": "What opportunities are available for employees who want to develop their careers?",
+    "relevant_doc_ids": [
+      "HR_035",
+      "HR_036"
+    ]
+  }
+]

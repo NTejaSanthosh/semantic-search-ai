@@ -1,0 +1,123 @@
+Documents: 120
+====================================================================================================
+
+HR_001 | What is the company's stance on discrimination?
+HR_002 | How does the company ensure fairness in employment-related decisions?
+HR_003 | Are former employees considered differently in the hiring process?
+HR_004 | What measures are in place to support diversity in the workplace?
+HR_005 | Can individuals with disabilities apply for all roles in the company?
+HR_006 | What information is provided to candidates when they apply for a position?
+HR_007 | How does the company ensure that the recruitment process is fair?
+HR_008 | What provisions are made for candidates with disabilities during the recruitment process?
+HR_009 | Is there any policy regarding employees referring candidates for open positions?
+HR_010 | What is the referral bonus, and who is eligible to receive it?
+HR_011 | What is the purpose of the Company's Induction Policy?
+HR_012 | How does the Induction Policy benefit new employees?
+HR_013 | What are the expected outcomes of implementing the Induction Policy for the company?
+HR_014 | What responsibilities does the Human Resources Department have regarding the Induction Policy?
+HR_015 | What preparations are made for a new employee before their arrival at the company?
+HR_016 | How is the pay cycle structured for employees at Certainty Infotech?
+HR_017 | Are there scheduled salary reviews for employees at Certainty Infotech?
+HR_018 | What should an employee do if they need to change their pay details?
+HR_019 | What is the protocol for reporting lateness or absence from work?
+HR_020 | How does the company handle the reimbursement of expenses?
+HR_021 | What is the initial duration of the internship at the company, and under what circumstances can it be extended or terminated early?
+HR_022 | How are interns evaluated during their internship period?
+HR_023 | What happens after the completion of the internship period?
+HR_024 | What is the primary goal of the Performance Appraisal Policy at Certainty Infotech?
+HR_025 | How often do performance appraisals occur and what does the process entail?
+HR_026 | What is the role of self-assessment in the appraisal process?
+HR_027 | How does the appraisal process support employee development and organizational planning?
+HR_028 | What measures are taken to ensure confidentiality and fairness during the appraisal meetings?
+HR_029 | What are the basic qualifications for an employee to be considered for promotion at the company?
+HR_030 | What is the companyâ€™s process for evaluating employees for promotion?
+HR_031 | Can promotions occur outside the standard annual review process?
+HR_032 | What steps are involved in the decision-making process for promoting an employee?
+HR_033 | How does the company ensure fairness and transparency in the promotion process?
+HR_034 | What are the main benefits of the Training and Development Policy at Certainty Infotech?
+HR_035 | What types of training opportunities does Certainty Infotech offer to its employees?
+HR_036 | How does Certainty Infotech encourage employees to engage in personal development?
+HR_037 | What type of specialized training is provided to improve technical competencies at Certainty Infotech?
+HR_038 | What are the standard office timings from Monday to Friday?
+HR_039 | What is the policy regarding working hours on Saturdays and Sundays?
+HR_040 | Can employees adjust their reporting times within a one-hour window of their normal duty hours?
+HR_041 | Is it possible for the organization to change the standard work hours?
+HR_042 | How are partial working days accounted for in terms of leave?
+HR_043 | Apart from Sundays, which other day is considered a weekly-off according to the policy?
+HR_044 | Are there any specific considerations for weekly offs for offices located in the state of Madhya Pradesh?
+HR_045 | What is the leave year period according to the policy?
+HR_046 | How many days of Privilege/Earned Leave (PL/EL) are employees entitled to?
+HR_047 | What happens if an employee's leave balance becomes extremely negative?
+HR_048 | What are the norms for carry-forward of accumulated Casual Leave (CL), Sick Leave (SL), and Earned Leave (EL)?
+HR_049 | How are leaves credited to an employee's leave balance?
+HR_050 | What is Leave Without Pay (LWP), and when is it typically availed?
+HR_051 | How is Leave Without Pay (LWP) different from other types of leave?
+HR_052 | What happens to an employee's leave balance when they go on Leave Without Pay (LWP)?
+HR_053 | Who is eligible for maternity leave at Certainty, and what are the eligibility requirements?
+HR_054 | What is the maximum duration for maternity leave under this policy?
+HR_055 | When can an expectant employee start her maternity leave, and what is the process for extending this leave?
+HR_056 | What is the procedure to apply for maternity leave, and how should an employee handle unforeseen circumstances requiring earlier leave?
+HR_057 | Are there provisions for working from home after availing maternity benefits?
+HR_058 | What legislation governs Maternity Leave, and to whom does it apply?
+HR_059 | What is the maximum duration of Maternity Leave that a woman employee can avail?
+HR_060 | When can an expectant woman employee start availing Maternity Leave?
+HR_061 | Can Maternity Leave be extended beyond the standard period, and under what circumstances?
+HR_062 | What happens to other types of leave accrual during Maternity Leave?
+HR_063 | What is the duration of paternity leave offered at Certainty Infotech, and when can it be availed?
+HR_064 | Can an employee extend paternity leave beyond the initial one week?
+HR_065 | What documentation is required for an employee to avail of paternity leave benefits?
+HR_066 | Are there any special provisions for work arrangements after the paternity leave period?
+HR_067 | How does the paternity leave policy integrate with the companyâ€™s overall Work-Life Balance policy?
+HR_068 | Give me the brief of Work from Home policy
+HR_069 | What does Certainty Infotech's harassment policy encompass?
+HR_070 | What disciplinary actions does Certainty Infotech take against harassment?
+HR_071 | What are the responsibilities of managers and supervisors in enforcing the harassment policy?
+HR_072 | Can you provide examples of what constitutes verbal and nonverbal harassment under this policy?
+HR_073 | How is sexual harassment defined according to Certainty Infotech's anti-harassment policy?
+HR_074 | What is the purpose of Certainty Infotech's Sexual Harassment policy?
+HR_075 | What disciplinary actions may be taken for violations of the Sexual Harassment policy?
+HR_076 | What is Certainty Infotech's stance on employee grievances?
+HR_077 | How does Certainty Infotech handle grievances that are not resolved at the initial level?
+HR_078 | What is the expectation regarding the dress code for all employees at Certainty Infotech?
+HR_079 | What does Certainty Infotech's IT Security Policy define, and what is its purpose?
+HR_080 | What technological assets and services are provided to Certainty Infotech employees for official use?
+HR_081 | What action should be taken if an employee is found using a cracked version or unlicensed software on the company's systems?
+HR_082 | Who is responsible for the maintenance and safety of office assets allotted to employees?
+HR_083 | What is the procedure for addressing grievances related to IT assets and services?
+HR_084 | What is the policy regarding employees engaging in commercial activities outside of their work at Certainty Infotech Pvt. Ltd.?
+HR_085 | How does Certainty Infotech show appreciation to the Employee of the Month, and what is the reimbursement amount?
+HR_086 | What is the reimbursement policy for celebrating Marriage Anniversaries, and how much does Certainty Infotech reimburse?
+HR_087 | When does an employee become covered under the Group Medical and Group Accidental Insurance Policy at Certainty Infotech?
+HR_088 | How are the costs of Group Medical and Group Accidental Insurance Policies handled at Certainty Infotech?
+HR_089 | Under what circumstances can an employee receive gratuity payment before completing five years of service?
+HR_090 | What is the purpose of gratuity payment according to Certainty Infotech's Gratuity Policy?
+HR_091 | Who is eligible for food reimbursement under Certainty Infotech's Reimbursement Policy, and what are the maximum claim limits?
+HR_092 | What criteria must be met for cab fare reimbursement under Certainty Infotech's Reimbursement Policy?
+HR_093 | What is the notice period requirement for employees resigning from Certainty Infotech?
+HR_094 | What happens to the remaining Earned Leave (EL) of an employee upon resignation?
+HR_095 | Under what circumstances is Certainty Infotech entitled to terminate an employee's appointment without notice or payment?
+HR_096 | What is the purpose of Certainty Infotech's employee exit interview policy?
+HR_097 | Who is responsible for organizing and coordinating exit interviews at Certainty Infotech?
+HR_098 | What is employee retention, and how does it benefit an organization?
+HR_099 | How many days of earned leave do employees get per year?
+HR_100 | What is the annual earned leave entitlement for employees?
+HR_101 | How many earned leave days can an employee take each year?
+HR_102 | What is the yearly allocation of earned leaves for employees?
+HR_103 | How many earned leave days are employees granted every year?
+HR_104 | What is the total number of earned leave days employees receive per year?
+HR_105 | How many earned leave days does an employee get in a leave year?
+HR_106 | What is the earned leave entitlement for employees per leave year?
+HR_107 | How many days of earned leave can employees take annually?
+HR_108 | What is the annual earned leave allowance for employees?
+HR_109 | How many earned leave days are employees entitled to each leave year?
+HR_110 | How many earned leave days are allocated to employees per year?
+HR_111 | What is the yearly earned leave quota for employees?
+HR_112 | How many days of earned leave are employees provided with each year?
+HR_113 | What is the earned leave policy for employees per leave year?
+HR_114 | How many earned leave days do employees accumulate annually?
+HR_115 | What is the total number of earned leave days employees can take each year?
+HR_116 | How many earned leave days are employees eligible for annually?
+HR_117 | What is the standard number of earned leave days for employees per year?
+HR_118 | How many earned leave days are employees entitled to on a yearly basis?
+HR_119 | What is the earned leave entitlement for employees each year?
+HR_120 | How many earned leave days are granted to employees per leave year?

@@ -1,0 +1,336 @@
+====================================================================================================
+HR_017
+====================================================================================================
+<human>: Are there scheduled salary reviews for employees at Certainty Infotech?
+<bot>: Yes, the company reviews employees' salaries on the first anniversary of their employment and subsequently during the June-July cycle each year. However, the company is under no obligation to increase the salary.
+
+====================================================================================================
+HR_018
+====================================================================================================
+<human>: What should an employee do if they need to change their pay details?
+<bot>: If an employee needs to change any pay details, such as bank account information, they must notify the Human Resource Department via email. This notification should be made at least 7 working days before the desired effective date of the change.
+
+====================================================================================================
+HR_019
+====================================================================================================
+<human>: What is the protocol for reporting lateness or absence from work?
+<bot>: Employees who are late or absent due to illness, injury, or other reasons must inform their supervisor and HR as soon as possible, ideally before their normal starting time. If an employee cannot report personally, they should arrange for someone to inform the office on their behalf. Itâ€™s also advised that medical and other personal appointments be scheduled outside of normal working hours.
+
+====================================================================================================
+HR_020
+====================================================================================================
+<human>: How does the company handle the reimbursement of expenses?
+<bot>: Certainty Infotech reimburses employees for pre-approved expenses that are incurred during the proper performance of their duties. For reimbursement, employees must provide receipts or other evidence of the payment and purpose of each expense in a form reasonably required by the company.
+
+====================================================================================================
+HR_021
+====================================================================================================
+<human>: What is the initial duration of the internship at the company, and under what circumstances can it be extended or terminated early?
+<bot>: The initial duration of the internship is three months from the date of joining. The internship period may be extended at the discretion of the management based on the intern's performance during weekly or monthly evaluations. Conversely, if the intern's performance does not meet the company's expectations despite prior intimation, the internship can be terminated without any notice period, and there will be no liability for any accrued wages or other benefits.
+
+====================================================================================================
+HR_022
+====================================================================================================
+<human>: How are interns evaluated during their internship period?
+<bot>: Interns are evaluated on a weekly or monthly basis to assess their performance and compatibility with the company's expectations and working culture. These evaluations focus on how well the interns adapt to the company environment and how effectively they handle the live projects during their training.
+
+====================================================================================================
+HR_023
+====================================================================================================
+<human>: What happens after the completion of the internship period?
+<bot>: Upon completion of the three-month internship period, if the company is satisfied with the intern's performance, their appointment may be confirmed. The decision regarding the performance assessment and subsequent confirmation is made by the management and is communicated through an email or in writing. The appointment is deemed confirmed only from the date specified in such communication.
+
+====================================================================================================
+HR_024
+====================================================================================================
+<human>: What is the primary goal of the Performance Appraisal Policy at Certainty Infotech?
+<bot>: The primary goal of the Performance Appraisal Policy is to enhance the effectiveness of the organization by fostering a well-motivated and competent workforce. This is achieved through a structured annual meeting that reviews past performance and sets future objectives aligned with both individual and organizational goals.
+
+====================================================================================================
+HR_025
+====================================================================================================
+<human>: How often do performance appraisals occur and what does the process entail?
+<bot>: Performance appraisals at Certainty Infotech are conducted annually, coinciding with an employeeâ€™s work anniversary month. The process includes a formal meeting where past achievements are reviewed, and a Personal Development Plan for the upcoming year is set. This meeting ensures that both the needs of the employee and the organization are addressed.
+
+====================================================================================================
+HR_026
+====================================================================================================
+<human>: What is the role of self-assessment in the appraisal process?
+<bot>: Self-assessment plays a crucial role in the appraisal process, allowing employees to reflect on their performance and contributions. Employees are informed about their upcoming appraisal two weeks in advance and are provided with a self-assessment sheet. This sheet is to be completed and submitted to HR/Management one day before their one-to-one appraisal meeting, ensuring their input is considered in the discussion.
+
+====================================================================================================
+HR_027
+====================================================================================================
+<human>: How does the appraisal process support employee development and organizational planning?
+<bot>: The appraisal process is instrumental in identifying individual development needs, supporting the objectives of the Training and Development Policy. Additionally, it provides management with valuable data for succession planning, ensuring that the organization can effectively plan for future leadership and operational needs.
+
+====================================================================================================
+HR_028
+====================================================================================================
+<human>: What measures are taken to ensure confidentiality and fairness during the appraisal meetings?
+<bot>: The one-to-one appraisal meetings are conducted in private, with sufficient time allocated to ensure a thorough and unhurried discussion. The process is designed to be fair and equitable, adhering to the principles of the Equal Employment Policy. While confidentiality is maintained, it is also made clear that certain information may need to be disclosed for administrative purposes. The outcomes of these meetings are recorded on a KRA sheet, which is agreed upon by both the manager and the employee and subsequently shared with the employee.
+
+====================================================================================================
+HR_029
+====================================================================================================
+<human>: What are the basic qualifications for an employee to be considered for promotion at the company?
+<bot>: Employees are eligible for promotion after they have successfully completed their three-month internship period and are not under any performance improvement plan. The promotion is based on several criteria, including job experience or tenure, high performance levels in the four most recent review quarters, possessing the necessary skill set for the new role, and demonstrating personal motivation and willingness to take on new responsibilities.
+
+====================================================================================================
+HR_030
+====================================================================================================
+<human>: What is the companyâ€™s process for evaluating employees for promotion?
+<bot>: The company conducts a promotion review process at the end of each year. During this review, managers assess their team membersâ€™ performance and suitability for advancement based on their career goals, performance records, and the alignment of their skills with the needs of higher-level positions or new roles that match their aspirations.
+
+====================================================================================================
+HR_031
+====================================================================================================
+<human>: Can promotions occur outside the standard annual review process?
+<bot>: Yes, spontaneous promotions may occur if a business need arises that necessitates an immediate promotion. These are considered outside the standard annual review cycle and are based on specific business requirements and the availability of a suitable candidate within the company.
+
+====================================================================================================
+HR_032
+====================================================================================================
+<human>: What steps are involved in the decision-making process for promoting an employee?
+<bot>: The process starts with managers meeting employees to discuss their career goals and creating career plans. Opportunities for promoting one or more team members are identified, which could involve filling vacancies, creating new jobs, or enhancing job titles. The promotion must be discussed with HR and management to get approval, specifically concerning salary adjustments and any changes in benefits. Finally, a meeting is arranged with the employee to ensure they are content with the proposed career move.
+
+====================================================================================================
+HR_033
+====================================================================================================
+<human>: How does the company ensure fairness and transparency in the promotion process?
+<bot>: Managers are required to keep detailed records of the promotion process, including discussions, evaluations, and decisions made regarding each employee considered for promotion. This documentation supports the transparency and fairness of the process, ensuring that promotions are merit-based and align with the companyâ€™s guidelines and standards.
+
+====================================================================================================
+HR_034
+====================================================================================================
+<human>: What are the main benefits of the Training and Development Policy at Certainty Infotech?
+<bot>: The Training and Development Policy at Certainty Infotech aims to enhance work performance, foster a greater understanding of workplace dynamics, promote the sharing of ideas and good practices, effectively manage and implement changes, build strong teams, and increase motivation and job satisfaction. This holistic approach supports both professional and personal growth within the organization.
+
+====================================================================================================
+HR_035
+====================================================================================================
+<human>: What types of training opportunities does Certainty Infotech offer to its employees?
+<bot>: Certainty Infotech provides a variety of training opportunities designed to enhance specific job skills, overall professional capabilities, and personal development. These include participation in workshops, seminars, and personalized learning modules that cater to the needs of individual employees and the organization as a whole.
+
+====================================================================================================
+HR_036
+====================================================================================================
+<human>: How does Certainty Infotech encourage employees to engage in personal development?
+<bot>: The company encourages employees to consider a broad range of personal development activities. This encouragement is supported by the human resources department, which provides training in general grooming norms, behavioral dos and donâ€™ts, and attitudinal aspects, particularly during induction and as needed thereafter.
+
+====================================================================================================
+HR_037
+====================================================================================================
+<human>: What type of specialized training is provided to improve technical competencies at Certainty Infotech?
+<bot>: Technical training is specifically conducted by the technical team to ensure that employees possess the necessary competencies and skills required for their respective job roles. This targeted training aims to equip employees with the latest technical knowledge and practices relevant to their fields.
+
+====================================================================================================
+HR_038
+====================================================================================================
+<human>: What are the standard office timings from Monday to Friday?
+<bot>: The standard office timings from Monday to Friday are from 10
+
+====================================================================================================
+HR_039
+====================================================================================================
+<human>: What is the policy regarding working hours on Saturdays and Sundays?
+<bot>: Saturdays and Sundays are designated as off days, meaning employees do not work on these days.
+
+====================================================================================================
+HR_040
+====================================================================================================
+<human>: Can employees adjust their reporting times within a one-hour window of their normal duty hours?
+<bot>: Yes, employees have the option of Flexi timing to report to the office either 1 hour early or 1 hour late from their normal duty hours, subject to approval from their manager.
+
+====================================================================================================
+HR_041
+====================================================================================================
+<human>: Is it possible for the organization to change the standard work hours?
+<bot>: Yes, the organization reserves the right to alter the work hours at its discretion.
+
+====================================================================================================
+HR_042
+====================================================================================================
+<human>: How are partial working days accounted for in terms of leave?
+<bot>: If an employee works less than 4 hours on any given day, it will be counted as a FULL-DAY leave. However, if the employee works for at least 4 hours but less than the full duration, it will be considered as HALF-DAY leave. In special circumstances where an employee is called for specific deliverables and works for less than 4 hours, it will also be accounted for as a Half-Day leave.
+
+====================================================================================================
+HR_043
+====================================================================================================
+<human>: Apart from Sundays, which other day is considered a weekly-off according to the policy?
+<bot>: Besides Sundays, all Saturdays are counted as weekly-offs as per the policy. However, this can be subject to change based on the requirements and exigencies of the business.
+
+====================================================================================================
+HR_044
+====================================================================================================
+<human>: Are there any specific considerations for weekly offs for offices located in the state of Madhya Pradesh?
+<bot>: Yes, for offices in the state of Madhya Pradesh, the number of holidays is governed by the MP Shop and Establishment Act 1958, which may also influence the weekly off policy depending on the situation.
+
+====================================================================================================
+HR_045
+====================================================================================================
+<human>: What is the leave year period according to the policy?
+<bot>: The leave year period is from 1st January to 31st December, aligned with the calendar year.
+
+====================================================================================================
+HR_046
+====================================================================================================
+<human>: How many days of Privilege/Earned Leave (PL/EL) are employees entitled to?
+<bot>: Employees are entitled to 18 days of Privilege/Earned Leave (PL/EL) per leave year.
+
+====================================================================================================
+HR_047
+====================================================================================================
+<human>: What happens if an employee's leave balance becomes extremely negative?
+<bot>: In cases where an employee's leave balance becomes extremely negative, instead of counting the leaves as Leave Without Pay (LWP), a particular pay amount of the employee is held until their leave balance comes to 0.
+
+====================================================================================================
+HR_048
+====================================================================================================
+<human>: What are the norms for carry-forward of accumulated Casual Leave (CL), Sick Leave (SL), and Earned Leave (EL)?
+<bot>: Casual Leave (CL) and Sick Leave (SL) lapse every 31st of December of the respective year. Earned Leave (EL) gets carried forward to the next calendar year, subject to a maximum limit of 18 working days. Any excess ELs beyond 18 must be utilized or encashed based on the current basic salary.
+
+====================================================================================================
+HR_049
+====================================================================================================
+<human>: How are leaves credited to an employee's leave balance?
+<bot>: All leaves are credited to the employee's leave balance on a pro-rata basis from the date of joining.
+
+====================================================================================================
+HR_050
+====================================================================================================
+<human>: What is Leave Without Pay (LWP), and when is it typically availed?
+<bot>: Leave Without Pay (LWP) is a type of leave where an employee takes time off from work without receiving salary. It is typically availed when an employee has exhausted all leave balance but still requires time-off for some exigency.
+
+====================================================================================================
+HR_051
+====================================================================================================
+<human>: How is Leave Without Pay (LWP) different from other types of leave?
+<bot>: Leave Without Pay (LWP) involves taking time off from work without receiving salary, resulting in a loss of pay (LOP). Any leave taken in violation of the leave policy, such as going on vacation without prior approval or not providing required medical certificates for long sick leave, is also considered as LOP.
+
+====================================================================================================
+HR_052
+====================================================================================================
+<human>: What happens to an employee's leave balance when they go on Leave Without Pay (LWP)?
+<bot>: There is no concept of a leave balance in the case of LOP leave. However, during payroll processing, the salary is deducted for the number of days of LOP leave taken during the month.
+
+====================================================================================================
+HR_069
+====================================================================================================
+<human>: What does Certainty Infotech's harassment policy encompass?
+<bot>: Certainty Infotech's harassment policy is designed to create and maintain a workplace where everyone is treated with dignity, decency, and respect. The policy covers all forms of unlawful discrimination and harassment, ensuring an environment free from intimidation, oppression, and exploitation. All employees, regardless of position, are expected to adhere to this policy and contribute to a harassment-free workplace.
+
+====================================================================================================
+HR_070
+====================================================================================================
+<human>: What disciplinary actions does Certainty Infotech take against harassment?
+<bot>: Certainty Infotech takes a firm stance against harassment and will impose appropriate disciplinary actions based on the severity of the violation. These actions can range from a verbal or written reprimand to suspension or termination of employment. The policy is enforced rigorously to prevent, correct, and discipline behavior that violates these standards.
+
+====================================================================================================
+HR_071
+====================================================================================================
+<human>: What are the responsibilities of managers and supervisors in enforcing the harassment policy?
+<bot>: Managers and supervisors at Certainty Infotech are required not only to comply with the harassment policy but also to ensure it is strictly followed within their teams. They must immediately report any incidents of discrimination, harassment, or retaliation to human resources. Failure to report or knowingly allowing such behavior can result in disciplinary action against the manager or supervisor involved.
+
+====================================================================================================
+HR_072
+====================================================================================================
+<human>: Can you provide examples of what constitutes verbal and nonverbal harassment under this policy?
+<bot>: Verbal harassment may include offensive or unwelcome comments related to a person's protected characteristics such as national origin, race, color, religion, age, gender, sexual orientation, and others. Examples include epithets, slurs, and negative stereotyping. Nonverbal harassment includes actions like distributing, displaying, or discussing written or graphic materials that ridicule, denigrate, or show hostility towards an individual or group based on similar protected characteristics.
+
+====================================================================================================
+HR_073
+====================================================================================================
+<human>: How is sexual harassment defined according to Certainty Infotech's anti-harassment policy?
+<bot>: Sexual harassment is defined as "unwelcome sexual advances, requests for sexual favors, and other verbal or physical conduct of a sexual nature ... when ... submission to or rejection of such conduct is used as the basis for employment decisions ... or such conduct has the purpose or effect of ... creating an intimidating, hostile, or offensive working environment.
+
+====================================================================================================
+HR_074
+====================================================================================================
+<human>: What is the purpose of Certainty Infotech's Sexual Harassment policy?
+<bot>: The policy exists to safeguard employee rights, ensure a safe working environment, foster positive relationships among staff, promote job satisfaction, and improve the efficiency and effectiveness of service delivery.
+
+====================================================================================================
+HR_075
+====================================================================================================
+<human>: What disciplinary actions may be taken for violations of the Sexual Harassment policy?
+<bot>: Violations of the Sexual Harassment policy may result in disciplinary action, including verbal or written reprimand, suspension, or termination of employment.
+
+====================================================================================================
+HR_076
+====================================================================================================
+<human>: What is Certainty Infotech's stance on employee grievances?
+<bot>: Certainty Infotech is committed to the equitable and timely resolution of employee grievances, ensuring that any complaints, disagreements, or claims are heard without fear of unfair treatment or victimization.
+
+====================================================================================================
+HR_077
+====================================================================================================
+<human>: How does Certainty Infotech handle grievances that are not resolved at the initial level?
+<bot>: If the complainant(s) do not believe the issue is being resolved, recourse will be available to increasing levels of authority to promote a resolution. A person with the knowledge, expertise, and authority will manage the resolution of a grievance to address the particular complaint.
+
+====================================================================================================
+HR_079
+====================================================================================================
+<human>: What does Certainty Infotech's IT Security Policy define, and what is its purpose?
+<bot>: Certainty Infotech's IT Security Policy defines rules, regulations, and guidelines for the proper usage and maintenance of technological assets to ensure their ethical and acceptable use, as well as to assure the health, safety, and security of data, products, facilities, and the people using them. Its purpose is to set guidelines for issues like purchase, compliance, IT support, and grievance redressal related to technological assets and services used for office work.
+
+====================================================================================================
+HR_080
+====================================================================================================
+<human>: What technological assets and services are provided to Certainty Infotech employees for official use?
+<bot>: Certainty Infotech provides and maintains technological products, services, and facilities such as laptops, peripheral equipment, servers, telephones, internet, and application software for official use by its employees.
+
+====================================================================================================
+HR_081
+====================================================================================================
+<human>: What action should be taken if an employee is found using a cracked version or unlicensed software on the company's systems?
+<bot>: If an employee is found using a cracked version or unlicensed software on the company's systems, it should be reported to management. The management will then decide whether to continue or stop the usage of the application as per work requirements. Necessary actions will be taken if any cracked version of unaccountable software is found in the office system.
+
+====================================================================================================
+HR_082
+====================================================================================================
+<human>: Who is responsible for the maintenance and safety of office assets allotted to employees?
+<bot>: It is the duty of employees to maintain and ensure the safety of the office assets allotted to them. Any damage or loss caused to the assets due to negligence will be borne by the asset holder.
+
+====================================================================================================
+HR_083
+====================================================================================================
+<human>: What is the procedure for addressing grievances related to IT assets and services?
+<bot>: The IT Security Policy outlines a grievance redressal process for employees pertaining to technological assets and services used for office work. Employees can raise grievances related to purchase, compliance, IT support, and other related issues, which will be addressed according to the set guidelines.
+
+====================================================================================================
+HR_087
+====================================================================================================
+<human>: When does an employee become covered under the Group Medical and Group Accidental Insurance Policy at Certainty Infotech?
+<bot>: All employees are covered under the Group Medical and Group Accidental Insurance Policy from day one of their employment at Certainty Infotech.
+
+====================================================================================================
+HR_088
+====================================================================================================
+<human>: How are the costs of Group Medical and Group Accidental Insurance Policies handled at Certainty Infotech?
+<bot>: Certainty Infotech bears all costs related to the Group Medical and Group Accidental Insurance Policies for its employees, with no deductions from the employees' salaries.
+
+====================================================================================================
+HR_089
+====================================================================================================
+<human>: Under what circumstances can an employee receive gratuity payment before completing five years of service?
+<bot>: An employee can receive gratuity payment before completing five years of service in case of death, disability, or illness, as per the terms and conditions outlined in the Gratuity Policy.
+
+====================================================================================================
+HR_090
+====================================================================================================
+<human>: What is the purpose of gratuity payment according to Certainty Infotech's Gratuity Policy?
+<bot>: Gratuity payment serves as acknowledgment for the services rendered by an employee and is paid when their employment term ends. It is considered as part of an employee's salary and is governed by the Payment of Gratuity Act, 1972.
+
+====================================================================================================
+HR_091
+====================================================================================================
+<human>: Who is eligible for food reimbursement under Certainty Infotech's Reimbursement Policy, and what are the maximum claim limits?
+<bot>: Employees who work in the office after 9 PM on weekdays or over weekends due to official engagements, approved by the reporting manager, are eligible for food reimbursement. The maximum claim limit is capped at INR 250 per person per meal.
+
+====================================================================================================
+HR_092
+====================================================================================================
+<human>: What criteria must be met for cab fare reimbursement under Certainty Infotech's Reimbursement Policy?
+<bot>: Employees who need to work in the office and leave for home after 9
+

@@ -1,0 +1,41 @@
+{
+  "ADMIN": {
+    "permissions": [
+      "VIEW_PROJECT",
+      "VIEW_TASK",
+      "VIEW_EMPLOYEE",
+      "VIEW_WORKLOAD",
+      "VIEW_RISK",
+      "VIEW_KNOWLEDGE",
+      "UPDATE_TASK",
+      "ASSIGN_TASK"
+    ]
+  },
+  "PROJECT_MANAGER": {
+    "permissions": [
+      "VIEW_PROJECT",
+      "VIEW_TASK",
+      "VIEW_EMPLOYEE",
+      "VIEW_WORKLOAD",
+      "VIEW_RISK",
+      "VIEW_KNOWLEDGE",
+      "UPDATE_TASK",
+      "ASSIGN_TASK"
+    ]
+  },
+  "TEAM_MEMBER": {
+    "permissions": [
+      "VIEW_PROJECT",
+      "VIEW_TASK",
+      "VIEW_RISK",
+      "VIEW_KNOWLEDGE"
+    ]
+  },
+  "HR": {
+    "permissions": [
+      "VIEW_EMPLOYEE",
+      "VIEW_WORKLOAD",
+      "VIEW_KNOWLEDGE"
+    ]
+  }
+}

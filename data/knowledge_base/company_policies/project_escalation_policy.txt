@@ -1,0 +1,32 @@
+PROJECT ESCALATION POLICY
+
+Document Type: Company Policy
+Category: Project Management
+
+Purpose:
+This policy defines how project delays and significant project risks should be escalated.
+
+Escalation Guidelines:
+
+1. A project should be reviewed when important milestones are delayed.
+
+2. Critical risks should be communicated to the Project Manager as soon as they are identified.
+
+3. If a task remains overdue and affects a major project milestone, the Project Manager should review the task and determine whether escalation is required.
+
+4. When multiple tasks are delayed, the Project Manager should identify the main cause before deciding on corrective action.
+
+5. If a project has a significant schedule deviation, the Project Manager should document the issue and define corrective actions.
+
+6. Team members should communicate blockers and dependencies that may affect project delivery.
+
+7. Escalation should include:
+   - Project identifier
+   - Problem description
+   - Affected tasks
+   - Impact
+   - Recommended corrective action
+
+8. Project risks should be reviewed regularly until they are resolved or formally accepted.
+
+This policy is intended to support consistent project monitoring and escalation decisions.

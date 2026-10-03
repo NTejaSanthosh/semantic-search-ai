@@ -1,0 +1,52 @@
+[
+  {
+    "source": "data\\knowledge_base\\company_policies\\project_escalation_policy.txt",
+    "chunk_id": 0,
+    "text": "PROJECT ESCALATION POLICY\n\nDocument Type: Company Policy\nCategory: Project Management\n\nPurpose:\nThis policy defines how project delays and significant project risks should be escalated.\n\nEscalation Guidelines:\n\n1. A project should be reviewed when important milestones are delayed.\n\n2. Critical risks should be communicated to the Project Manager as soon as they are identified.\n\n3. If a task remains overdue and affects a major project milestone, the Project Manager should review the task and determine whether escalation is required.\n\n4. When multiple tasks are delayed, the Project Manager should identify the main cause before deciding on corrective action.\n\n5. If a project has a significant schedule deviation, the Project Manager should document the issue and define corrective actions.\n\n6. T"
+  },
+  {
+    "source": "data\\knowledge_base\\company_policies\\project_escalation_policy.txt",
+    "chunk_id": 1,
+    "text": "tive action.\n\n5. If a project has a significant schedule deviation, the Project Manager should document the issue and define corrective actions.\n\n6. Team members should communicate blockers and dependencies that may affect project delivery.\n\n7. Escalation should include:\n   - Project identifier\n   - Problem description\n   - Affected tasks\n   - Impact\n   - Recommended corrective action\n\n8. Project risks should be reviewed regularly until they are resolved or formally accepted.\n\nThis policy is intended to support consistent project monitoring and escalation decisions."
+  },
+  {
+    "source": "data\\knowledge_base\\company_policies\\task_management_policy.txt",
+    "chunk_id": 0,
+    "text": "TASK MANAGEMENT POLICY\n\nDocument Type: Company Policy\nCategory: Task Management\n\nPurpose:\nThis document defines general guidelines for managing project tasks.\n\nTask Management Guidelines:\n\n1. Every active task should have a responsible employee whenever possible.\n\n2. Tasks should have a meaningful title that clearly describes the work.\n\n3. Task priorities should reflect the business or project impact.\n\n4. Critical tasks should receive appropriate attention from the responsible team.\n\n5. Overdue tasks should be reviewed by the Project Manager.\n\n6. When a task is blocked, the responsible employee should communicate the blocker.\n\n7. Task status should be updated when meaningful progress occurs.\n\n8. When responsibility for a task changes, the assignment should be updated in the project managem"
+  },
+  {
+    "source": "data\\knowledge_base\\company_policies\\task_management_policy.txt",
+    "chunk_id": 1,
+    "text": "should be updated when meaningful progress occurs.\n\n8. When responsibility for a task changes, the assignment should be updated in the project management system.\n\n9. Completed tasks should have their status updated to Completed.\n\n10. Project Managers should periodically review overdue and high-priority tasks."
+  },
+  {
+    "source": "data\\knowledge_base\\project_guidelines\\project_delay_guidelines.txt",
+    "chunk_id": 0,
+    "text": "PROJECT DELAY GUIDELINES\n\nDocument Type: Project Guideline\nCategory: Project Delays\n\nWhen a project is delayed:\n\n1. Identify which tasks are overdue.\n\n2. Determine whether the overdue tasks are critical to project delivery.\n\n3. Review task assignments and identify whether additional support is required.\n\n4. Review dependencies and blockers.\n\n5. Identify whether delays are caused by resource constraints, technical blockers, dependencies, unclear requirements, or other project issues.\n\n6. Calculate or review project schedule and workload information when available.\n\n7. Define corrective actions for significant delays.\n\n8. Assign corrective actions to appropriate team members.\n\n9. Monitor the project after corrective actions are implemented.\n\n10. Escalate significant unresolved delays accordi"
+  },
+  {
+    "source": "data\\knowledge_base\\project_guidelines\\project_delay_guidelines.txt",
+    "chunk_id": 1,
+    "text": "ons to appropriate team members.\n\n9. Monitor the project after corrective actions are implemented.\n\n10. Escalate significant unresolved delays according to the Project Escalation Policy."
+  },
+  {
+    "source": "data\\knowledge_base\\project_guidelines\\risk_management_guidelines.txt",
+    "chunk_id": 0,
+    "text": "RISK MANAGEMENT GUIDELINES\n\nDocument Type: Project Guideline\nCategory: Risk Management\n\nProject risks should be identified, reviewed, and monitored throughout the project lifecycle.\n\nRisk management guidelines:\n\n1. Identify risks that can affect project scope, schedule, quality, resources, or delivery.\n\n2. Critical risks should receive priority attention.\n\n3. Risks associated with overdue critical tasks should be reviewed promptly.\n\n4. The Project Manager should identify the likely cause of significant risks.\n\n5. Mitigation actions should be defined for important risks.\n\n6. Risk status should be reviewed after mitigation actions are implemented.\n\n7. Unresolved critical risks should be escalated according to the Project Escalation Policy.\n\n8. Risk analysis should use current project informa"
+  },
+  {
+    "source": "data\\knowledge_base\\project_guidelines\\risk_management_guidelines.txt",
+    "chunk_id": 1,
+    "text": "ed.\n\n7. Unresolved critical risks should be escalated according to the Project Escalation Policy.\n\n8. Risk analysis should use current project information whenever available."
+  },
+  {
+    "source": "data\\knowledge_base\\team_guidelines\\workload_guidelines.txt",
+    "chunk_id": 0,
+    "text": "TEAM WORKLOAD GUIDELINES\n\nDocument Type: Team Guideline\nCategory: Employee Workload\n\nWorkload should be monitored to reduce delivery risks and uneven task distribution.\n\nGuidelines:\n\n1. Project Managers should review employee workload when projects contain multiple overdue tasks.\n\n2. Employees with a high number of active tasks should be reviewed for possible workload constraints.\n\n3. Task reassignment may be considered when workload imbalance is affecting delivery.\n\n4. Critical tasks should be assigned to appropriate employees based on skills and availability.\n\n5. Workload information should be considered together with project deadlines and task priorities.\n\n6. Workload alone should not be treated as proof of project failure. It should be considered along with current project and task inf"
+  },
+  {
+    "source": "data\\knowledge_base\\team_guidelines\\workload_guidelines.txt",
+    "chunk_id": 1,
+    "text": "task priorities.\n\n6. Workload alone should not be treated as proof of project failure. It should be considered along with current project and task information."
+  }
+]

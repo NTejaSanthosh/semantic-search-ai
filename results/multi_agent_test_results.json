@@ -1,0 +1,53 @@
+{
+  "generated_at": "2026-09-28T10:57:17.331367",
+  "results": [
+    {
+      "test_id": "T01",
+      "query": "What is the risk level of P006?",
+      "selected_agents": [],
+      "execution_order": [],
+      "status": "PASS",
+      "final_answer": "Request blocked: Employee ID is required"
+    },
+    {
+      "test_id": "T02",
+      "query": "Show me the overdue tasks in P006.",
+      "selected_agents": [],
+      "execution_order": [],
+      "status": "PASS",
+      "final_answer": "Request blocked: Employee ID is required"
+    },
+    {
+      "test_id": "T03",
+      "query": "Which employees have high workload?",
+      "selected_agents": [],
+      "execution_order": [],
+      "status": "PASS",
+      "final_answer": "Request blocked: Employee ID is required"
+    },
+    {
+      "test_id": "T04",
+      "query": "Which projects have overdue tasks?",
+      "selected_agents": [],
+      "execution_order": [],
+      "status": "PASS",
+      "final_answer": "Request blocked: Employee ID is required"
+    },
+    {
+      "test_id": "T05",
+      "query": "Which risky projects have overdue tasks and who is responsible for them?",
+      "selected_agents": [],
+      "execution_order": [],
+      "status": "PASS",
+      "final_answer": "Request blocked: Employee ID is required"
+    },
+    {
+      "test_id": "T06",
+      "query": "What is happening with P006?",
+      "selected_agents": [],
+      "execution_order": [],
+      "status": "PASS",
+      "final_answer": "Request blocked: Employee ID is required"
+    }
+  ]
+}

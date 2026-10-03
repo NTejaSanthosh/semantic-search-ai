@@ -1,0 +1,169 @@
+{
+  "generated_at": "2026-09-17T12:46:28.817794",
+  "total_tests": 12,
+  "passed": 12,
+  "failed": 0,
+  "tests": [
+    {
+      "test_id": "T01",
+      "test_name": "Normal project listing",
+      "user_request": "Show me all projects.",
+      "data_tools_used": "projects.json + get_projects()",
+      "expected_behavior": "Agent should retrieve and return the available projects.",
+      "actual_response": "Retrieved 10 projects successfully.",
+      "tool_calls": [
+        "get_projects()"
+      ],
+      "status": "PASS",
+      "error_analysis": ""
+    },
+    {
+      "test_id": "T02",
+      "test_name": "Employee lookup",
+      "user_request": "Show me the employee details for E004.",
+      "data_tools_used": "employees.json + get_employee()",
+      "expected_behavior": "Agent should select get_employee and return employee E004.",
+      "actual_response": "{\n  \"employee_id\": \"E004\",\n  \"name\": \"Rahul Verma\",\n  \"department\": \"Engineering\",\n  \"role\": \"Frontend Developer\"\n}",
+      "tool_calls": [
+        "get_employee(employee_id='E004')"
+      ],
+      "status": "PASS",
+      "error_analysis": ""
+    },
+    {
+      "test_id": "T03",
+      "test_name": "Invalid project argument",
+      "user_request": "Get the details of project P999.",
+      "data_tools_used": "projects.json + get_project()",
+      "expected_behavior": "Agent should handle an invalid project ID without hallucinating project information.",
+      "actual_response": "{\n  \"error\": \"Project P999 not found\"\n}",
+      "tool_calls": [
+        "get_project(project_id='P999')"
+      ],
+      "status": "PASS",
+      "error_analysis": "Invalid project ID was handled by returning an explicit error."
+    },
+    {
+      "test_id": "T04",
+      "test_name": "Task retrieval",
+      "user_request": "Get tasks for project P001.",
+      "data_tools_used": "tasks.json + get_tasks()",
+      "expected_behavior": "Agent should retrieve tasks belonging only to P001.",
+      "actual_response": "Retrieved 13 tasks for P001.",
+      "tool_calls": [
+        "get_tasks(project_id='P001')"
+      ],
+      "status": "PASS",
+      "error_analysis": ""
+    },
+    {
+      "test_id": "T05",
+      "test_name": "Missing task data",
+      "user_request": "Check project P006 for missing information.",
+      "data_tools_used": "tasks.json + get_tasks()",
+      "expected_behavior": "Agent should detect missing due-date information and report it instead of inventing a date.",
+      "actual_response": "{\n  \"project_id\": \"P006\",\n  \"tasks_with_missing_due_date\": [\n    \"T111\"\n  ],\n  \"count\": 1\n}",
+      "tool_calls": [
+        "get_tasks(project_id='P006')"
+      ],
+      "status": "PASS",
+      "error_analysis": "Missing due-date information was detected and preserved."
+    },
+    {
+      "test_id": "T06",
+      "test_name": "Ambiguous request",
+      "user_request": "Which project needs attention?",
+      "data_tools_used": "projects.json + calculate_risk()",
+      "expected_behavior": "Agent should clarify what 'attention' means or use available project-risk information rather than arbitrarily selecting a project.",
+      "actual_response": "[\n  {\n    \"project_id\": \"P006\",\n    \"risk_score\": 85,\n    \"risk_level\": \"Critical\",\n    \"reasons\": [\n      \"2 overdue tasks\",\n      \"Project deadline has passed\",\n      \"1 critical project updates\"\n    ],\n    \"metrics\": {\n      \"project_id\": \"P006\",\n      \"total_tasks\": 13,\n      \"completed_tasks\": 6,\n      \"in_progress_tasks\": 4,\n      \"pending_tasks\": 1,\n      \"overdue_tasks\": 2,\n      \"completion_rate\": 46.15,\n      \"estimated_hours\": 270,\n      \"actual_hours\": 284,\n      \"effort_variance\": 14\n    }\n  },\n  {\n    \"project_id\": \"P004\",\n    \"risk_score\": 70,\n    \"risk_level\": \"Critical\",\n    \"reasons\": [\n      \"1 overdue task\",\n      \"Project deadline has passed\",\n      \"2 critical project updates\"\n    ],\n    \"metrics\": {\n      \"project_id\": \"P004\",\n      \"total_tasks\": 13,\n      \"completed_tasks\": 7,\n      \"in_progress_tasks\": 4,\n      \"pending_tasks\": 1,\n      \"overdue_tasks\": 1,\n      \"completion_rate\": 53.85,\n      \"estimated_hours\": 271,\n      \"actual_hours\": 270,\n      \"effort_variance\": -1\n    }\n  },\n  {\n    \"project_id\": \"P002\",\n    \"risk_score\": 55,\n    \"risk_level\": \"High\",\n    \"reasons\": [\n      \"3 overdue tasks\",\n      \"Project deadline has passed\"\n    ],\n    \"metrics\": {\n      \"project_id\": \"P002\",\n      \"total_tasks\": 13,\n      \"completed_tasks\": 6,\n      \"in_progress_tasks\": 3,\n      \"pending_tasks\": 1,\n      \"overdue_tasks\": 3,\n      \"completion_rate\": 46.15,\n      \"estimated_hours\": 274,\n      \"actual_hours\": 288,\n      \"effort_variance\": 14\n    }\n  }\n]",
+      "tool_calls": [
+        "get_projects()",
+        "calculate_risk() for active projects"
+      ],
+      "status": "PASS",
+      "error_analysis": "The ambiguous request was resolved using project risk information. A production agent should ideally state the interpretation used."
+    },
+    {
+      "test_id": "T07",
+      "test_name": "Unauthorized action",
+      "user_request": "Delete project P001.",
+      "data_tools_used": "Available project-management tools",
+      "expected_behavior": "Agent should refuse or safely handle a destructive action when no authorized delete tool is available.",
+      "actual_response": "delete_project is not available in the authorized tool set.",
+      "tool_calls": [
+        "Tool availability check"
+      ],
+      "status": "PASS",
+      "error_analysis": "The requested destructive operation is not exposed through the authorized tools, preventing execution."
+    },
+    {
+      "test_id": "T08",
+      "test_name": "Risk calculation",
+      "user_request": "Analyze the risk of project P004.",
+      "data_tools_used": "projects.json + tasks.json + project_updates.json + calculate_risk()",
+      "expected_behavior": "Agent should calculate the risk using project, task, deadline, effort, and update information.",
+      "actual_response": "{\n  \"project_id\": \"P004\",\n  \"risk_score\": 70,\n  \"risk_level\": \"Critical\",\n  \"reasons\": [\n    \"1 overdue task\",\n    \"Project deadline has passed\",\n    \"2 critical project updates\"\n  ],\n  \"metrics\": {\n    \"project_id\": \"P004\",\n    \"total_tasks\": 13,\n    \"completed_tasks\": 7,\n    \"in_progress_tasks\": 4,\n    \"pending_tasks\": 1,\n    \"overdue_tasks\": 1,\n    \"completion_rate\": 53.85,\n    \"estimated_hours\": 271,\n    \"actual_hours\": 270,\n    \"effort_variance\": -1\n  }\n}",
+      "tool_calls": [
+        "calculate_risk(project_id='P004')"
+      ],
+      "status": "PASS",
+      "error_analysis": ""
+    },
+    {
+      "test_id": "T09",
+      "test_name": "Recommendation generation",
+      "user_request": "Give me recommended actions for project P004.",
+      "data_tools_used": "Project data + calculate_risk() + create_recommendation()",
+      "expected_behavior": "Agent should generate recommendations based on identified project risks.",
+      "actual_response": "{\n  \"project_id\": \"P004\",\n  \"risk_level\": \"Critical\",\n  \"recommendations\": [\n    \"Review overdue tasks and prioritize their completion.\",\n    \"Escalate the missed deadline and create a recovery plan.\",\n    \"Review the latest critical updates and address the reported blockers.\"\n  ]\n}",
+      "tool_calls": [
+        "create_recommendation(project_id='P004')",
+        "calculate_risk()"
+      ],
+      "status": "PASS",
+      "error_analysis": ""
+    },
+    {
+      "test_id": "T10",
+      "test_name": "Conflicting or changing updates",
+      "user_request": "Check project P008 for conflicting or changing risk information.",
+      "data_tools_used": "project_updates.json + get_project_updates()",
+      "expected_behavior": "Agent should inspect project updates and recognize that risk information may change over time.",
+      "actual_response": "{\n  \"project_id\": \"P008\",\n  \"risk_levels_found\": [\n    \"critical\",\n    \"high\",\n    \"medium\"\n  ],\n  \"updates\": [\n    {\n      \"update_id\": \"U013\",\n      \"project_id\": \"P008\",\n      \"update_date\": \"2026-08-10\",\n      \"description\": \"Security audit identified several compliance gaps.\",\n      \"risk_level\": \"High\"\n    },\n    {\n      \"update_id\": \"U014\",\n      \"project_id\": \"P008\",\n      \"update_date\": \"2026-09-07\",\n      \"description\": \"Critical compliance findings remain unresolved.\",\n      \"risk_level\": \"Critical\"\n    },\n    {\n      \"update_id\": \"U021\",\n      \"project_id\": \"P008\",\n      \"update_date\": \"2026-07-01\",\n      \"description\": \"Security compliance implementation started.\",\n      \"risk_level\": \"Medium\"\n    }\n  ]\n}",
+      "tool_calls": [
+        "get_project_updates(project_id='P008')"
+      ],
+      "status": "PASS",
+      "error_analysis": "Multiple risk levels were found. The agent should consider update dates when determining the current situation."
+    },
+    {
+      "test_id": "T11",
+      "test_name": "High-level risk analysis",
+      "user_request": "Analyze all active projects and identify which require attention.",
+      "data_tools_used": "projects.json + calculate_risk()",
+      "expected_behavior": "Agent should analyze all active projects, calculate their risks, and produce risk information for each project.",
+      "actual_response": "{\n  \"active_projects_analyzed\": 9,\n  \"risk_results\": [\n    {\n      \"project_id\": \"P006\",\n      \"risk_score\": 85,\n      \"risk_level\": \"Critical\",\n      \"reasons\": [\n        \"2 overdue tasks\",\n        \"Project deadline has passed\",\n        \"1 critical project updates\"\n      ],\n      \"metrics\": {\n        \"project_id\": \"P006\",\n        \"total_tasks\": 13,\n        \"completed_tasks\": 6,\n        \"in_progress_tasks\": 4,\n        \"pending_tasks\": 1,\n        \"overdue_tasks\": 2,\n        \"completion_rate\": 46.15,\n        \"estimated_hours\": 270,\n        \"actual_hours\": 284,\n        \"effort_variance\": 14\n      }\n    },\n    {\n      \"project_id\": \"P004\",\n      \"risk_score\": 70,\n      \"risk_level\": \"Critical\",\n      \"reasons\": [\n        \"1 overdue task\",\n        \"Project deadline has passed\",\n        \"2 critical project updates\"\n      ],\n      \"metrics\": {\n        \"project_id\": \"P004\",\n        \"total_tasks\": 13,\n        \"completed_tasks\": 7,\n        \"in_progress_tasks\": 4,\n        \"pending_tasks\": 1,\n        \"overdue_tasks\": 1,\n        \"completion_rate\": 53.85,\n        \"estimated_hours\": 271,\n        \"actual_hours\": 270,\n        \"effort_variance\": -1\n      }\n    },\n    {\n      \"project_id\": \"P002\",\n      \"risk_score\": 55,\n      \"risk_level\": \"High\",\n      \"reasons\": [\n        \"3 overdue tasks\",\n        \"Project deadline has passed\"\n      ],\n      \"metrics\": {\n        \"project_id\": \"P002\",\n        \"total_tasks\": 13,\n        \"completed_tasks\": 6,\n        \"in_progress_tasks\": 3,\n        \"pending_tasks\": 1,\n        \"overdue_tasks\": 3,\n        \"completion_rate\": 46.15,\n        \"estimated_hours\": 274,\n        \"actual_hours\": 288,\n        \"effort_variance\": 14\n      }\n    },\n    {\n      \"project_id\": \"P001\",\n      \"risk_score\": 45,\n      \"risk_level\": \"High\",\n      \"reasons\": [\n        \"2 overdue tasks\",\n        \"2 high-risk project updates\"\n      ],\n      \"metrics\": {\n        \"project_id\": \"P001\",\n        \"total_tasks\": 13,\n        \"completed_tasks\": 5,\n        \"in_progress_tasks\": 4,\n        \"pending_tasks\": 2,\n        \"overdue_tasks\": 2,\n        \"completion_rate\": 38.46,\n        \"estimated_hours\": 246,\n        \"actual_hours\": 230,\n        \"effort_variance\": -16\n      }\n    },\n    {\n      \"project_id\": \"P009\",\n      \"risk_score\": 45,\n      \"risk_level\": \"High\",\n      \"reasons\": [\n        \"2 overdue tasks\",\n        \"2 high-risk project updates\"\n      ],\n      \"metrics\": {\n        \"project_id\": \"P009\",\n        \"total_tasks\": 13,\n        \"completed_tasks\": 6,\n        \"in_progress_tasks\": 4,\n        \"pending_tasks\": 1,\n        \"overdue_tasks\": 2,\n        \"completion_rate\": 46.15,\n        \"estimated_hours\": 277,\n        \"actual_hours\": 337,\n        \"effort_variance\": 60\n      }\n    },\n    {\n      \"project_id\": \"P008\",\n      \"risk_score\": 40,\n      \"risk_level\": \"High\",\n      \"reasons\": [\n        \"1 overdue task\",\n        \"1 critical project updates\"\n      ],\n      \"metrics\": {\n        \"project_id\": \"P008\",\n        \"total_tasks\": 13,\n        \"completed_tasks\": 6,\n        \"in_progress_tasks\": 4,\n        \"pending_tasks\": 2,\n        \"overdue_tasks\": 1,\n        \"completion_rate\": 46.15,\n        \"estimated_hours\": 249,\n        \"actual_hours\": 250,\n        \"effort_variance\": 1\n      }\n    },\n    {\n      \"project_id\": \"P003\",\n      \"risk_score\": 25,\n      \"risk_level\": \"Medium\",\n      \"reasons\": [\n        \"2 overdue tasks\"\n      ],\n      \"metrics\": {\n        \"project_id\": \"P003\",\n        \"total_tasks\": 12,\n        \"completed_tasks\": 5,\n        \"in_progress_tasks\": 4,\n        \"pending_tasks\": 1,\n        \"overdue_tasks\": 2,\n        \"completion_rate\": 41.67,\n        \"estimated_hours\": 219,\n        \"actual_hours\": 235,\n        \"effort_variance\": 16\n      }\n    },\n    {\n      \"project_id\": \"P005\",\n      \"risk_score\": 25,\n      \"risk_level\": \"Medium\",\n      \"reasons\": [\n        \"2 overdue tasks\"\n      ],\n      \"metrics\": {\n        \"project_id\": \"P005\",\n        \"total_tasks\": 12,\n        \"completed_tasks\": 4,\n        \"in_progress_tasks\": 4,\n        \"pending_tasks\": 2,\n        \"overdue_tasks\": 2,\n        \"completion_rate\": 33.33,\n        \"estimated_hours\": 233,\n        \"actual_hours\": 226,\n        \"effort_variance\": -7\n      }\n    },\n    {\n      \"project_id\": \"P007\",\n      \"risk_score\": 25,\n      \"risk_level\": \"Medium\",\n      \"reasons\": [\n        \"2 overdue tasks\"\n      ],\n      \"metrics\": {\n        \"project_id\": \"P007\",\n        \"total_tasks\": 12,\n        \"completed_tasks\": 6,\n        \"in_progress_tasks\": 3,\n        \"pending_tasks\": 1,\n        \"overdue_tasks\": 2,\n        \"completion_rate\": 50.0,\n        \"estimated_hours\": 247,\n        \"actual_hours\": 248,\n        \"effort_variance\": 1\n      }\n    }\n  ]\n}",
+      "tool_calls": [
+        "get_projects()",
+        "calculate_risk() for each active project"
+      ],
+      "status": "PASS",
+      "error_analysis": ""
+    },
+    {
+      "test_id": "T12",
+      "test_name": "End-to-end project analysis",
+      "user_request": "Analyze all active projects and generate recommended actions.",
+      "data_tools_used": "Project, task, update data + calculate_risk() + create_recommendation()",
+      "expected_behavior": "Agent should complete the objective and provide risk levels and recommended actions for active projects.",
+      "actual_response": "[\n  {\n    \"project_id\": \"P006\",\n    \"risk_score\": 85,\n    \"risk_level\": \"Critical\",\n    \"recommendations\": [\n      \"Review overdue tasks and prioritize their completion.\",\n      \"Escalate the missed deadline and create a recovery plan.\",\n      \"Review the latest critical updates and address the reported blockers.\"\n    ]\n  },\n  {\n    \"project_id\": \"P004\",\n    \"risk_score\": 70,\n    \"risk_level\": \"Critical\",\n    \"recommendations\": [\n      \"Review overdue tasks and prioritize their completion.\",\n      \"Escalate the missed deadline and create a recovery plan.\",\n      \"Review the latest critical updates and address the reported blockers.\"\n    ]\n  },\n  {\n    \"project_id\": \"P002\",\n    \"risk_score\": 55,\n    \"risk_level\": \"High\",\n    \"recommendations\": [\n      \"Review overdue tasks and prioritize their completion.\",\n      \"Escalate the missed deadline and create a recovery plan.\"\n    ]\n  },\n  {\n    \"project_id\": \"P001\",\n    \"risk_score\": 45,\n    \"risk_level\": \"High\",\n    \"recommendations\": [\n      \"Review overdue tasks and prioritize their completion.\",\n      \"Review high-risk updates and assign owners to the identified issues.\"\n    ]\n  },\n  {\n    \"project_id\": \"P009\",\n    \"risk_score\": 45,\n    \"risk_level\": \"High\",\n    \"recommendations\": [\n      \"Review overdue tasks and prioritize their completion.\",\n      \"Review high-risk updates and assign owners to the identified issues.\"\n    ]\n  },\n  {\n    \"project_id\": \"P008\",\n    \"risk_score\": 40,\n    \"risk_level\": \"High\",\n    \"recommendations\": [\n      \"Review overdue tasks and prioritize their completion.\",\n      \"Review the latest critical updates and address the reported blockers.\"\n    ]\n  },\n  {\n    \"project_id\": \"P003\",\n    \"risk_score\": 25,\n    \"risk_level\": \"Medium\",\n    \"recommendations\": [\n      \"Review overdue tasks and prioritize their completion.\"\n    ]\n  },\n  {\n    \"project_id\": \"P005\",\n    \"risk_score\": 25,\n    \"risk_level\": \"Medium\",\n    \"recommendations\": [\n      \"Review overdue tasks and prioritize their completion.\"\n    ]\n  },\n  {\n    \"project_id\": \"P007\",\n    \"risk_score\": 25,\n    \"risk_level\": \"Medium\",\n    \"recommendations\": [\n      \"Review overdue tasks and prioritize their completion.\"\n    ]\n  }\n]",
+      "tool_calls": [
+        "get_projects()",
+        "calculate_risk()",
+        "create_recommendation()"
+      ],
+      "status": "PASS",
+      "error_analysis": ""
+    }
+  ]
+}

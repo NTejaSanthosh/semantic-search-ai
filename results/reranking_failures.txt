@@ -1,0 +1,76 @@
+====================================================================================================
+RERANKING REGRESSIONS
+====================================================================================================
+
+Total regressions: 10
+
+QUESTION 7
+Question: What measures are used to keep employee selection unbiased?
+Relevant IDs: HR_007
+Basic top result: HR_007
+Improved top result: HR_004
+----------------------------------------------------------------------------------------------------
+
+QUESTION 9
+Question: Can current employees recommend people for vacancies?
+Relevant IDs: HR_009
+Basic top result: HR_009
+Improved top result: HR_032
+----------------------------------------------------------------------------------------------------
+
+QUESTION 19
+Question: What factors are considered when reviewing an employee's compensation?
+Relevant IDs: HR_017
+Basic top result: HR_017
+Improved top result: HR_030
+----------------------------------------------------------------------------------------------------
+
+QUESTION 27
+Question: What benefits are available to employees?
+Relevant IDs: HR_087, HR_088
+Basic top result: HR_088
+Improved top result: HR_012
+----------------------------------------------------------------------------------------------------
+
+QUESTION 28
+Question: Does the company provide health-related benefits to its staff?
+Relevant IDs: HR_087, HR_088
+Basic top result: HR_088
+Improved top result: HR_012
+----------------------------------------------------------------------------------------------------
+
+QUESTION 30
+Question: What are the rules employees must follow regarding workplace behavior?
+Relevant IDs: HR_069
+Basic top result: HR_069
+Improved top result: HR_071
+----------------------------------------------------------------------------------------------------
+
+QUESTION 31
+Question: How should employees report inappropriate behavior at work?
+Relevant IDs: HR_071
+Basic top result: HR_071
+Improved top result: HR_019
+----------------------------------------------------------------------------------------------------
+
+QUESTION 33
+Question: How does the company handle complaints made by employees?
+Relevant IDs: HR_076, HR_077
+Basic top result: HR_076
+Improved top result: HR_020
+----------------------------------------------------------------------------------------------------
+
+QUESTION 39
+Question: How does the organization support employee career development?
+Relevant IDs: HR_036
+Basic top result: HR_036
+Improved top result: HR_027
+----------------------------------------------------------------------------------------------------
+
+QUESTION 40
+Question: What opportunities are available for employees who want to develop their careers?
+Relevant IDs: HR_035, HR_036
+Basic top result: HR_035
+Improved top result: HR_032
+----------------------------------------------------------------------------------------------------
+

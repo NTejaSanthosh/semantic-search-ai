@@ -1,0 +1,1099 @@
+[
+  {
+    "question_number": 1,
+    "question": "What does the organization do to prevent discrimination against employees?",
+    "old_expected_doc_ids": [
+      "HR_001"
+    ],
+    "candidates": [
+      {
+        "doc_id": "HR_002",
+        "reason": "How does the company ensure fairness in employment-related decisions?"
+      },
+      {
+        "doc_id": "HR_004",
+        "reason": "What measures are in place to support diversity in the workplace?"
+      },
+      {
+        "doc_id": "HR_007",
+        "reason": "How does the company ensure that the recruitment process is fair?"
+      },
+      {
+        "doc_id": "HR_008",
+        "reason": "What provisions are made for candidates with disabilities during the recruitment process?"
+      },
+      {
+        "doc_id": "HR_012",
+        "reason": "How does the Induction Policy benefit new employees?"
+      }
+    ]
+  },
+  {
+    "question_number": 2,
+    "question": "What rules ensure that employees are treated fairly at work?",
+    "old_expected_doc_ids": [
+      "HR_002"
+    ],
+    "candidates": [
+      {
+        "doc_id": "HR_002",
+        "reason": "short reason"
+      },
+      {
+        "doc_id": "HR_004",
+        "reason": "short reason"
+      },
+      {
+        "doc_id": "HR_006",
+        "reason": "short reason"
+      },
+      {
+        "doc_id": "HR_008",
+        "reason": "short reason"
+      },
+      {
+        "doc_id": "HR_022",
+        "reason": "short reason"
+      }
+    ]
+  },
+  {
+    "question_number": 3,
+    "question": "What is the company's approach to equal employment opportunities?",
+    "old_expected_doc_ids": [
+      "HR_003"
+    ],
+    "candidates": [
+      {
+        "doc_id": "HR_002",
+        "reason": "How does the company ensure fairness in employment-related decisions?"
+      },
+      {
+        "doc_id": "HR_004",
+        "reason": "What measures are in place to support diversity in the workplace?"
+      },
+      {
+        "doc_id": "HR_006",
+        "reason": "What information is provided to candidates when they apply for a position?"
+      },
+      {
+        "doc_id": "HR_017",
+        "reason": "Are there scheduled salary reviews for employees at Certainty Infotech?"
+      },
+      {
+        "doc_id": "HR_024",
+        "reason": "What is the primary goal of the Performance Appraisal Policy at Certainty Infotech?"
+      }
+    ]
+  },
+  {
+    "question_number": 4,
+    "question": "How does the organization promote diversity and inclusion during hiring?",
+    "old_expected_doc_ids": [
+      "HR_004"
+    ],
+    "candidates": [
+      {
+        "doc_id": "HR_002",
+        "reason": "fairness in employment-related decisions"
+      },
+      {
+        "doc_id": "HR_004",
+        "reason": "supporting diversity in the workplace"
+      },
+      {
+        "doc_id": "HR_005",
+        "reason": "individuals with disabilities"
+      },
+      {
+        "doc_id": "HR_006",
+        "reason": "information provided to candidates"
+      },
+      {
+        "doc_id": "HR_007",
+        "reason": "fair recruitment process"
+      }
+    ]
+  },
+  {
+    "question_number": 5,
+    "question": "Can a person with a disability apply for any position offered by the company?",
+    "old_expected_doc_ids": [
+      "HR_005"
+    ],
+    "candidates": [
+      {
+        "doc_id": "HR_005",
+        "reason": "Can individuals with disabilities apply for all roles in the company?"
+      },
+      {
+        "doc_id": "HR_002",
+        "reason": "How does the company ensure fairness in employment-related decisions?"
+      },
+      {
+        "doc_id": "HR_003",
+        "reason": "Are former employees considered differently in the hiring process?"
+      },
+      {
+        "doc_id": "HR_004",
+        "reason": "What measures are in place to support diversity in the workplace?"
+      },
+      {
+        "doc_id": "HR_005",
+        "reason": "Can individuals with disabilities apply for all roles in the company?"
+      }
+    ]
+  },
+  {
+    "question_number": 6,
+    "question": "What details does an applicant receive during the recruitment process?",
+    "old_expected_doc_ids": [
+      "HR_006"
+    ],
+    "candidates": [
+      {
+        "doc_id": "HR_006",
+        "reason": "Information about company policies and procedures"
+      },
+      {
+        "doc_id": "HR_020",
+        "reason": "Company policies and procedures regarding employee benefits"
+      },
+      {
+        "doc_id": "HR_041",
+        "reason": "Company policies and procedures regarding work hours and leave"
+      },
+      {
+        "doc_id": "HR_070",
+        "reason": "Company policies and procedures regarding employee retention and exit"
+      },
+      {
+        "doc_id": "HR_090",
+        "reason": "Company policies and procedures regarding employee gratuity and benefits"
+      }
+    ]
+  },
+  {
+    "question_number": 7,
+    "question": "What measures are used to keep employee selection unbiased?",
+    "old_expected_doc_ids": [
+      "HR_007"
+    ],
+    "candidates": [
+      {
+        "doc_id": "HR_002",
+        "reason": "How does the company ensure fairness in employment-related decisions?"
+      },
+      {
+        "doc_id": "HR_004",
+        "reason": "What measures are in place to support diversity in the workplace?"
+      },
+      {
+        "doc_id": "HR_007",
+        "reason": "How does the company ensure that the recruitment process is fair?"
+      },
+      {
+        "doc_id": "HR_014",
+        "reason": "What responsibilities does the Human Resources Department have regarding the Induction Policy?"
+      },
+      {
+        "doc_id": "HR_020",
+        "reason": "How does the company handle the reimbursement of expenses?"
+      }
+    ]
+  },
+  {
+    "question_number": 8,
+    "question": "How are reasonable accommodations handled for disabled job applicants?",
+    "old_expected_doc_ids": [
+      "HR_008"
+    ],
+    "candidates": [
+      {
+        "doc_id": "HR_005",
+        "reason": "This document provides information on the company's policies and procedures for supporting employees with disabilities, including reasonable accommodations."
+      },
+      {
+        "doc_id": "HR_008",
+        "reason": "This document outlines the measures the company takes to ensure fairness in the recruitment process for candidates with disabilities."
+      },
+      {
+        "doc_id": "HR_012",
+        "reason": "This document explains the purpose and benefits of the Induction Policy, which includes provisions for supporting employees with disabilities."
+      },
+      {
+        "doc_id": "HR_017",
+        "reason": "This document describes the company's approach to salary reviews, which includes considerations for employees with disabilities."
+      },
+      {
+        "doc_id": "HR_021",
+        "reason": "This document provides information on the internship program, including provisions for supporting interns with disabilities."
+      }
+    ]
+  },
+  {
+    "question_number": 9,
+    "question": "Can current employees recommend people for vacancies?",
+    "old_expected_doc_ids": [
+      "HR_009"
+    ],
+    "candidates": [
+      {
+        "doc_id": "HR_009",
+        "reason": "Can employees refer candidates for open positions?"
+      },
+      {
+        "doc_id": "HR_014",
+        "reason": "What responsibilities does the Human Resources Department have regarding the Induction Policy?"
+      },
+      {
+        "doc_id": "HR_020",
+        "reason": "How does the company handle the reimbursement of expenses?"
+      },
+      {
+        "doc_id": "HR_037",
+        "reason": "What type of specialized training is provided to improve technical competencies at Certainty Infotech?"
+      },
+      {
+        "doc_id": "HR_064",
+        "reason": "Can an employee extend paternity leave beyond the initial one week?"
+      }
+    ]
+  },
+  {
+    "question_number": 10,
+    "question": "What reward is available when an employee successfully refers a candidate?",
+    "old_expected_doc_ids": [
+      "HR_010"
+    ],
+    "candidates": [
+      {
+        "doc_id": "HR_010",
+        "reason": "The referral bonus is available when an employee successfully refers a candidate."
+      },
+      {
+        "doc_id": "HR_009",
+        "reason": "The referral bonus is available when an employee successfully refers a candidate."
+      },
+      {
+        "doc_id": "HR_010",
+        "reason": "The referral bonus is available when an employee successfully refers a candidate."
+      },
+      {
+        "doc_id": "HR_009",
+        "reason": "The referral bonus is available when an employee successfully refers a candidate."
+      },
+      {
+        "doc_id": "HR_010",
+        "reason": "The referral bonus is available when an employee successfully refers a candidate."
+      }
+    ]
+  },
+  {
+    "question_number": 11,
+    "question": "Why does the company have an employee induction process?",
+    "old_expected_doc_ids": [
+      "HR_011"
+    ],
+    "candidates": [
+      {
+        "doc_id": "HR_011",
+        "reason": "The document provides information about the purpose of the Company's Induction Policy, which directly addresses the user question."
+      },
+      {
+        "doc_id": "HR_012",
+        "reason": "The document explains how the Induction Policy benefits new employees, providing a clear connection to the user question."
+      },
+      {
+        "doc_id": "HR_013",
+        "reason": "The document discusses the expected outcomes of implementing the Induction Policy, which is relevant to the user question."
+      },
+      {
+        "doc_id": "HR_014",
+        "reason": "The document outlines the responsibilities of the Human Resources Department regarding the Induction Policy, which is directly related to the user question."
+      },
+      {
+        "doc_id": "HR_015",
+        "reason": "The document describes preparations made for a new employee before their arrival, providing a clear connection to the user question."
+      }
+    ]
+  },
+  {
+    "question_number": 12,
+    "question": "How does the onboarding process help someone who has just joined?",
+    "old_expected_doc_ids": [
+      "HR_012"
+    ],
+    "candidates": [
+      {
+        "doc_id": "HR_012",
+        "reason": "The onboarding process helps new employees understand company policies, procedures, and expectations."
+      },
+      {
+        "doc_id": "HR_017",
+        "reason": "Scheduled salary reviews ensure employees are aware of their performance and can plan for the future."
+      },
+      {
+        "doc_id": "HR_028",
+        "reason": "The appraisal process supports employee development and organizational planning, ensuring fairness and transparency."
+      },
+      {
+        "doc_id": "HR_031",
+        "reason": "Promotions can occur outside the standard annual review process, allowing for flexibility and fairness."
+      },
+      {
+        "doc_id": "HR_038",
+        "reason": "Standard office timings ensure employees have a structured workday, promoting productivity and work-life balance."
+      }
+    ]
+  },
+  {
+    "question_number": 13,
+    "question": "What benefits does the organization expect from its induction program?",
+    "old_expected_doc_ids": [
+      "HR_013"
+    ],
+    "candidates": [
+      {
+        "doc_id": "HR_011",
+        "reason": "The organization expects increased employee engagement and productivity."
+      },
+      {
+        "doc_id": "HR_015",
+        "reason": "To ensure a smooth transition and reduced turnover."
+      },
+      {
+        "doc_id": "HR_037",
+        "reason": "Improved job satisfaction and better work-life balance."
+      },
+      {
+        "doc_id": "HR_048",
+        "reason": "To prevent burnout and promote employee well-being."
+      },
+      {
+        "doc_id": "HR_077",
+        "reason": "To address employee grievances and improve overall workplace culture."
+      }
+    ]
+  },
+  {
+    "question_number": 14,
+    "question": "Which team is responsible for managing employee induction?",
+    "old_expected_doc_ids": [
+      "HR_014"
+    ],
+    "candidates": [
+      {
+        "doc_id": "HR_011",
+        "reason": "HR team is responsible for induction"
+      },
+      {
+        "doc_id": "HR_014",
+        "reason": "HR team is responsible for induction"
+      },
+      {
+        "doc_id": "HR_015",
+        "reason": "HR team is responsible for induction"
+      },
+      {
+        "doc_id": "HR_033",
+        "reason": "Manager is responsible for promotion, but HR team helps"
+      },
+      {
+        "doc_id": "HR_047",
+        "reason": "HR team has some responsibility, but not directly"
+      }
+    ]
+  },
+  {
+    "question_number": 15,
+    "question": "What needs to be arranged before a new employee starts working?",
+    "old_expected_doc_ids": [
+      "HR_015"
+    ],
+    "candidates": [
+      {
+        "doc_id": "HR_015",
+        "reason": "preparations made for a new employee before their arrival at the company"
+      },
+      {
+        "doc_id": "HR_024",
+        "reason": "primary goal of the Performance Appraisal Policy at Certainty Infotech"
+      },
+      {
+        "doc_id": "HR_042",
+        "reason": "partial working days accounted for in terms of leave"
+      },
+      {
+        "doc_id": "HR_052",
+        "reason": "leave balance when they go on Leave Without Pay (LWP)"
+      },
+      {
+        "doc_id": "HR_065",
+        "reason": "documentation required for an employee to avail of paternity leave benefits"
+      }
+    ]
+  },
+  {
+    "question_number": 16,
+    "question": "When and how are employees paid during the month?",
+    "old_expected_doc_ids": [
+      "HR_016"
+    ],
+    "candidates": [
+      {
+        "doc_id": "HR_016",
+        "reason": "How is the pay cycle structured for employees at Certainty Infotech?"
+      },
+      {
+        "doc_id": "HR_017",
+        "reason": "Are there scheduled salary reviews for employees at Certainty Infotech?"
+      },
+      {
+        "doc_id": "HR_018",
+        "reason": "What should an employee do if they need to change their pay details?"
+      },
+      {
+        "doc_id": "HR_021",
+        "reason": "What is the initial duration of the internship at the company, and under what circumstances can it be extended or terminated early?"
+      },
+      {
+        "doc_id": "HR_022",
+        "reason": "How are interns evaluated during their internship period?"
+      }
+    ]
+  },
+  {
+    "question_number": 17,
+    "question": "Does the company conduct periodic reviews of employee salaries?",
+    "old_expected_doc_ids": [
+      "HR_017"
+    ],
+    "candidates": [
+      {
+        "doc_id": "HR_017",
+        "reason": "Are there scheduled salary reviews for employees at Certainty Infotech?"
+      },
+      {
+        "doc_id": "HR_018",
+        "reason": "What should an employee do if they need to change their pay details?"
+      },
+      {
+        "doc_id": "HR_016",
+        "reason": "How is the pay cycle structured for employees at Certainty Infotech?"
+      },
+      {
+        "doc_id": "HR_020",
+        "reason": "How does the company handle the reimbursement of expenses?"
+      },
+      {
+        "doc_id": "HR_018",
+        "reason": "What should an employee do if they need to change their pay details?"
+      }
+    ]
+  },
+  {
+    "question_number": 18,
+    "question": "How are employee salary increases determined?",
+    "old_expected_doc_ids": [
+      "HR_018"
+    ],
+    "candidates": [
+      {
+        "doc_id": "HR_002",
+        "reason": "How does the company ensure fairness in employment-related decisions?"
+      },
+      {
+        "doc_id": "HR_003",
+        "reason": "Are former employees considered differently in the hiring process?"
+      },
+      {
+        "doc_id": "HR_004",
+        "reason": "What measures are in place to support diversity in the workplace?"
+      },
+      {
+        "doc_id": "HR_017",
+        "reason": "Are there scheduled salary reviews for employees at Certainty Infotech?"
+      },
+      {
+        "doc_id": "HR_020",
+        "reason": "How does the company handle the reimbursement of expenses?"
+      }
+    ]
+  },
+  {
+    "question_number": 19,
+    "question": "What factors are considered when reviewing an employee's compensation?",
+    "old_expected_doc_ids": [
+      "HR_019"
+    ],
+    "candidates": [
+      {
+        "doc_id": "HR_002",
+        "reason": "fairness in employment decisions"
+      },
+      {
+        "doc_id": "HR_004",
+        "reason": "diversity in the workplace"
+      },
+      {
+        "doc_id": "HR_006",
+        "reason": "candidate information"
+      },
+      {
+        "doc_id": "HR_012",
+        "reason": "induction policy"
+      },
+      {
+        "doc_id": "HR_022",
+        "reason": "internship evaluation"
+      }
+    ]
+  },
+  {
+    "question_number": 20,
+    "question": "What is the company's policy concerning working hours?",
+    "old_expected_doc_ids": [
+      "HR_020"
+    ],
+    "candidates": [
+      {
+        "doc_id": "HR_003",
+        "reason": " relevance to working hours"
+      },
+      {
+        "doc_id": "HR_020",
+        "reason": " relevance to working hours"
+      },
+      {
+        "doc_id": "HR_021",
+        "reason": " relevance to working hours"
+      },
+      {
+        "doc_id": "HR_022",
+        "reason": " relevance to working hours"
+      },
+      {
+        "doc_id": "HR_038",
+        "reason": " relevance to working hours"
+      }
+    ]
+  },
+  {
+    "question_number": 21,
+    "question": "How should employees record their attendance?",
+    "old_expected_doc_ids": [
+      "HR_021"
+    ],
+    "candidates": [
+      {
+        "doc_id": "HR_022",
+        "reason": "The company handles the reimbursement of expenses."
+      },
+      {
+        "doc_id": "HR_024",
+        "reason": "The primary goal of the Performance Appraisal Policy at Certainty Infotech is to support employee development and organizational planning."
+      },
+      {
+        "doc_id": "HR_027",
+        "reason": "The appraisal process supports employee development and organizational planning."
+      },
+      {
+        "doc_id": "HR_032",
+        "reason": "The company ensures fairness and transparency in the promotion process."
+      },
+      {
+        "doc_id": "HR_042",
+        "reason": "Apart from Sundays, Fridays are considered a weekly-off according to the policy."
+      }
+    ]
+  },
+  {
+    "question_number": 22,
+    "question": "What should an employee do if they need to take time off?",
+    "old_expected_doc_ids": [
+      "HR_022"
+    ],
+    "candidates": [
+      {
+        "doc_id": "HR_014",
+        "reason": "Human Resources Department responsibilities"
+      },
+      {
+        "doc_id": "HR_018",
+        "reason": "Change pay details protocol"
+      },
+      {
+        "doc_id": "HR_022",
+        "reason": "Intern evaluation during internship period"
+      },
+      {
+        "doc_id": "HR_024",
+        "reason": "Performance Appraisal Policy primary goal"
+      },
+      {
+        "doc_id": "HR_032",
+        "reason": "Decision-making process for promotion"
+      }
+    ]
+  },
+  {
+    "question_number": 23,
+    "question": "How does the organization handle employee leave requests?",
+    "old_expected_doc_ids": [
+      "HR_023"
+    ],
+    "candidates": [
+      {
+        "doc_id": "HR_006",
+        "reason": "How does the company ensure that the recruitment process is fair?"
+      },
+      {
+        "doc_id": "HR_007",
+        "reason": "How does the company ensure that the recruitment process is fair?"
+      },
+      {
+        "doc_id": "HR_008",
+        "reason": "How does the company ensure that the recruitment process is fair?"
+      },
+      {
+        "doc_id": "HR_031",
+        "reason": "Can promotions occur outside the standard annual review process?"
+      },
+      {
+        "doc_id": "HR_032",
+        "reason": "What steps are involved in the decision-making process for promoting an employee?"
+      }
+    ]
+  },
+  {
+    "question_number": 24,
+    "question": "What are the rules for taking annual leave?",
+    "old_expected_doc_ids": [
+      "HR_024"
+    ],
+    "candidates": [
+      {
+        "doc_id": "HR_007",
+        "reason": "fair recruitment process"
+      },
+      {
+        "doc_id": "HR_014",
+        "reason": "HR responsibilities"
+      },
+      {
+        "doc_id": "HR_023",
+        "reason": "maternity leave requirements"
+      },
+      {
+        "doc_id": "HR_032",
+        "reason": "fair promotion process"
+      },
+      {
+        "doc_id": "HR_038",
+        "reason": "standard office timings"
+      }
+    ]
+  },
+  {
+    "question_number": 25,
+    "question": "How is sick leave managed for employees?",
+    "old_expected_doc_ids": [
+      "HR_025"
+    ],
+    "candidates": [
+      {
+        "doc_id": "HR_020",
+        "reason": "pay cycle structure"
+      },
+      {
+        "doc_id": "HR_016",
+        "reason": "pay cycle structure"
+      },
+      {
+        "doc_id": "HR_031",
+        "reason": "promotion process"
+      },
+      {
+        "doc_id": "HR_032",
+        "reason": "promotion process"
+      },
+      {
+        "doc_id": "HR_033",
+        "reason": "paternity leave duration"
+      }
+    ]
+  },
+  {
+    "question_number": 26,
+    "question": "What is the process for requesting maternity or parental leave?",
+    "old_expected_doc_ids": [
+      "HR_026"
+    ],
+    "candidates": [
+      {
+        "doc_id": "HR_002",
+        "reason": "How does the company ensure fairness in employment-related decisions?"
+      },
+      {
+        "doc_id": "HR_007",
+        "reason": "How does the company ensure that the recruitment process is fair?"
+      },
+      {
+        "doc_id": "HR_014",
+        "reason": "What responsibilities does the Human Resources Department have regarding the Induction Policy?"
+      },
+      {
+        "doc_id": "HR_018",
+        "reason": "What should an employee do if they need to change their pay details?"
+      },
+      {
+        "doc_id": "HR_030",
+        "reason": "What is the company's process for evaluating employees for promotion?"
+      }
+    ]
+  },
+  {
+    "question_number": 27,
+    "question": "What benefits are available to employees?",
+    "old_expected_doc_ids": [
+      "HR_027"
+    ],
+    "candidates": [
+      {
+        "doc_id": "HR_002",
+        "reason": "ensures fairness"
+      },
+      {
+        "doc_id": "HR_004",
+        "reason": "supports diversity"
+      },
+      {
+        "doc_id": "HR_006",
+        "reason": "provides information"
+      },
+      {
+        "doc_id": "HR_017",
+        "reason": "scheduled reviews"
+      },
+      {
+        "doc_id": "HR_024",
+        "reason": "primary goal performance"
+      }
+    ]
+  },
+  {
+    "question_number": 28,
+    "question": "Does the company provide health-related benefits to its staff?",
+    "old_expected_doc_ids": [
+      "HR_028"
+    ],
+    "candidates": [
+      {
+        "doc_id": "HR_005",
+        "reason": "contains relevant information"
+      },
+      {
+        "doc_id": "HR_021",
+        "reason": "contains relevant information"
+      },
+      {
+        "doc_id": "HR_047",
+        "reason": "contains relevant information"
+      },
+      {
+        "doc_id": "HR_032",
+        "reason": "contains relevant information"
+      },
+      {
+        "doc_id": "HR_015",
+        "reason": "contains relevant information"
+      }
+    ]
+  },
+  {
+    "question_number": 29,
+    "question": "What retirement-related benefits does the organization offer?",
+    "old_expected_doc_ids": [
+      "HR_029"
+    ],
+    "candidates": []
+  },
+  {
+    "question_number": 30,
+    "question": "What are the rules employees must follow regarding workplace behavior?",
+    "old_expected_doc_ids": [
+      "HR_030"
+    ],
+    "candidates": []
+  },
+  {
+    "question_number": 31,
+    "question": "How should employees report inappropriate behavior at work?",
+    "old_expected_doc_ids": [
+      "HR_031"
+    ],
+    "candidates": [
+      {
+        "doc_id": "HR_002",
+        "reason": "How does the company ensure fairness in employment-related decisions?"
+      },
+      {
+        "doc_id": "HR_004",
+        "reason": "What measures are in place to support diversity in the workplace?"
+      },
+      {
+        "doc_id": "HR_007",
+        "reason": "How does the company ensure that the recruitment process is fair?"
+      },
+      {
+        "doc_id": "HR_014",
+        "reason": "What responsibilities does the Human Resources Department have regarding the Induction Policy?"
+      },
+      {
+        "doc_id": "HR_026",
+        "reason": "What is the role of self-assessment in the appraisal process?"
+      }
+    ]
+  },
+  {
+    "question_number": 32,
+    "question": "What procedure should an employee follow when raising a workplace complaint?",
+    "old_expected_doc_ids": [
+      "HR_032"
+    ],
+    "candidates": [
+      {
+        "doc_id": "HR_020",
+        "reason": "short reason"
+      },
+      {
+        "doc_id": "HR_008",
+        "reason": "short reason"
+      },
+      {
+        "doc_id": "HR_031",
+        "reason": "short reason"
+      },
+      {
+        "doc_id": "HR_057",
+        "reason": "short reason"
+      },
+      {
+        "doc_id": "HR_033",
+        "reason": "short reason"
+      }
+    ]
+  },
+  {
+    "question_number": 33,
+    "question": "How does the company handle complaints made by employees?",
+    "old_expected_doc_ids": [
+      "HR_033"
+    ],
+    "candidates": [
+      {
+        "doc_id": "HR_002",
+        "reason": "How does the company ensure fairness in employment-related decisions?"
+      },
+      {
+        "doc_id": "HR_003",
+        "reason": "Are former employees considered differently in the hiring process?"
+      },
+      {
+        "doc_id": "HR_004",
+        "reason": "What measures are in place to support diversity in the workplace?"
+      },
+      {
+        "doc_id": "HR_008",
+        "reason": "What provisions are made for candidates with disabilities during the recruitment process?"
+      },
+      {
+        "doc_id": "HR_007",
+        "reason": "How does the company ensure that the recruitment process is fair?"
+      }
+    ]
+  },
+  {
+    "question_number": 34,
+    "question": "What guidelines apply to employees using company technology?",
+    "old_expected_doc_ids": [
+      "HR_034"
+    ],
+    "candidates": [
+      {
+        "doc_id": "HR_002",
+        "reason": "short reason"
+      },
+      {
+        "doc_id": "HR_003",
+        "reason": "short reason"
+      },
+      {
+        "doc_id": "HR_004",
+        "reason": "short reason"
+      },
+      {
+        "doc_id": "HR_005",
+        "reason": "short reason"
+      },
+      {
+        "doc_id": "HR_007",
+        "reason": "short reason"
+      }
+    ]
+  },
+  {
+    "question_number": 35,
+    "question": "What are employees expected to do to protect company information?",
+    "old_expected_doc_ids": [
+      "HR_035"
+    ],
+    "candidates": [
+      {
+        "doc_id": "HR_003",
+        "reason": " candidate is relevant to protecting company information"
+      },
+      {
+        "doc_id": "HR_004",
+        "reason": " candidate is relevant to protecting company information"
+      },
+      {
+        "doc_id": "HR_005",
+        "reason": " candidate is relevant to protecting company information"
+      },
+      {
+        "doc_id": "HR_006",
+        "reason": " candidate is relevant to protecting company information"
+      },
+      {
+        "doc_id": "HR_007",
+        "reason": " candidate is relevant to protecting company information"
+      }
+    ]
+  },
+  {
+    "question_number": 36,
+    "question": "What rules apply to confidential information belonging to the organization?",
+    "old_expected_doc_ids": [
+      "HR_036"
+    ],
+    "candidates": [
+      {
+        "doc_id": "HR_006",
+        "reason": "Information about candidate details"
+      },
+      {
+        "doc_id": "HR_013",
+        "reason": "Purpose of Induction Policy"
+      },
+      {
+        "doc_id": "HR_020",
+        "reason": "Company handling of expenses"
+      },
+      {
+        "doc_id": "HR_030",
+        "reason": "Evaluating employees for promotion"
+      },
+      {
+        "doc_id": "HR_037",
+        "reason": "Specialized training for technical competencies"
+      }
+    ]
+  },
+  {
+    "question_number": 37,
+    "question": "What is the company's approach to employee training and development?",
+    "old_expected_doc_ids": [
+      "HR_037"
+    ],
+    "candidates": [
+      {
+        "doc_id": "HR_010",
+        "reason": "company policy"
+      },
+      {
+        "doc_id": "HR_008",
+        "reason": "policy"
+      },
+      {
+        "doc_id": "HR_014",
+        "reason": "company policy"
+      },
+      {
+        "doc_id": "HR_017",
+        "reason": "policy"
+      },
+      {
+        "doc_id": "HR_032",
+        "reason": "company policy"
+      }
+    ]
+  },
+  {
+    "question_number": 38,
+    "question": "Are employees provided opportunities to improve their professional skills?",
+    "old_expected_doc_ids": [
+      "HR_038"
+    ],
+    "candidates": []
+  },
+  {
+    "question_number": 39,
+    "question": "How does the organization support employee career development?",
+    "old_expected_doc_ids": [
+      "HR_039"
+    ],
+    "candidates": [
+      {
+        "doc_id": "HR_002",
+        "reason": "fairness"
+      },
+      {
+        "doc_id": "HR_004",
+        "reason": "diversity"
+      },
+      {
+        "doc_id": "HR_012",
+        "reason": "benefit"
+      },
+      {
+        "doc_id": "HR_015",
+        "reason": "preparation"
+      },
+      {
+        "doc_id": "HR_020",
+        "reason": "reimbursement"
+      }
+    ]
+  },
+  {
+    "question_number": 40,
+    "question": "What opportunities are available for employees who want to develop their careers?",
+    "old_expected_doc_ids": [
+      "HR_040"
+    ],
+    "candidates": [
+      {
+        "doc_id": "HR_004",
+        "reason": "Support diversity in the workplace"
+      },
+      {
+        "doc_id": "HR_021",
+        "reason": "Internship duration and extension/cancellation"
+      },
+      {
+        "doc_id": "HR_027",
+        "reason": "Support employee development and organizational planning"
+      },
+      {
+        "doc_id": "HR_033",
+        "reason": "Ensure fairness and transparency in promotion process"
+      },
+      {
+        "doc_id": "HR_037",
+        "reason": "Integrate with Work-Life Balance policy"
+      }
+    ]
+  }
+]
