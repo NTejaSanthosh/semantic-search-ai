@@ -2,9 +2,25 @@ import os
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
-from rag import ask_question
+
+try:
+    from .rag import ask_question
+    from .knowledge_base import (
+        list_documents,
+        get_document,
+        get_document_chunks,
+        get_categories
+    )
+except ImportError:
+    from rag import ask_question
+    from knowledge_base import (
+        list_documents,
+        get_document,
+        get_document_chunks,
+        get_categories
+    )
 
 
 app = FastAPI(
@@ -19,25 +35,34 @@ default_origins = [
     "https://semantic-search-ai-1.onrender.com"
 ]
 
+
 frontend_url = os.getenv(
     "FRONTEND_URL",
     ""
 ).strip().rstrip("/")
 
+
 allowed_origins = default_origins.copy()
+
 
 if frontend_url and frontend_url not in allowed_origins:
     allowed_origins.append(frontend_url)
+
 
 extra_origins = os.getenv(
     "ALLOWED_ORIGINS",
     ""
 ).strip()
 
+
 if extra_origins:
     for origin in extra_origins.split(","):
         origin = origin.strip().rstrip("/")
-        if origin and origin not in allowed_origins:
+
+        if (
+            origin
+            and origin not in allowed_origins
+        ):
             allowed_origins.append(origin)
 
 
@@ -45,14 +70,30 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=allowed_origins,
     allow_credentials=False,
-    allow_methods=["GET", "POST", "OPTIONS"],
-    allow_headers=["Content-Type", "Accept"]
+    allow_methods=[
+        "GET",
+        "POST",
+        "OPTIONS"
+    ],
+    allow_headers=[
+        "Content-Type",
+        "Accept"
+    ]
 )
 
 
 class AskRequest(BaseModel):
-    question: str
-    top_k: int = 5
+    question: str = Field(
+        min_length=1,
+        max_length=2000
+    )
+
+    top_k: int = Field(
+        default=5,
+        ge=1,
+        le=20
+    )
+
     category_filter: str | None = None
 
 
@@ -60,7 +101,8 @@ class AskRequest(BaseModel):
 def root():
     return {
         "name": "Semantic Search AI API",
-        "status": "online"
+        "status": "online",
+        "version": "1.0.0"
     }
 
 
@@ -73,7 +115,6 @@ def health():
 
 @app.post("/ask")
 def ask(request: AskRequest):
-
     question = request.question.strip()
 
     if not question:
@@ -83,7 +124,6 @@ def ask(request: AskRequest):
         )
 
     try:
-
         result = ask_question(
             question=question,
             top_k=request.top_k,
@@ -92,35 +132,177 @@ def ask(request: AskRequest):
 
         normalized_sources = []
 
-        for item in result.get("results", []):
-
-            normalized_sources.append({
-                "doc_id": item.get("doc_id"),
-                "title": item.get("title"),
-                "category": item.get("category"),
-                "source": item.get("source"),
-                "text": item.get("text"),
-                "similarity": item.get(
-                    "similarity",
-                    0.0
-                ),
-                "date": item.get("date"),
-                "version": item.get("version")
-            })
+        for item in result.get(
+            "results",
+            []
+        ):
+            normalized_sources.append(
+                {
+                    "doc_id": item.get(
+                        "doc_id"
+                    ),
+                    "title": item.get(
+                        "title"
+                    ),
+                    "category": item.get(
+                        "category"
+                    ),
+                    "source": item.get(
+                        "source"
+                    ),
+                    "text": item.get(
+                        "text"
+                    ),
+                    "similarity": item.get(
+                        "similarity",
+                        0.0
+                    ),
+                    "rerank_score": item.get(
+                        "rerank_score",
+                        0.0
+                    ),
+                    "combined_score": item.get(
+                        "combined_score",
+                        0.0
+                    ),
+                    "chunk_number": item.get(
+                        "chunk_number"
+                    ),
+                    "date": item.get(
+                        "date"
+                    ),
+                    "version": item.get(
+                        "version"
+                    )
+                }
+            )
 
         return {
-            "question": result.get("question"),
-            "answer": result.get("answer"),
+            "question": result.get(
+                "question"
+            ),
+            "answer": result.get(
+                "answer"
+            ),
             "sources": normalized_sources,
             "source_ids": result.get(
                 "sources",
                 []
             ),
-            "count": len(normalized_sources)
+            "count": len(
+                normalized_sources
+            )
+        }
+
+    except HTTPException:
+        raise
+
+    except Exception as error:
+        raise HTTPException(
+            status_code=500,
+            detail=str(error)
+        )
+
+
+@app.get("/documents")
+def documents(
+    query: str | None = None,
+    category: str | None = None
+):
+    try:
+        results = list_documents(
+            query=query,
+            category=category
+        )
+
+        return {
+            "count": len(results),
+            "documents": results
         }
 
     except Exception as error:
+        raise HTTPException(
+            status_code=500,
+            detail=str(error)
+        )
 
+
+@app.get("/documents/categories")
+def document_categories():
+    try:
+        return {
+            "categories": get_categories()
+        }
+
+    except Exception as error:
+        raise HTTPException(
+            status_code=500,
+            detail=str(error)
+        )
+
+
+@app.get("/documents/{doc_id}")
+def document_details(
+    doc_id: str
+):
+    try:
+        document = get_document(
+            doc_id
+        )
+
+        if document is None:
+            raise HTTPException(
+                status_code=404,
+                detail=(
+                    f"Document '{doc_id}' "
+                    f"not found."
+                )
+            )
+
+        return document
+
+    except HTTPException:
+        raise
+
+    except Exception as error:
+        raise HTTPException(
+            status_code=500,
+            detail=str(error)
+        )
+
+
+@app.get("/documents/{doc_id}/chunks")
+def document_chunks(
+    doc_id: str
+):
+    try:
+        document = get_document(
+            doc_id
+        )
+
+        if document is None:
+            raise HTTPException(
+                status_code=404,
+                detail=(
+                    f"Document '{doc_id}' "
+                    f"not found."
+                )
+            )
+
+        chunks = get_document_chunks(
+            doc_id
+        )
+
+        return {
+            "doc_id": doc_id,
+            "count": len(chunks),
+            "chunks": chunks
+        }
+
+    except HTTPException:
+        raise
+
+    except Exception as error:
         raise HTTPException(
             status_code=500,
             detail=str(error)

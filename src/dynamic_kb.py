@@ -1,36 +1,52 @@
 import json
 import os
+
 import faiss
 import numpy as np
+import ollama
+
 from dotenv import load_dotenv
-from google import genai
-from google.genai import types
+
 
 INDEX_FILE = "data/faiss.index"
 METADATA_FILE = "data/index_metadata.json"
-MODEL_NAME = "gemini-embedding-001"
 
 load_dotenv()
 
-api_key = os.getenv("GEMINI_API_KEY")
+MODEL_NAME = os.getenv(
+    "OLLAMA_EMBEDDING_MODEL",
+    "nomic-embed-text"
+)
 
-if not api_key:
-    raise ValueError("GEMINI_API_KEY was not found in the .env file.")
+OLLAMA_HOST = os.getenv(
+    "OLLAMA_HOST",
+    "http://localhost:11434"
+)
 
-client = genai.Client(api_key=api_key)
+os.environ["OLLAMA_HOST"] = OLLAMA_HOST
 
 
 def load_data():
-    index = faiss.read_index(INDEX_FILE)
+    index = faiss.read_index(
+        INDEX_FILE
+    )
 
-    with open(METADATA_FILE, "r", encoding="utf-8") as file:
+    with open(
+        METADATA_FILE,
+        "r",
+        encoding="utf-8"
+    ) as file:
         metadata = json.load(file)
 
     return index, metadata
 
 
 def save_metadata(metadata):
-    with open(METADATA_FILE, "w", encoding="utf-8") as file:
+    with open(
+        METADATA_FILE,
+        "w",
+        encoding="utf-8"
+    ) as file:
         json.dump(
             metadata,
             file,
@@ -40,16 +56,13 @@ def save_metadata(metadata):
 
 
 def generate_embedding(text):
-    result = client.models.embed_content(
+    response = ollama.embed(
         model=MODEL_NAME,
-        contents=text,
-        config=types.EmbedContentConfig(
-            task_type="RETRIEVAL_DOCUMENT"
-        )
+        input=text
     )
 
     vector = np.array(
-        [result.embeddings[0].values],
+        [response["embeddings"][0]],
         dtype="float32"
     )
 
@@ -81,18 +94,26 @@ def add_document(
 
     for item in metadata:
         if item["doc_id"] == doc_id:
-            print("Document already exists:", doc_id)
+            print(
+                "Document already exists:",
+                doc_id
+            )
             return
 
     print("Generating embedding...")
 
     vector = generate_embedding(text)
 
-    vector_id = get_next_vector_id(metadata)
+    vector_id = get_next_vector_id(
+        metadata
+    )
 
     index.add_with_ids(
         vector,
-        np.array([vector_id], dtype="int64")
+        np.array(
+            [vector_id],
+            dtype="int64"
+        )
     )
 
     metadata.append({
@@ -107,7 +128,10 @@ def add_document(
         "version": version
     })
 
-    faiss.write_index(index, INDEX_FILE)
+    faiss.write_index(
+        index,
+        INDEX_FILE
+    )
 
     save_metadata(metadata)
 
@@ -139,22 +163,33 @@ def update_document(
             break
 
     if document is None:
-        print("Document not found:", doc_id)
+        print(
+            "Document not found:",
+            doc_id
+        )
         return
 
     print("Generating new embedding...")
 
-    new_vector = generate_embedding(text)
+    new_vector = generate_embedding(
+        text
+    )
 
     vector_id = document["vector_id"]
 
     index.remove_ids(
-        np.array([vector_id], dtype="int64")
+        np.array(
+            [vector_id],
+            dtype="int64"
+        )
     )
 
     index.add_with_ids(
         new_vector,
-        np.array([vector_id], dtype="int64")
+        np.array(
+            [vector_id],
+            dtype="int64"
+        )
     )
 
     document["title"] = title
@@ -164,7 +199,10 @@ def update_document(
     document["date"] = date
     document["version"] = version
 
-    faiss.write_index(index, INDEX_FILE)
+    faiss.write_index(
+        index,
+        INDEX_FILE
+    )
 
     save_metadata(metadata)
 
@@ -188,15 +226,24 @@ def delete_document(doc_id):
             break
 
     if document is None:
-        print("Document not found:", doc_id)
+        print(
+            "Document not found:",
+            doc_id
+        )
         return
 
     vector_id = document["vector_id"]
 
-    print("Deleting document:", doc_id)
+    print(
+        "Deleting document:",
+        doc_id
+    )
 
     index.remove_ids(
-        np.array([vector_id], dtype="int64")
+        np.array(
+            [vector_id],
+            dtype="int64"
+        )
     )
 
     metadata = [
@@ -205,7 +252,10 @@ def delete_document(doc_id):
         if item["doc_id"] != doc_id
     ]
 
-    faiss.write_index(index, INDEX_FILE)
+    faiss.write_index(
+        index,
+        INDEX_FILE
+    )
 
     save_metadata(metadata)
 
@@ -222,8 +272,14 @@ def show_document_count():
     print()
     print("Current knowledge base")
     print("----------------------")
-    print("Metadata records:", len(metadata))
-    print("FAISS vectors:", index.ntotal)
+    print(
+        "Metadata records:",
+        len(metadata)
+    )
+    print(
+        "FAISS vectors:",
+        index.ntotal
+    )
 
 
 if __name__ == "__main__":

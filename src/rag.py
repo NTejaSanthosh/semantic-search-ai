@@ -1,36 +1,22 @@
 import os
-from dotenv import load_dotenv
-from google import genai
-from google.genai import types
 
-from search import search
+import ollama
+
+from dotenv import load_dotenv
+
+
+try:
+    from .improved_search import improved_search
+except ImportError:
+    from improved_search import improved_search
 
 
 load_dotenv()
 
 
-LLM_PROVIDER = os.getenv(
-    "LLM_PROVIDER",
-    "ollama"
-).lower()
-
-OLLAMA_MODEL = os.getenv(
+LLM_MODEL = os.getenv(
     "OLLAMA_MODEL",
-    "llama3.2"
-)
-
-OLLAMA_HOST = os.getenv(
-    "OLLAMA_HOST",
-    "http://localhost:11434"
-)
-
-GEMINI_LLM_MODEL = os.getenv(
-    "GEMINI_LLM_MODEL",
-    "gemini-3.6-flash"
-)
-
-GEMINI_API_KEY = os.getenv(
-    "GEMINI_API_KEY"
+    "llama3.2:latest"
 )
 
 MIN_SIMILARITY = float(
@@ -49,59 +35,184 @@ TOP_K = int(
 
 
 SYSTEM_INSTRUCTION = """
-You are an HR knowledge-base question answering assistant.
+You are Semantic Search AI, an HR knowledge-base question answering assistant.
 
-Your job is to answer the user's question using ONLY the
-document context provided to you.
+Answer the user's question using ONLY the document context provided to you.
 
 STRICT RULES:
 
-1. Do not use outside knowledge.
+1. Never use outside knowledge.
 
-2. Do not make up or guess information.
+2. Never guess or invent information.
 
-3. If the answer is not present in the provided documents,
-say exactly:
+3. The provided context contains the documents retrieved from the knowledge base.
+
+4. Never reveal information that is not present in the provided context.
+
+5. If the answer is not present in the provided context, say:
 
 "I don't know based on the available documents."
 
-4. If only part of the question can be answered from the
-documents, answer only the supported part and clearly state
-that the remaining information is not available.
+6. If only part of the question can be answered, answer only the supported part.
 
-5. If the answer requires information from multiple documents,
-combine the relevant information from those documents.
+7. If information comes from multiple documents, combine the relevant information.
 
-6. If two documents contain conflicting information, clearly
-identify the conflict.
+8. If documents contain conflicting information, clearly explain the conflict.
 
-7. If dates or versions are provided, prefer the newest
-document as the current information.
-
-8. When using a newer document over an older conflicting
-document, mention the relevant date or version.
-
-9. Never invent dates, versions, document IDs, employee benefits,
-amounts, or rules.
+9. Prefer newer dated or versioned information when appropriate.
 
 10. Keep the answer concise and directly answer the question.
 
-11. At the end of the answer, provide the document IDs that
-support the answer in this format:
+11. At the end, provide the supporting document IDs in this format:
 
 Sources: DOCUMENT_ID_1, DOCUMENT_ID_2
 """.strip()
 
 
-def build_context(results):
+def is_casual_message(question):
+    text = question.strip().lower()
 
+    casual_exact = {
+        "hi",
+        "hello",
+        "hey",
+        "hii",
+        "hiii",
+        "helo",
+        "hello there",
+        "hey there",
+        "good morning",
+        "good afternoon",
+        "good evening",
+        "good night",
+        "how are you",
+        "how are you?",
+        "how r u",
+        "how r u?",
+        "how are u",
+        "how are u?",
+        "what's up",
+        "whats up",
+        "thanks",
+        "thanks!",
+        "thank you",
+        "thank you!",
+        "thx",
+        "ty",
+        "bye",
+        "goodbye",
+        "see you",
+        "see you later"
+    }
+
+    if text in casual_exact:
+        return True
+
+    casual_phrases = [
+        "how are you doing",
+        "how have you been",
+        "nice to meet you",
+        "who are you",
+        "what can you do",
+        "tell me about yourself"
+    ]
+
+    return any(
+        phrase in text
+        for phrase in casual_phrases
+    )
+
+
+def get_casual_response(question):
+    text = question.strip().lower()
+
+    if text in {
+        "hi",
+        "hello",
+        "hey",
+        "hii",
+        "hiii",
+        "helo",
+        "hello there",
+        "hey there"
+    }:
+        return "Hello! How can I help you today?"
+
+    if text == "good morning":
+        return "Good morning! How can I help you today?"
+
+    if text == "good afternoon":
+        return "Good afternoon! How can I help you today?"
+
+    if text == "good evening":
+        return "Good evening! How can I help you today?"
+
+    if text == "good night":
+        return "Good night! Have a great day!"
+
+    if (
+        "how are you" in text
+        or "how r u" in text
+        or "how are u" in text
+        or "how are you doing" in text
+        or "how have you been" in text
+    ):
+        return "I'm doing well, thank you! How can I help you today?"
+
+    if "who are you" in text:
+        return (
+            "I'm Semantic Search AI, a RAG-powered knowledge "
+            "assistant that can search the organization's "
+            "knowledge base and provide grounded answers."
+        )
+
+    if "what can you do" in text:
+        return (
+            "I can search the organization's knowledge base, "
+            "retrieve relevant information, and provide "
+            "answers grounded in the available documents."
+        )
+
+    if "tell me about yourself" in text:
+        return (
+            "I'm Semantic Search AI, a RAG-powered knowledge "
+            "assistant designed to help you find information "
+            "from the organization's knowledge base."
+        )
+
+    if text in {
+        "thanks",
+        "thanks!",
+        "thank you",
+        "thank you!",
+        "thx",
+        "ty"
+    }:
+        return (
+            "You're welcome! Let me know if you need anything else."
+        )
+
+    if text in {
+        "bye",
+        "goodbye",
+        "see you",
+        "see you later"
+    }:
+        return "Goodbye! Have a great day!"
+
+    if "nice to meet you" in text:
+        return "Nice to meet you too! How can I help you?"
+
+    return "Hello! How can I help you today?"
+
+
+def build_context(results):
     context_blocks = []
 
     for index, result in enumerate(
         results,
         start=1
     ):
-
         document_id = result.get(
             "doc_id",
             "Unknown"
@@ -137,6 +248,11 @@ def build_context(results):
             0.0
         )
 
+        rerank_score = result.get(
+            "rerank_score",
+            0.0
+        )
+
         text = result.get(
             "text",
             ""
@@ -152,27 +268,24 @@ Source: {source}
 Date: {date}
 Version: {version}
 Vector Similarity: {similarity:.4f}
+Rerank Score: {rerank_score:.4f}
 
 Document Text:
 {text}
 """.strip()
 
-        context_blocks.append(
-            block
-        )
+        context_blocks.append(block)
 
-    return "\n\n".join(
-        context_blocks
-    )
+    return "\n\n".join(context_blocks)
 
 
-def build_prompt(question, results):
+def generate_answer(
+    question,
+    results
+):
+    context = build_context(results)
 
-    context = build_context(
-        results
-    )
-
-    return f"""
+    prompt = f"""
 DOCUMENT CONTEXT
 ================
 
@@ -188,35 +301,26 @@ USER QUESTION
 INSTRUCTIONS
 ============
 
-Answer the user's question using only the
+Answer the user's question using ONLY the
 document context above.
 
 Do not use outside knowledge.
 
 Do not guess.
 
-If the answer cannot be found in the
-document context, say:
+Do not reveal information that is not present
+in the document context.
+
+If the answer cannot be found in the available
+documents, say:
 
 "I don't know based on the available documents."
-
-If information comes from multiple documents,
-combine the relevant information.
-
-If documents conflict, explain the conflict
-and use the newest dated or versioned document
-as the current information when appropriate.
 
 Always provide the supporting document IDs.
 """.strip()
 
-
-def generate_with_ollama(prompt):
-
-    from ollama import chat
-
-    response = chat(
-        model=OLLAMA_MODEL,
+    response = ollama.chat(
+        model=LLM_MODEL,
         messages=[
             {
                 "role": "system",
@@ -226,103 +330,59 @@ def generate_with_ollama(prompt):
                 "role": "user",
                 "content": prompt
             }
-        ],
-        options={
-            "temperature": 0
-        }
+        ]
     )
 
-    answer = response.message.content
+    answer = response["message"]["content"]
 
     if answer:
         return answer.strip()
 
-    return (
-        "I don't know based on the available documents."
-    )
-
-
-def generate_with_gemini(prompt):
-
-    if not GEMINI_API_KEY:
-        raise ValueError(
-            "GEMINI_API_KEY was not found."
-        )
-
-    client = genai.Client(
-        api_key=GEMINI_API_KEY
-    )
-
-    response = client.models.generate_content(
-        model=GEMINI_LLM_MODEL,
-        contents=prompt,
-        config=types.GenerateContentConfig(
-            system_instruction=SYSTEM_INSTRUCTION,
-            temperature=0
-        )
-    )
-
-    answer = response.text
-
-    if answer:
-        return answer.strip()
-
-    return (
-        "I don't know based on the available documents."
-    )
-
-
-def generate_answer(
-    question,
-    results
-):
-
-    prompt = build_prompt(
-        question,
-        results
-    )
-
-    if LLM_PROVIDER == "gemini":
-
-        return generate_with_gemini(
-            prompt
-        )
-
-    if LLM_PROVIDER == "ollama":
-
-        return generate_with_ollama(
-            prompt
-        )
-
-    raise ValueError(
-        f"Unsupported LLM_PROVIDER: {LLM_PROVIDER}. "
-        "Use 'ollama' or 'gemini'."
-    )
+    return "I don't know based on the available documents."
 
 
 def ask_question(
     question,
+    user_id=None,
     top_k=TOP_K,
     category_filter=None
 ):
+    question = question.strip()
 
-    print(
-        "\nRetrieving relevant documents..."
-    )
+    if not question:
+        return {
+            "question": question,
+            "user_id": user_id,
+            "answer": "Please enter a question.",
+            "sources": [],
+            "results": []
+        }
 
-    results = search(
-        question,
-        top_k=top_k
-    )
-
-    if not results:
+    if is_casual_message(question):
+        print("\nHandling casual conversation...")
 
         return {
             "question": question,
-            "answer": (
-                "I don't know based on "
-                "the available documents."
-            ),
+            "user_id": user_id,
+            "answer": get_casual_response(question),
+            "sources": [],
+            "results": []
+        }
+
+    print("\nRunning knowledge base search...")
+
+    results = improved_search(
+        query=question,
+        user_id=user_id,
+        top_k=top_k,
+        category_filter=category_filter
+    )
+
+    if not results:
+        return {
+            "question": question,
+            "user_id": user_id,
+            "answer": "I don't know based on the available documents.",
             "sources": [],
             "results": []
         }
@@ -330,34 +390,24 @@ def ask_question(
     relevant_results = []
 
     for result in results:
-
         similarity = result.get(
             "similarity",
             0.0
         )
 
         if similarity >= MIN_SIMILARITY:
-
-            relevant_results.append(
-                result
-            )
+            relevant_results.append(result)
 
     if not relevant_results:
-
         return {
             "question": question,
-            "answer": (
-                "I don't know based on "
-                "the available documents."
-            ),
+            "user_id": user_id,
+            "answer": "I don't know based on the available documents.",
             "sources": [],
             "results": results
         }
 
-    print(
-        f"\nGenerating grounded answer with "
-        f"{LLM_PROVIDER.upper()}..."
-    )
+    print("\nGenerating grounded answer...")
 
     answer = generate_answer(
         question,
@@ -367,7 +417,6 @@ def ask_question(
     sources = []
 
     for result in relevant_results:
-
         document_id = result.get(
             "doc_id"
         )
@@ -376,13 +425,11 @@ def ask_question(
             document_id
             and document_id not in sources
         ):
-
-            sources.append(
-                document_id
-            )
+            sources.append(document_id)
 
     return {
         "question": question,
+        "user_id": user_id,
         "answer": answer,
         "sources": sources,
         "results": relevant_results
@@ -390,42 +437,14 @@ def ask_question(
 
 
 def main():
+    print("=" * 70)
+    print("LOCAL RAG KNOWLEDGE BASE")
+    print("=" * 70)
 
     print(
-        "=" * 70
+        "LLM Model:",
+        LLM_MODEL
     )
-
-    print(
-        "RAG QUESTION ANSWERING SYSTEM"
-    )
-
-    print(
-        "=" * 70
-    )
-
-    print(
-        "LLM Provider:",
-        LLM_PROVIDER
-    )
-
-    if LLM_PROVIDER == "ollama":
-
-        print(
-            "LLM Model:",
-            OLLAMA_MODEL
-        )
-
-        print(
-            "Ollama Host:",
-            OLLAMA_HOST
-        )
-
-    elif LLM_PROVIDER == "gemini":
-
-        print(
-            "LLM Model:",
-            GEMINI_LLM_MODEL
-        )
 
     print(
         "Minimum similarity:",
@@ -442,24 +461,20 @@ def main():
     ).strip()
 
     if not question:
-
         print(
-            "Please enter a question."
+            "Question is required."
         )
-
         return
 
     result = ask_question(
-        question
+        question=question
     )
 
     print(
         "\n" + "=" * 70
     )
 
-    print(
-        "GROUNDED ANSWER"
-    )
+    print("ANSWER")
 
     print(
         "=" * 70
@@ -473,27 +488,22 @@ def main():
         "\n" + "=" * 70
     )
 
-    print(
-        "RETRIEVED SOURCES"
-    )
+    print("RETRIEVED SOURCES")
 
     print(
         "=" * 70
     )
 
     if not result["results"]:
-
         print(
-            "No relevant documents found."
+            "No document sources used."
         )
-
         return
 
     for rank, item in enumerate(
         result["results"],
         start=1
     ):
-
         print()
 
         print(
@@ -521,10 +531,14 @@ def main():
         )
 
         print(
+            f"Rerank Score: "
+            f"{item.get('rerank_score', 0.0):.4f}"
+        )
+
+        print(
             "-" * 70
         )
 
 
 if __name__ == "__main__":
-
     main()

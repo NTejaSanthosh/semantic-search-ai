@@ -1078,27 +1078,5 @@
     "source": "EmbraceCoder/HR_Policy",
     "chunk_number": 0,
     "text": "<human>: How many earned leave days are granted to employees per leave year?\n<bot>: Casual Leave (CL) and Sick Leave (SL) lapse every 31st of December of the respective year. Earned Leave (EL) gets carried forward to the next calendar year, subject to a maximum limit of 18 working days. Any excess ELs beyond 18 must be utilized or encashed based on the current basic salary."
-  },
-  {
-    "vector_id": 121,
-    "doc_id": "TEST_WFH_OLD",
-    "title": "Work From Home Policy - 2025",
-    "category": "Employee Benefits",
-    "source": "HR Policy Manual 2025",
-    "chunk_number": 0,
-    "text": "The work-from-home allowance for eligible employees is\nRs. 2000 per month.\n\nThis policy is applicable from January 1, 2025.",
-    "date": "2025-01-01",
-    "version": "1.0"
-  },
-  {
-    "vector_id": 122,
-    "doc_id": "TEST_WFH_NEW",
-    "title": "Work From Home Policy - 2026",
-    "category": "Employee Benefits",
-    "source": "HR Policy Manual 2026",
-    "chunk_number": 0,
-    "text": "The work-from-home allowance for eligible employees is\nRs. 3000 per month.\n\nThis policy replaces the previous work-from-home allowance\nof Rs. 2000 per month.\n\nThis updated policy is applicable from January 1, 2026.\nVersion 2.0.",
-    "date": "2026-01-01",
-    "version": "2.0"
   }
 ]

@@ -1,53 +1,58 @@
 import os
 import json
-import time
+
+import faiss
+import numpy as np
+import ollama
 
 from dotenv import load_dotenv
-from google import genai
-from google.genai import types
 
 
 INPUT_FILE = "data/chunks.json"
 OUTPUT_FILE = "data/embeddings.json"
 
-MODEL_NAME = "gemini-embedding-001"
-
-
 load_dotenv()
 
-api_key = os.getenv("GEMINI_API_KEY")
+MODEL_NAME = os.getenv(
+    "OLLAMA_EMBEDDING_MODEL",
+    "nomic-embed-text"
+)
 
-if not api_key:
-    raise ValueError("GEMINI_API_KEY was not found in the .env file.")
+OLLAMA_HOST = os.getenv(
+    "OLLAMA_HOST",
+    "http://localhost:11434"
+)
 
-client = genai.Client(api_key=api_key)
+os.environ["OLLAMA_HOST"] = OLLAMA_HOST
 
 
 def generate_embeddings():
-
     print("Loading chunks...")
 
-    with open(INPUT_FILE, "r", encoding="utf-8") as file:
+    with open(
+        INPUT_FILE,
+        "r",
+        encoding="utf-8"
+    ) as file:
         chunks = json.load(file)
 
     print("Total chunks:", len(chunks))
-    print("Generating Gemini embeddings...")
+    print("Embedding model:", MODEL_NAME)
+    print("Generating Ollama embeddings...")
 
     embedded_chunks = []
 
     for index, chunk in enumerate(chunks):
-
-        print(f"Embedding {index + 1}/{len(chunks)}")
-
-        result = client.models.embed_content(
-            model=MODEL_NAME,
-            contents=chunk["text"],
-            config=types.EmbedContentConfig(
-                task_type="RETRIEVAL_DOCUMENT"
-            )
+        print(
+            f"Embedding {index + 1}/{len(chunks)}"
         )
 
-        embedding = result.embeddings[0].values
+        response = ollama.embed(
+            model=MODEL_NAME,
+            input=chunk["text"]
+        )
+
+        embedding = response["embeddings"][0]
 
         embedded_chunk = {
             "doc_id": chunk["doc_id"],
@@ -59,14 +64,18 @@ def generate_embeddings():
             "embedding": embedding
         }
 
-        embedded_chunks.append(embedded_chunk)
-
-        time.sleep(0.2)
+        embedded_chunks.append(
+            embedded_chunk
+        )
 
     print()
     print("Saving embeddings...")
 
-    with open(OUTPUT_FILE, "w", encoding="utf-8") as file:
+    with open(
+        OUTPUT_FILE,
+        "w",
+        encoding="utf-8"
+    ) as file:
         json.dump(
             embedded_chunks,
             file,
@@ -76,9 +85,18 @@ def generate_embeddings():
 
     print()
     print("Embedding generation completed!")
-    print("Total embedded chunks:", len(embedded_chunks))
-    print("Embedding dimensions:", len(embedded_chunks[0]["embedding"]))
-    print("Saved to:", OUTPUT_FILE)
+    print(
+        "Total embedded chunks:",
+        len(embedded_chunks)
+    )
+    print(
+        "Embedding dimensions:",
+        len(embedded_chunks[0]["embedding"])
+    )
+    print(
+        "Saved to:",
+        OUTPUT_FILE
+    )
 
 
 if __name__ == "__main__":

@@ -1,17 +1,21 @@
 import json
+import os
 import faiss
 import numpy as np
 from dotenv import load_dotenv
 from google import genai
 from google.genai import types
 
-INDEX_FILE = "data/faiss.index"
-METADATA_FILE = "data/index_metadata.json"
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+INDEX_FILE = os.path.join(BASE_DIR, "data", "faiss.index")
+METADATA_FILE = os.path.join(BASE_DIR, "data", "index_metadata.json")
+
 MODEL_NAME = "gemini-embedding-001"
 
-load_dotenv()
+load_dotenv(os.path.join(BASE_DIR, ".env"))
 
-api_key = __import__("os").getenv("GEMINI_API_KEY")
+api_key = os.getenv("GEMINI_API_KEY")
 
 if not api_key:
     raise ValueError("GEMINI_API_KEY was not found in the .env file.")
@@ -21,6 +25,18 @@ client = genai.Client(api_key=api_key)
 
 def load_search_data():
     print("Loading FAISS index...")
+    print(f"FAISS index path: {INDEX_FILE}")
+    print(f"Metadata path: {METADATA_FILE}")
+
+    if not os.path.exists(INDEX_FILE):
+        raise FileNotFoundError(
+            f"FAISS index not found: {INDEX_FILE}"
+        )
+
+    if not os.path.exists(METADATA_FILE):
+        raise FileNotFoundError(
+            f"Metadata file not found: {METADATA_FILE}"
+        )
 
     index = faiss.read_index(INDEX_FILE)
 
@@ -70,7 +86,6 @@ def search(query, top_k=5):
         scores[0],
         vector_ids[0]
     ):
-
         if vector_id == -1:
             continue
 
@@ -89,7 +104,6 @@ def search(query, top_k=5):
 
 
 def main():
-
     query = input("\nEnter your question: ")
 
     results = search(
@@ -105,7 +119,6 @@ def main():
         results,
         start=1
     ):
-
         print()
         print(f"Rank: {rank}")
         print(f"Document ID: {result['doc_id']}")

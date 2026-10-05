@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-
 import {
   Search,
   Sparkles,
@@ -10,9 +9,11 @@ import {
   ChevronDown,
   ChevronUp,
   CircleAlert,
-  Clock3
+  Clock3,
+  ArrowLeft,
+  Filter,
+  ExternalLink
 } from "lucide-react";
-
 import ReactMarkdown from "react-markdown";
 
 const API_URL =
@@ -31,6 +32,20 @@ function App() {
   const [error, setError] = useState("");
   const [backendStatus, setBackendStatus] = useState("checking");
   const [history, setHistory] = useState([]);
+
+  const [activePage, setActivePage] = useState("search");
+
+  const [knowledgeDocuments, setKnowledgeDocuments] = useState([]);
+  const [knowledgeCategories, setKnowledgeCategories] = useState([]);
+  const [knowledgeSearch, setKnowledgeSearch] = useState("");
+  const [knowledgeCategory, setKnowledgeCategory] = useState("");
+  const [knowledgeLoading, setKnowledgeLoading] = useState(false);
+  const [knowledgeError, setKnowledgeError] = useState("");
+
+  const [selectedDocument, setSelectedDocument] = useState(null);
+  const [documentChunks, setDocumentChunks] = useState([]);
+  const [documentLoading, setDocumentLoading] = useState(false);
+  const [documentError, setDocumentError] = useState("");
 
   const suggestions = [
     "What measures are used to keep employee selection unbiased?",
@@ -68,6 +83,7 @@ function App() {
       return;
     }
 
+    setActivePage("search");
     setQuestion(cleanQuestion);
     setLoading(true);
     setAnswer("");
@@ -156,6 +172,7 @@ function App() {
   }
 
   function newSearch() {
+    setActivePage("search");
     setQuestion("");
     setAnswer("");
     setSources([]);
@@ -165,6 +182,7 @@ function App() {
   }
 
   function openHistory(item) {
+    setActivePage("search");
     setQuestion(item.question);
     setAnswer(item.answer);
     setSources(
@@ -240,6 +258,211 @@ function App() {
         ? "API Offline"
         : "Checking API";
 
+  async function loadKnowledgeBase(
+    query = "",
+    category = ""
+  ) {
+    setKnowledgeLoading(true);
+    setKnowledgeError("");
+
+    try {
+      const params = new URLSearchParams();
+
+      if (query.trim()) {
+        params.set("query", query.trim());
+      }
+
+      if (category) {
+        params.set("category", category);
+      }
+
+      const queryString = params.toString();
+
+      const documentsResponse = await fetch(
+        `${API_URL}/documents${
+          queryString ? `?${queryString}` : ""
+        }`
+      );
+
+      if (!documentsResponse.ok) {
+        const data =
+          await documentsResponse
+            .json()
+            .catch(() => ({}));
+
+        throw new Error(
+          data?.detail ||
+            `Failed to load documents (${documentsResponse.status})`
+        );
+      }
+
+      const documentsData =
+        await documentsResponse.json();
+
+      const categoriesResponse = await fetch(
+        `${API_URL}/documents/categories`
+      );
+
+      if (!categoriesResponse.ok) {
+        const data =
+          await categoriesResponse
+            .json()
+            .catch(() => ({}));
+
+        throw new Error(
+          data?.detail ||
+            `Failed to load categories (${categoriesResponse.status})`
+        );
+      }
+
+      const categoriesData =
+        await categoriesResponse.json();
+
+      setKnowledgeDocuments(
+        Array.isArray(documentsData.documents)
+          ? documentsData.documents
+          : []
+      );
+
+      setKnowledgeCategories(
+        Array.isArray(categoriesData.categories)
+          ? categoriesData.categories
+          : []
+      );
+
+      setBackendStatus("online");
+    } catch (requestError) {
+      setKnowledgeError(
+        requestError.message ||
+          "Unable to load the Knowledge Base."
+      );
+
+      setBackendStatus("offline");
+    } finally {
+      setKnowledgeLoading(false);
+    }
+  }
+
+  async function openDocument(docId) {
+    setDocumentLoading(true);
+    setDocumentError("");
+    setSelectedDocument(null);
+    setDocumentChunks([]);
+
+    try {
+      const documentResponse = await fetch(
+        `${API_URL}/documents/${encodeURIComponent(
+          docId
+        )}`
+      );
+
+      if (!documentResponse.ok) {
+        const data =
+          await documentResponse
+            .json()
+            .catch(() => ({}));
+
+        throw new Error(
+          data?.detail ||
+            `Failed to load document (${documentResponse.status})`
+        );
+      }
+
+      const documentData =
+        await documentResponse.json();
+
+      const chunksResponse = await fetch(
+        `${API_URL}/documents/${encodeURIComponent(
+          docId
+        )}/chunks`
+      );
+
+      if (!chunksResponse.ok) {
+        const data =
+          await chunksResponse
+            .json()
+            .catch(() => ({}));
+
+        throw new Error(
+          data?.detail ||
+            `Failed to load document chunks (${chunksResponse.status})`
+        );
+      }
+
+      const chunksData =
+        await chunksResponse.json();
+
+      setSelectedDocument(documentData);
+
+      setDocumentChunks(
+        Array.isArray(chunksData.chunks)
+          ? chunksData.chunks
+          : []
+      );
+
+      setActivePage("document");
+      setBackendStatus("online");
+    } catch (requestError) {
+      setDocumentError(
+        requestError.message ||
+          "Unable to load the document."
+      );
+    } finally {
+      setDocumentLoading(false);
+    }
+  }
+
+  function openKnowledgeBase() {
+    setActivePage("knowledge");
+    setSelectedDocument(null);
+    setDocumentChunks([]);
+    setDocumentError("");
+
+    loadKnowledgeBase(
+      knowledgeSearch,
+      knowledgeCategory
+    );
+  }
+
+  function openSemanticSearch() {
+    setActivePage("search");
+    setSelectedDocument(null);
+    setDocumentChunks([]);
+    setDocumentError("");
+  }
+
+  function handleKnowledgeSearch(event) {
+    event.preventDefault();
+
+    loadKnowledgeBase(
+      knowledgeSearch,
+      knowledgeCategory
+    );
+  }
+
+  function handleCategoryChange(event) {
+    const category = event.target.value;
+
+    setKnowledgeCategory(category);
+
+    loadKnowledgeBase(
+      knowledgeSearch,
+      category
+    );
+  }
+
+  function backToKnowledgeBase() {
+    setActivePage("knowledge");
+    setSelectedDocument(null);
+    setDocumentChunks([]);
+    setDocumentError("");
+
+    loadKnowledgeBase(
+      knowledgeSearch,
+      knowledgeCategory
+    );
+  }
+
   return (
     <div className="app">
       <aside className="sidebar">
@@ -267,15 +490,30 @@ function App() {
             KNOWLEDGE SYSTEM
           </div>
 
-          <div className="sidebar-item active">
+          <button
+            className={`sidebar-item ${
+              activePage === "search"
+                ? "active"
+                : ""
+            }`}
+            onClick={openSemanticSearch}
+          >
             <Database size={16} />
             Semantic Search
-          </div>
+          </button>
 
-          <div className="sidebar-item">
+          <button
+            className={`sidebar-item ${
+              activePage === "knowledge" ||
+              activePage === "document"
+                ? "active"
+                : ""
+            }`}
+            onClick={openKnowledgeBase}
+          >
             <FileText size={16} />
             Knowledge Base
-          </div>
+          </button>
         </div>
 
         {history.length > 0 && (
@@ -289,7 +527,9 @@ function App() {
                 <button
                   key={`${item.question}-${index}`}
                   className="history-item"
-                  onClick={() => openHistory(item)}
+                  onClick={() =>
+                    openHistory(item)
+                  }
                   title={item.question}
                 >
                   <Clock3 size={14} />
@@ -309,7 +549,8 @@ function App() {
             <div>
               <strong>RAG Grounded</strong>
               <span>
-                Responses are based on indexed knowledge.
+                Responses are based on indexed
+                knowledge.
               </span>
             </div>
           </div>
@@ -323,7 +564,13 @@ function App() {
               AI KNOWLEDGE WORKSPACE
             </span>
 
-            <h3>Semantic Search</h3>
+            <h3>
+              {activePage === "search"
+                ? "Semantic Search"
+                : activePage === "knowledge"
+                  ? "Knowledge Base"
+                  : "Document Details"}
+            </h3>
           </div>
 
           <div
@@ -339,346 +586,848 @@ function App() {
         </header>
 
         <section className="content">
-          {!answer && !loading && !error && (
-            <div className="hero">
-              <div className="hero-icon">
-                <Sparkles size={25} />
-              </div>
-
-              <div className="badge">
-                RAG-POWERED KNOWLEDGE ASSISTANT
-              </div>
-
-              <h1>
-                Ask your
-                <span> Knowledge Base</span>
-              </h1>
-
-              <p>
-                Search your organization's knowledge using
-                natural language and receive answers grounded
-                in relevant documents.
-              </p>
-            </div>
-          )}
-
-          <div className="search-area">
-            <form
-              className="search-box"
-              onSubmit={(event) => {
-                event.preventDefault();
-                askQuestion();
-              }}
-            >
-              <Search size={20} />
-
-              <input
-                value={question}
-                onChange={(event) =>
-                  setQuestion(event.target.value)
-                }
-                placeholder="Ask anything about your knowledge base..."
-                disabled={loading}
-              />
-
-              <button
-                type="submit"
-                disabled={!question.trim() || loading}
-              >
-                {loading ? "Searching..." : "Ask"}
-              </button>
-            </form>
-
-            {!answer && !loading && !error && (
-              <div className="suggestions">
-                {suggestions.map((item) => (
-                  <button
-                    key={item}
-                    onClick={() => askQuestion(item)}
-                  >
-                    {item}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
-
-          {loading && (
-            <div className="loading-card">
-              <div className="spinner" />
-
-              <div>
-                <strong>
-                  Searching your knowledge base
-                </strong>
-
-                <p>
-                  Retrieving relevant information and
-                  generating a grounded response...
-                </p>
-              </div>
-            </div>
-          )}
-
-          {error && !loading && (
-            <div className="error-card">
-              <div className="error-icon">
-                <CircleAlert size={19} />
-              </div>
-
-              <div>
-                <strong>
-                  Unable to complete the search
-                </strong>
-
-                <p>{error}</p>
-
-                <button
-                  onClick={() => askQuestion()}
-                  disabled={!question.trim()}
-                >
-                  Try again
-                </button>
-              </div>
-            </div>
-          )}
-
-          {answer && !loading && !error && (
+          {activePage === "search" && (
             <>
-              <section className="result-section">
-                <div className="section-title">
+              {!answer &&
+                !loading &&
+                !error && (
+                  <div className="hero">
+                    <div className="hero-icon">
+                      <Sparkles size={25} />
+                    </div>
+
+                    <div className="badge">
+                      RAG-POWERED KNOWLEDGE
+                      ASSISTANT
+                    </div>
+
+                    <h1>
+                      Ask your
+                      <span> Knowledge Base</span>
+                    </h1>
+
+                    <p>
+                      Search your organization's
+                      knowledge using natural language
+                      and receive answers grounded in
+                      relevant documents.
+                    </p>
+                  </div>
+                )}
+
+              <div className="search-area">
+                <form
+                  className="search-box"
+                  onSubmit={(event) => {
+                    event.preventDefault();
+                    askQuestion();
+                  }}
+                >
+                  <Search size={20} />
+
+                  <input
+                    value={question}
+                    onChange={(event) =>
+                      setQuestion(
+                        event.target.value
+                      )
+                    }
+                    placeholder="Ask anything about your knowledge base..."
+                    disabled={loading}
+                  />
+
+                  <button
+                    type="submit"
+                    disabled={
+                      !question.trim() ||
+                      loading
+                    }
+                  >
+                    {loading
+                      ? "Searching..."
+                      : "Ask"}
+                  </button>
+                </form>
+
+                {!answer &&
+                  !loading &&
+                  !error && (
+                    <div className="suggestions">
+                      {suggestions.map((item) => (
+                        <button
+                          key={item}
+                          onClick={() =>
+                            askQuestion(item)
+                          }
+                        >
+                          {item}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+              </div>
+
+              {loading && (
+                <div className="loading-card">
+                  <div className="spinner" />
+
                   <div>
-                    <span>ANSWER</span>
-                    <h2>
-                      Knowledge-grounded response
-                    </h2>
+                    <strong>
+                      Searching your knowledge
+                      base
+                    </strong>
+
+                    <p>
+                      Retrieving relevant
+                      information and generating a
+                      grounded response...
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {error && !loading && (
+                <div className="error-card">
+                  <div className="error-icon">
+                    <CircleAlert size={19} />
                   </div>
 
-                  <button
-                    onClick={copyAnswer}
-                    className="copy"
-                  >
-                    {copied ? (
-                      <>
-                        <Check size={15} />
-                        Copied
-                      </>
-                    ) : (
-                      <>
-                        <Copy size={15} />
-                        Copy
-                      </>
-                    )}
-                  </button>
+                  <div>
+                    <strong>
+                      Unable to complete the
+                      search
+                    </strong>
+
+                    <p>{error}</p>
+
+                    <button
+                      onClick={() =>
+                        askQuestion()
+                      }
+                      disabled={
+                        !question.trim()
+                      }
+                    >
+                      Try again
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {answer &&
+                !loading &&
+                !error && (
+                  <>
+                    <section className="result-section">
+                      <div className="section-title">
+                        <div>
+                          <span>ANSWER</span>
+
+                          <h2>
+                            Knowledge-grounded
+                            response
+                          </h2>
+                        </div>
+
+                        <button
+                          onClick={copyAnswer}
+                          className="copy"
+                        >
+                          {copied ? (
+                            <>
+                              <Check size={15} />
+                              Copied
+                            </>
+                          ) : (
+                            <>
+                              <Copy size={15} />
+                              Copy
+                            </>
+                          )}
+                        </button>
+                      </div>
+
+                      <div className="question">
+                        <Search size={15} />
+                        {question}
+                      </div>
+
+                      <div className="answer">
+                        <div className="answer-header">
+                          <div>
+                            <Sparkles size={16} />
+                            AI Response
+                          </div>
+                        </div>
+
+                        <div className="answer-body">
+                          <ReactMarkdown>
+                            {answer}
+                          </ReactMarkdown>
+                        </div>
+                      </div>
+                    </section>
+
+                    <section className="result-section">
+                      <div className="section-title">
+                        <div>
+                          <span>
+                            RETRIEVAL
+                          </span>
+
+                          <h2>
+                            Sources used
+                          </h2>
+                        </div>
+
+                        <div className="source-count">
+                          <Database size={14} />
+
+                          {sources.length}{" "}
+                          {sources.length === 1
+                            ? "source"
+                            : "sources"}
+                        </div>
+                      </div>
+
+                      {sources.length === 0 ? (
+                        <div className="no-sources">
+                          No supporting documents
+                          were returned for this
+                          query.
+                        </div>
+                      ) : (
+                        <div className="sources">
+                          {sources.map(
+                            (source, index) => {
+                              const isExpanded =
+                                expanded ===
+                                index;
+
+                              const sourceText =
+                                cleanSourceText(
+                                  source.text
+                                );
+
+                              return (
+                                <div
+                                  className="source"
+                                  key={`${source.doc_id || "source"}-${index}`}
+                                >
+                                  <div className="source-top">
+                                    <div className="source-number">
+                                      {String(
+                                        index + 1
+                                      ).padStart(
+                                        2,
+                                        "0"
+                                      )}
+                                    </div>
+
+                                    <div className="source-info">
+                                      <h3>
+                                        {getSourceTitle(
+                                          source
+                                        )}
+                                      </h3>
+
+                                      <span>
+                                        {getSourceCategory(
+                                          source
+                                        )}
+                                      </span>
+                                    </div>
+
+                                    <div className="score">
+                                      <small>
+                                        RELEVANCE
+                                      </small>
+
+                                      <strong>
+                                        {formatScore(
+                                          source.similarity
+                                        )}
+                                      </strong>
+                                    </div>
+                                  </div>
+
+                                  <p
+                                    className={
+                                      isExpanded
+                                        ? "expanded"
+                                        : ""
+                                    }
+                                  >
+                                    {sourceText ||
+                                      "No source text available."}
+                                  </p>
+
+                                  {isExpanded && (
+                                    <div className="source-metadata">
+                                      {source.doc_id && (
+                                        <div>
+                                          <small>
+                                            DOCUMENT
+                                            ID
+                                          </small>
+
+                                          <strong>
+                                            {
+                                              source.doc_id
+                                            }
+                                          </strong>
+                                        </div>
+                                      )}
+
+                                      {source.source && (
+                                        <div>
+                                          <small>
+                                            SOURCE
+                                          </small>
+
+                                          <strong>
+                                            {
+                                              source.source
+                                            }
+                                          </strong>
+                                        </div>
+                                      )}
+
+                                      {source.rerank_score !==
+                                        undefined &&
+                                        source.rerank_score !==
+                                          null && (
+                                          <div>
+                                            <small>
+                                              RERANK
+                                              SCORE
+                                            </small>
+
+                                            <strong>
+                                              {formatRerankScore(
+                                                source.rerank_score
+                                              )}
+                                            </strong>
+                                          </div>
+                                        )}
+
+                                      {formatDate(
+                                        source.date
+                                      ) && (
+                                        <div>
+                                          <small>
+                                            DATE
+                                          </small>
+
+                                          <strong>
+                                            {
+                                              source.date
+                                            }
+                                          </strong>
+                                        </div>
+                                      )}
+
+                                      {source.version && (
+                                        <div>
+                                          <small>
+                                            VERSION
+                                          </small>
+
+                                          <strong>
+                                            {
+                                              source.version
+                                            }
+                                          </strong>
+                                        </div>
+                                      )}
+                                    </div>
+                                  )}
+
+                                  <button
+                                    className="view-source"
+                                    onClick={() =>
+                                      setExpanded(
+                                        isExpanded
+                                          ? null
+                                          : index
+                                      )
+                                    }
+                                  >
+                                    <FileText
+                                      size={13}
+                                    />
+
+                                    {isExpanded
+                                      ? "Show less"
+                                      : "View source"}
+
+                                    {isExpanded ? (
+                                      <ChevronUp
+                                        size={14}
+                                      />
+                                    ) : (
+                                      <ChevronDown
+                                        size={14}
+                                      />
+                                    )}
+                                  </button>
+                                </div>
+                              );
+                            }
+                          )}
+                        </div>
+                      )}
+                    </section>
+                  </>
+                )}
+
+              <footer>
+                <span>
+                  Semantic Search AI
+                </span>
+
+                <span>
+                  RAG-powered knowledge retrieval
+                </span>
+              </footer>
+            </>
+          )}
+
+          {activePage === "knowledge" && (
+            <section className="knowledge-page">
+              <div className="knowledge-header">
+                <div>
+                  <span className="workspace">
+                    KNOWLEDGE SYSTEM
+                  </span>
+
+                  <h1>Knowledge Base</h1>
+
+                  <p>
+                    Browse and explore the
+                    documents available in your
+                    organization's knowledge base.
+                  </p>
                 </div>
 
-                <div className="question">
-                  <Search size={15} />
-                  {question}
+                <div className="knowledge-count">
+                  <Database size={16} />
+                  {knowledgeDocuments.length}{" "}
+                  documents
                 </div>
+              </div>
 
-                <div className="answer">
-                  <div className="answer-header">
+              <form
+                className="knowledge-search"
+                onSubmit={handleKnowledgeSearch}
+              >
+                <Search size={19} />
+
+                <input
+                  value={knowledgeSearch}
+                  onChange={(event) =>
+                    setKnowledgeSearch(
+                      event.target.value
+                    )
+                  }
+                  placeholder="Search documents..."
+                />
+
+                <select
+                  value={knowledgeCategory}
+                  onChange={
+                    handleCategoryChange
+                  }
+                >
+                  <option value="">
+                    All categories
+                  </option>
+
+                  {knowledgeCategories.map(
+                    (category) => (
+                      <option
+                        key={category}
+                        value={category}
+                      >
+                        {category}
+                      </option>
+                    )
+                  )}
+                </select>
+
+                <button type="submit">
+                  Search
+                </button>
+              </form>
+
+              {knowledgeLoading && (
+                <div className="loading-card">
+                  <div className="spinner" />
+
+                  <div>
+                    <strong>
+                      Loading Knowledge Base
+                    </strong>
+
+                    <p>
+                      Retrieving documents from
+                      the backend...
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {knowledgeError &&
+                !knowledgeLoading && (
+                  <div className="error-card">
+                    <div className="error-icon">
+                      <CircleAlert size={19} />
+                    </div>
+
                     <div>
-                      <Sparkles size={16} />
-                      AI Response
+                      <strong>
+                        Unable to load Knowledge
+                        Base
+                      </strong>
+
+                      <p>
+                        {knowledgeError}
+                      </p>
+
+                      <button
+                        onClick={() =>
+                          loadKnowledgeBase(
+                            knowledgeSearch,
+                            knowledgeCategory
+                          )
+                        }
+                      >
+                        Try again
+                      </button>
                     </div>
                   </div>
+                )}
 
-                  <div className="answer-body">
-                    <ReactMarkdown>
-                      {answer}
-                    </ReactMarkdown>
-                  </div>
-                </div>
-              </section>
-
-              <section className="result-section">
-                <div className="section-title">
-                  <div>
-                    <span>RETRIEVAL</span>
-                    <h2>Sources used</h2>
-                  </div>
-
-                  <div className="source-count">
-                    <Database size={14} />
-                    {sources.length}{" "}
-                    {sources.length === 1
-                      ? "source"
-                      : "sources"}
-                  </div>
-                </div>
-
-                {sources.length === 0 ? (
+              {!knowledgeLoading &&
+                !knowledgeError &&
+                knowledgeDocuments.length ===
+                  0 && (
                   <div className="no-sources">
-                    No supporting documents were returned
-                    for this query.
+                    No documents found.
                   </div>
-                ) : (
-                  <div className="sources">
-                    {sources.map((source, index) => {
-                      const isExpanded =
-                        expanded === index;
+                )}
 
-                      const sourceText =
-                        cleanSourceText(
-                          source.text
-                        );
-
-                      return (
-                        <div
-                          className="source"
-                          key={`${source.doc_id || "source"}-${index}`}
+              {!knowledgeLoading &&
+                !knowledgeError &&
+                knowledgeDocuments.length >
+                  0 && (
+                  <div className="knowledge-grid">
+                    {knowledgeDocuments.map(
+                      (document) => (
+                        <article
+                          className="knowledge-card"
+                          key={document.doc_id}
                         >
-                          <div className="source-top">
-                            <div className="source-number">
-                              {String(index + 1).padStart(
-                                2,
-                                "0"
-                              )}
+                          <div className="knowledge-card-top">
+                            <div className="knowledge-icon">
+                              <FileText
+                                size={20}
+                              />
                             </div>
 
-                            <div className="source-info">
-                              <h3>
-                                {getSourceTitle(source)}
-                              </h3>
-
-                              <span>
-                                {getSourceCategory(
-                                  source
-                                )}
-                              </span>
-                            </div>
-
-                            <div className="score">
-                              <small>
-                                RELEVANCE
-                              </small>
-
-                              <strong>
-                                {formatScore(
-                                  source.similarity
-                                )}
-                              </strong>
-                            </div>
+                            <span className="knowledge-category">
+                              {document.category ||
+                                "General"}
+                            </span>
                           </div>
 
-                          <p
-                            className={
-                              isExpanded
-                                ? "expanded"
-                                : ""
-                            }
-                          >
-                            {sourceText ||
-                              "No source text available."}
+                          <h2>
+                            {document.title ||
+                              document.doc_id}
+                          </h2>
+
+                          <p className="knowledge-doc-id">
+                            {document.doc_id}
                           </p>
 
-                          {isExpanded && (
-                            <div className="source-metadata">
-                              {source.doc_id && (
-                                <div>
-                                  <small>
-                                    DOCUMENT ID
-                                  </small>
+                          <p className="knowledge-source">
+                            {document.source ||
+                              "Knowledge Base"}
+                          </p>
 
-                                  <strong>
-                                    {source.doc_id}
-                                  </strong>
-                                </div>
-                              )}
+                          <div className="knowledge-meta">
+                            <span>
+                              {document.chunk_count ||
+                                0}{" "}
+                              chunks
+                            </span>
 
-                              {source.source && (
-                                <div>
-                                  <small>SOURCE</small>
-
-                                  <strong>
-                                    {source.source}
-                                  </strong>
-                                </div>
-                              )}
-
-                              {source.rerank_score !==
-                                undefined &&
-                                source.rerank_score !==
-                                  null && (
-                                  <div>
-                                    <small>
-                                      RERANK SCORE
-                                    </small>
-
-                                    <strong>
-                                      {formatRerankScore(
-                                        source.rerank_score
-                                      )}
-                                    </strong>
-                                  </div>
-                                )}
-
-                              {formatDate(
-                                source.date
-                              ) && (
-                                <div>
-                                  <small>DATE</small>
-
-                                  <strong>
-                                    {source.date}
-                                  </strong>
-                                </div>
-                              )}
-
-                              {source.version && (
-                                <div>
-                                  <small>
-                                    VERSION
-                                  </small>
-
-                                  <strong>
-                                    {source.version}
-                                  </strong>
-                                </div>
-                              )}
-                            </div>
-                          )}
+                            {document.version && (
+                              <span>
+                                Version{" "}
+                                {
+                                  document.version
+                                }
+                              </span>
+                            )}
+                          </div>
 
                           <button
                             className="view-source"
                             onClick={() =>
-                              setExpanded(
-                                isExpanded
-                                  ? null
-                                  : index
+                              openDocument(
+                                document.doc_id
                               )
                             }
                           >
-                            <FileText size={13} />
-
-                            {isExpanded
-                              ? "Show less"
-                              : "View source"}
-
-                            {isExpanded ? (
-                              <ChevronUp size={14} />
-                            ) : (
-                              <ChevronDown size={14} />
-                            )}
+                            <FileText
+                              size={14}
+                            />
+                            View Document
+                            <ExternalLink
+                              size={13}
+                            />
                           </button>
-                        </div>
-                      );
-                    })}
+                        </article>
+                      )
+                    )}
                   </div>
                 )}
-              </section>
-            </>
+            </section>
           )}
 
-          <footer>
-            <span>Semantic Search AI</span>
+          {activePage === "document" && (
+            <section className="document-page">
+              <button
+                className="back-button"
+                onClick={
+                  backToKnowledgeBase
+                }
+              >
+                <ArrowLeft size={15} />
+                Back to Knowledge Base
+              </button>
 
-            <span>
-              RAG-powered knowledge retrieval
-            </span>
-          </footer>
+              {documentLoading && (
+                <div className="loading-card">
+                  <div className="spinner" />
+
+                  <div>
+                    <strong>
+                      Loading document
+                    </strong>
+
+                    <p>
+                      Retrieving document content
+                      and chunks...
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {documentError &&
+                !documentLoading && (
+                  <div className="error-card">
+                    <div className="error-icon">
+                      <CircleAlert
+                        size={19}
+                      />
+                    </div>
+
+                    <div>
+                      <strong>
+                        Unable to load document
+                      </strong>
+
+                      <p>
+                        {documentError}
+                      </p>
+
+                      <button
+                        onClick={() =>
+                          selectedDocument &&
+                          openDocument(
+                            selectedDocument.doc_id
+                          )
+                        }
+                      >
+                        Try again
+                      </button>
+                    </div>
+                  </div>
+                )}
+
+              {!documentLoading &&
+                !documentError &&
+                selectedDocument && (
+                  <>
+                    <div className="document-header">
+                      <div className="document-title-icon">
+                        <FileText size={24} />
+                      </div>
+
+                      <div>
+                        <span className="workspace">
+                          DOCUMENT
+                        </span>
+
+                        <h1>
+                          {selectedDocument.title ||
+                            selectedDocument.doc_id}
+                        </h1>
+
+                        <p>
+                          {
+                            selectedDocument.doc_id
+                          }
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="document-metadata">
+                      <div>
+                        <small>
+                          CATEGORY
+                        </small>
+
+                        <strong>
+                          {selectedDocument.category ||
+                            "—"}
+                        </strong>
+                      </div>
+
+                      <div>
+                        <small>SOURCE</small>
+
+                        <strong>
+                          {selectedDocument.source ||
+                            "—"}
+                        </strong>
+                      </div>
+
+                      {selectedDocument.date && (
+                        <div>
+                          <small>DATE</small>
+
+                          <strong>
+                            {
+                              selectedDocument.date
+                            }
+                          </strong>
+                        </div>
+                      )}
+
+                      {selectedDocument.version && (
+                        <div>
+                          <small>
+                            VERSION
+                          </small>
+
+                          <strong>
+                            {
+                              selectedDocument.version
+                            }
+                          </strong>
+                        </div>
+                      )}
+                    </div>
+
+                    <section className="result-section">
+                      <div className="section-title">
+                        <div>
+                          <span>
+                            DOCUMENT CONTENT
+                          </span>
+
+                          <h2>
+                            Knowledge Base
+                            document
+                          </h2>
+                        </div>
+                      </div>
+
+                      <div className="document-content">
+                        <ReactMarkdown>
+                          {cleanSourceText(
+                            selectedDocument.text
+                          ) ||
+                            "No document content available."}
+                        </ReactMarkdown>
+                      </div>
+                    </section>
+
+                    <section className="result-section">
+                      <div className="section-title">
+                        <div>
+                          <span>
+                            INDEXED CONTENT
+                          </span>
+
+                          <h2>
+                            Document chunks
+                          </h2>
+                        </div>
+
+                        <div className="source-count">
+                          <Database size={14} />
+                          {documentChunks.length}{" "}
+                          {documentChunks.length ===
+                          1
+                            ? "chunk"
+                            : "chunks"}
+                        </div>
+                      </div>
+
+                      {documentChunks.length ===
+                      0 ? (
+                        <div className="no-sources">
+                          No chunks were found
+                          for this document.
+                        </div>
+                      ) : (
+                        <div className="document-chunks">
+                          {documentChunks.map(
+                            (
+                              chunk,
+                              index
+                            ) => (
+                              <div
+                                className="document-chunk"
+                                key={`${chunk.doc_id}-${index}`}
+                              >
+                                <div className="chunk-header">
+                                  <span>
+                                    CHUNK{" "}
+                                    {index + 1}
+                                  </span>
+
+                                  {chunk.chunk_number !==
+                                    undefined && (
+                                    <span>
+                                      #
+                                      {
+                                        chunk.chunk_number
+                                      }
+                                    </span>
+                                  )}
+                                </div>
+
+                                <p>
+                                  {cleanSourceText(
+                                    chunk.text
+                                  ) ||
+                                    "No chunk text available."}
+                                </p>
+                              </div>
+                            )
+                          )}
+                        </div>
+                      )}
+                    </section>
+                  </>
+                )}
+            </section>
+          )}
         </section>
       </main>
     </div>

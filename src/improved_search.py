@@ -1,34 +1,43 @@
 import json
+import os
+
 import faiss
 import numpy as np
-from dotenv import load_dotenv
-from google import genai
-from google.genai import types
-from reranker import Reranker
+import ollama
 
-INDEX_FILE = "data/faiss.index"
-METADATA_FILE = "data/index_metadata.json"
-MODEL_NAME = "gemini-embedding-001"
+from dotenv import load_dotenv
+
+try:
+    from .reranker import Reranker
+except ImportError:
+    from reranker import Reranker
+
 
 load_dotenv()
 
-api_key = __import__("os").getenv("GEMINI_API_KEY")
 
-if not api_key:
-    raise ValueError("GEMINI_API_KEY was not found in the .env file.")
+INDEX_FILE = "data/faiss.index"
+METADATA_FILE = "data/index_metadata.json"
 
-client = genai.Client(api_key=api_key)
+MODEL_NAME = os.getenv(
+    "OLLAMA_EMBEDDING_MODEL",
+    "nomic-embed-text"
+)
+
 
 reranker = Reranker()
 
 
 def load_search_data():
-
     print("Loading FAISS index...")
 
     index = faiss.read_index(INDEX_FILE)
 
-    with open(METADATA_FILE, "r", encoding="utf-8") as file:
+    with open(
+        METADATA_FILE,
+        "r",
+        encoding="utf-8"
+    ) as file:
         metadata = json.load(file)
 
     metadata_by_id = {
@@ -40,17 +49,13 @@ def load_search_data():
 
 
 def embed_query(query):
-
-    result = client.models.embed_content(
+    response = ollama.embed(
         model=MODEL_NAME,
-        contents=query,
-        config=types.EmbedContentConfig(
-            task_type="RETRIEVAL_QUERY"
-        )
+        input=query
     )
 
     vector = np.array(
-        [result.embeddings[0].values],
+        [response["embeddings"][0]],
         dtype="float32"
     )
 
@@ -61,10 +66,10 @@ def embed_query(query):
 
 def semantic_search(
     query,
+    user_id=None,
     candidate_k=20,
     category_filter=None
 ):
-
     index, metadata_by_id = load_search_data()
 
     query_vector = embed_query(query)
@@ -80,7 +85,6 @@ def semantic_search(
         scores[0],
         vector_ids[0]
     ):
-
         if vector_id == -1:
             continue
 
@@ -92,11 +96,7 @@ def semantic_search(
         result = metadata_by_id[vector_id].copy()
 
         if category_filter is not None:
-
-            if (
-                result["category"].lower()
-                != category_filter.lower()
-            ):
+            if result["category"].lower() != category_filter.lower():
                 continue
 
         result["similarity"] = float(score)
@@ -108,14 +108,15 @@ def semantic_search(
 
 def improved_search(
     query,
+    user_id=None,
     top_k=5,
     category_filter=None
 ):
-
-    print("\nRunning improved semantic search...")
+    print("\nRunning semantic search...")
 
     candidates = semantic_search(
         query=query,
+        user_id=user_id,
         candidate_k=20,
         category_filter=category_filter
     )
@@ -132,59 +133,3 @@ def improved_search(
     )
 
     return results
-
-
-def main():
-
-    print("=" * 70)
-    print("IMPROVED SEMANTIC SEARCH")
-    print("=" * 70)
-
-    query = input(
-        "\nEnter your question: "
-    )
-
-    category = input(
-        "Enter category filter (press Enter to skip): "
-    ).strip()
-
-    if category == "":
-        category = None
-
-    results = improved_search(
-        query=query,
-        top_k=5,
-        category_filter=category
-    )
-
-    print("\n" + "=" * 70)
-    print("FINAL RERANKED RESULTS")
-    print("=" * 70)
-
-    for rank, result in enumerate(
-        results,
-        start=1
-    ):
-
-        print()
-        print(f"Rank: {rank}")
-        print(f"Document ID: {result['doc_id']}")
-        print(f"Title: {result['title']}")
-        print(f"Category: {result['category']}")
-        print(
-            f"Vector similarity: "
-            f"{result['similarity']:.4f}"
-        )
-        print(
-            f"Rerank score: "
-            f"{result['rerank_score']:.4f}"
-        )
-
-        print("\nText:")
-        print(result["text"][:500])
-
-        print("-" * 70)
-
-
-if __name__ == "__main__":
-    main()
