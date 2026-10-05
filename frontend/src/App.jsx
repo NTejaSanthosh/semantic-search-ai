@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+
 import {
   Search,
   Sparkles,
@@ -11,6 +12,7 @@ import {
   CircleAlert,
   Clock3
 } from "lucide-react";
+
 import ReactMarkdown from "react-markdown";
 
 const API_URL =
@@ -31,10 +33,14 @@ function App() {
   const [history, setHistory] = useState([]);
 
   const suggestions = [
-    "What are the project management guidelines?",
-    "What should be done when a project is delayed?",
-    "Explain the project escalation policy",
-    "What are the workload guidelines?"
+    "What measures are used to keep employee selection unbiased?",
+    "How does the company ensure fair and non-discriminatory hiring?",
+    "What factors should be considered when making employment decisions?",
+    "What practices should be avoided during employee selection?",
+    "How should job descriptions be written to avoid discrimination?",
+    "How are employment decisions based on merit and suitability?",
+    "What are the legitimate reasons that can be considered when making employment decisions?",
+    "What guidelines support fair treatment during the hiring process?"
   ];
 
   useEffect(() => {
@@ -125,6 +131,7 @@ function App() {
         requestError.message ||
           "Unable to connect to the Semantic Search API."
       );
+
       setBackendStatus("offline");
     } finally {
       setLoading(false);
