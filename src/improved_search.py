@@ -136,13 +136,15 @@ def improved_search(
 
     print("Accessible candidates retrieved:", len(candidates))
 
+    
     if reranker is not None:
-    results = reranker.rerank(
-        query=query,
-        results=candidates,
-        top_k=top_k,
-    )
-else:
-    results = candidates[:top_k]
+        results = reranker.rerank(
+            query=query,
+            results=candidates,
+            top_k=top_k,
+        )
+    else:
+        results = candidates[:top_k]
 
-return results
+    return results
+
