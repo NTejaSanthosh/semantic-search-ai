@@ -9,7 +9,7 @@ import ollama
 from dotenv import load_dotenv
 
 from .permissions import filter_accessible_documents
-from .reranker import Reranker
+
 
 load_dotenv()
 
@@ -22,7 +22,16 @@ MODEL_NAME = os.getenv(
     "nomic-embed-text",
 )
 
-reranker = Reranker()
+USE_RERANKER = os.getenv("USE_RERANKER", "true").lower() == "true"
+
+reranker = None
+
+if USE_RERANKER:
+    try:
+        from .reranker import Reranker
+        reranker = Reranker()
+    except Exception as error:
+        print(f"Reranker unavailable; using semantic search only: {error}")
 
 
 def load_search_data():
@@ -127,10 +136,13 @@ def improved_search(
 
     print("Accessible candidates retrieved:", len(candidates))
 
+    if reranker is not None:
     results = reranker.rerank(
         query=query,
         results=candidates,
         top_k=top_k,
     )
+else:
+    results = candidates[:top_k]
 
-    return results
+return results
