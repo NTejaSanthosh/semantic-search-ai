@@ -13,3 +13,4 @@ pypdf
 python-multipart
 PyJWT
 pwdlib[argon2]
+sentence-transformers
