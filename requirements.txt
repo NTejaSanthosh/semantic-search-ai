@@ -1,8 +1,12 @@
-datasets
-google-genai
+streamlit
+supabase
+ollama
 python-dotenv
 faiss-cpu
 sentence-transformers
 numpy
 pandas
 scikit-learn
+pypdf
+python-docx
+pwdlib[argon2]
