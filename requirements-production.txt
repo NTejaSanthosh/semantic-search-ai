@@ -9,3 +9,7 @@ ollama
 fastapi
 uvicorn[standard]
 python-docx
+pypdf
+python-multipart
+PyJWT
+pwdlib[argon2]
