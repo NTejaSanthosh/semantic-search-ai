@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 try:
     from .improved_search import improved_search
 except ImportError:
-    from improved_search import improved_search
+    from .improved_search import improved_search
 
 
 load_dotenv()
