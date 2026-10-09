@@ -1,15 +1,10 @@
 
 import os
 from contextlib import asynccontextmanager
-from io import BytesIO
-from pathlib import Path
 
-from docx import Document as WordDocument
-from dotenv import load_dotenv
-from fastapi import Depends, FastAPI, File, Form, HTTPException, UploadFile
+from fastapi import Depends, FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
-from pypdf import PdfReader
 
 from .auth import (
     authenticate_user,
@@ -19,20 +14,14 @@ from .auth import (
     initialize_auth_database,
     validate_auth_configuration,
 )
+from .rag import ask_question
 from .knowledge_base import (
-    get_categories,
+    list_documents,
     get_document,
     get_document_chunks,
-    list_documents,
+    get_categories,
 )
 from .permissions import initialize_permissions_database
-from .rag import ask_question
-from .upload_service import add_uploaded_document
-
-load_dotenv()
-
-MAX_UPLOAD_BYTES = 15 * 1024 * 1024
-ALLOWED_EXTENSIONS = {".pdf", ".docx", ".txt"}
 
 
 @asynccontextmanager
@@ -45,7 +34,7 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(
     title="Semantic Search AI API",
-    version="1.3.0",
+    version="1.2.0",
     lifespan=lifespan,
 )
 
@@ -101,7 +90,7 @@ def root():
     return {
         "name": "Semantic Search AI API",
         "status": "online",
-        "version": "1.3.0",
+        "version": "1.2.0",
     }
 
 
@@ -139,122 +128,6 @@ def login(request: LoginRequest):
 @app.get("/auth/me")
 def current_user(user=Depends(get_current_user)):
     return {"user": user}
-
-
-def extract_uploaded_text(filename, content):
-    extension = Path(filename).suffix.lower()
-
-    if extension == ".txt":
-        return content.decode("utf-8-sig", errors="replace").strip()
-
-    if extension == ".pdf":
-        reader = PdfReader(BytesIO(content))
-
-        if reader.is_encrypted:
-            raise HTTPException(
-                status_code=400,
-                detail="Password-protected PDFs are not supported.",
-            )
-
-        return "\n".join(
-            page.extract_text() or ""
-            for page in reader.pages
-        ).strip()
-
-    if extension == ".docx":
-        document = WordDocument(BytesIO(content))
-        paragraphs = [
-            paragraph.text
-            for paragraph in document.paragraphs
-            if paragraph.text.strip()
-        ]
-
-        for table in document.tables:
-            for row in table.rows:
-                paragraphs.append(
-                    " | ".join(cell.text for cell in row.cells)
-                )
-
-        return "\n".join(paragraphs).strip()
-
-    raise HTTPException(
-        status_code=400,
-        detail="Only PDF, DOCX, and TXT files are supported.",
-    )
-
-
-@app.post("/documents/upload", status_code=201)
-async def upload_document(
-    file: UploadFile = File(...),
-    category: str = Form(default="My Uploads"),
-    user=Depends(get_current_user),
-):
-    filename = Path(file.filename or "").name
-
-    if not filename:
-        raise HTTPException(
-            status_code=400,
-            detail="A filename is required.",
-        )
-
-    if Path(filename).suffix.lower() not in ALLOWED_EXTENSIONS:
-        raise HTTPException(
-            status_code=400,
-            detail="Only PDF, DOCX, and TXT files are supported.",
-        )
-
-    content = await file.read(MAX_UPLOAD_BYTES + 1)
-    await file.close()
-
-    if not content:
-        raise HTTPException(
-            status_code=400,
-            detail="The uploaded file is empty.",
-        )
-
-    if len(content) > MAX_UPLOAD_BYTES:
-        raise HTTPException(
-            status_code=413,
-            detail="The maximum upload size is 15 MB.",
-        )
-
-    try:
-        extracted_text = extract_uploaded_text(filename, content)
-
-        if not extracted_text:
-            raise HTTPException(
-                status_code=400,
-                detail=(
-                    "No readable text was found. "
-                    "Scanned PDFs without selectable text are not supported."
-                ),
-            )
-
-        result = add_uploaded_document(
-            title=filename,
-            category=category,
-            text=extracted_text,
-            owner_user_id=user["user_id"],
-        )
-
-        return result
-
-    except HTTPException:
-        raise
-    except ValueError as error:
-        raise HTTPException(
-            status_code=400,
-            detail=str(error),
-        ) from error
-    except Exception as error:
-        print(f"Document upload failed: {type(error).__name__}: {error}")
-        raise HTTPException(
-            status_code=500,
-            detail=(
-                "Unable to process the upload. "
-                "Check the backend terminal for details."
-            ),
-        ) from error
 
 
 @app.post("/ask")
@@ -305,12 +178,11 @@ def ask(
 
     except HTTPException:
         raise
-    except Exception as error:
-        print(f"Question processing failed: {type(error).__name__}: {error}")
+    except Exception:
         raise HTTPException(
             status_code=500,
             detail="An error occurred while processing your question.",
-        ) from error
+        )
 
 
 @app.get("/documents")
@@ -333,12 +205,11 @@ def documents(
 
     except HTTPException:
         raise
-    except Exception as error:
-        print(f"Document listing failed: {type(error).__name__}: {error}")
+    except Exception:
         raise HTTPException(
             status_code=500,
             detail="Unable to retrieve documents.",
-        ) from error
+        )
 
 
 @app.get("/documents/categories")
@@ -350,44 +221,11 @@ def document_categories(user=Depends(get_current_user)):
 
     except HTTPException:
         raise
-    except Exception as error:
-        print(f"Category listing failed: {type(error).__name__}: {error}")
+    except Exception:
         raise HTTPException(
             status_code=500,
             detail="Unable to retrieve document categories.",
-        ) from error
-
-
-@app.get("/documents/{doc_id}/chunks")
-def document_chunks(
-    doc_id: str,
-    user=Depends(get_current_user),
-):
-    try:
-        document = get_document(doc_id, user["user_id"])
-
-        if document is None:
-            raise HTTPException(
-                status_code=404,
-                detail="Document not found.",
-            )
-
-        chunks = get_document_chunks(doc_id, user["user_id"])
-
-        return {
-            "doc_id": doc_id,
-            "count": len(chunks),
-            "chunks": chunks,
-        }
-
-    except HTTPException:
-        raise
-    except Exception as error:
-        print(f"Chunk retrieval failed: {type(error).__name__}: {error}")
-        raise HTTPException(
-            status_code=500,
-            detail="Unable to retrieve document chunks.",
-        ) from error
+        )
 
 
 @app.get("/documents/{doc_id}")
@@ -396,7 +234,10 @@ def document_details(
     user=Depends(get_current_user),
 ):
     try:
-        document = get_document(doc_id, user["user_id"])
+        document = get_document(
+            doc_id,
+            user["user_id"],
+        )
 
         if document is None:
             raise HTTPException(
@@ -408,9 +249,45 @@ def document_details(
 
     except HTTPException:
         raise
-    except Exception as error:
-        print(f"Document detail retrieval failed: {type(error).__name__}: {error}")
+    except Exception:
         raise HTTPException(
             status_code=500,
             detail="Unable to retrieve document details.",
-        ) from error
+        )
+
+
+@app.get("/documents/{doc_id}/chunks")
+def document_chunks(
+    doc_id: str,
+    user=Depends(get_current_user),
+):
+    try:
+        document = get_document(
+            doc_id,
+            user["user_id"],
+        )
+
+        if document is None:
+            raise HTTPException(
+                status_code=404,
+                detail="Document not found.",
+            )
+
+        chunks = get_document_chunks(
+            doc_id,
+            user["user_id"],
+        )
+
+        return {
+            "doc_id": doc_id,
+            "count": len(chunks),
+            "chunks": chunks,
+        }
+
+    except HTTPException:
+        raise
+    except Exception:
+        raise HTTPException(
+            status_code=500,
+            detail="Unable to retrieve document chunks.",
+        )

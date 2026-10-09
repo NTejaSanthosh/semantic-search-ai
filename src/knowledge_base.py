@@ -1,6 +1,11 @@
+
 import json
 import os
 
+from .permissions import (
+    can_access_document,
+    filter_accessible_documents,
+)
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -28,9 +33,9 @@ def load_chunks():
         return json.load(file)
 
 
-def list_documents(query=None, category=None):
+def list_documents(query=None, category=None, user_id=None):
     documents = load_documents()
-    chunks = load_chunks()
+    documents = filter_accessible_documents(documents, user_id)
 
     if query:
         query = query.strip().lower()
@@ -54,63 +59,73 @@ def list_documents(query=None, category=None):
             if str(document.get("category", "")).lower() == category
         ]
 
+    accessible_ids = {
+        document.get("doc_id")
+        for document in documents
+    }
+
     chunk_counts = {}
 
-    for chunk in chunks:
+    for chunk in load_chunks():
         doc_id = chunk.get("doc_id")
 
-        if doc_id:
+        if doc_id in accessible_ids:
             chunk_counts[doc_id] = chunk_counts.get(doc_id, 0) + 1
 
-    results = []
-
-    for document in documents:
-        doc_id = document.get("doc_id")
-
-        results.append(
-            {
-                "doc_id": doc_id,
-                "title": document.get("title"),
-                "category": document.get("category"),
-                "source": document.get("source"),
-                "date": document.get("date"),
-                "version": document.get("version"),
-                "chunk_count": chunk_counts.get(doc_id, 0),
-            }
-        )
-
-    return results
+    return [
+        {
+            "doc_id": document.get("doc_id"),
+            "title": document.get("title"),
+            "category": document.get("category"),
+            "source": document.get("source"),
+            "date": document.get("date"),
+            "version": document.get("version"),
+            "chunk_count": chunk_counts.get(document.get("doc_id"), 0),
+        }
+        for document in documents
+    ]
 
 
-def get_document(doc_id):
-    documents = load_documents()
+def get_document(doc_id, user_id=None):
+    document = next(
+        (
+            item
+            for item in load_documents()
+            if item.get("doc_id") == doc_id
+        ),
+        None,
+    )
 
-    for document in documents:
-        if document.get("doc_id") == doc_id:
-            return document
+    if document is None:
+        return None
 
-    return None
+    if not can_access_document(doc_id, user_id):
+        return None
+
+    return document
 
 
-def get_document_chunks(doc_id):
-    chunks = load_chunks()
+def get_document_chunks(doc_id, user_id=None):
+    if not can_access_document(doc_id, user_id):
+        return []
+
+    document = get_document(doc_id, user_id)
+
+    if document is None:
+        return []
 
     return [
         chunk
-        for chunk in chunks
+        for chunk in load_chunks()
         if chunk.get("doc_id") == doc_id
     ]
 
 
-def get_categories():
-    documents = load_documents()
+def get_categories(user_id=None):
+    documents = filter_accessible_documents(load_documents(), user_id)
 
-    categories = sorted(
-        {
-            str(document.get("category"))
-            for document in documents
-            if document.get("category")
-        }
-    )
-
-    return categories
+    return sorted({
+        str(document.get("category"))
+        for document in documents
+        if document.get("category")
+    })

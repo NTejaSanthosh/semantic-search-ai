@@ -1,29 +1,26 @@
+
 import json
 import os
+from pathlib import Path
 
 import faiss
 import numpy as np
 import ollama
-
 from dotenv import load_dotenv
 
-try:
-    from .reranker import Reranker
-except ImportError:
-    from reranker import Reranker
-
+from .permissions import filter_accessible_documents
+from .reranker import Reranker
 
 load_dotenv()
 
-
-INDEX_FILE = "data/faiss.index"
-METADATA_FILE = "data/index_metadata.json"
+BASE_DIR = Path(__file__).resolve().parent.parent
+INDEX_FILE = BASE_DIR / "data" / "faiss.index"
+METADATA_FILE = BASE_DIR / "data" / "index_metadata.json"
 
 MODEL_NAME = os.getenv(
     "OLLAMA_EMBEDDING_MODEL",
-    "nomic-embed-text"
+    "nomic-embed-text",
 )
-
 
 reranker = Reranker()
 
@@ -31,13 +28,9 @@ reranker = Reranker()
 def load_search_data():
     print("Loading FAISS index...")
 
-    index = faiss.read_index(INDEX_FILE)
+    index = faiss.read_index(str(INDEX_FILE))
 
-    with open(
-        METADATA_FILE,
-        "r",
-        encoding="utf-8"
-    ) as file:
+    with open(METADATA_FILE, "r", encoding="utf-8") as file:
         metadata = json.load(file)
 
     metadata_by_id = {
@@ -51,12 +44,12 @@ def load_search_data():
 def embed_query(query):
     response = ollama.embed(
         model=MODEL_NAME,
-        input=query
+        input=query,
     )
 
     vector = np.array(
         [response["embeddings"][0]],
-        dtype="float32"
+        dtype="float32",
     )
 
     faiss.normalize_L2(vector)
@@ -68,23 +61,27 @@ def semantic_search(
     query,
     user_id=None,
     candidate_k=20,
-    category_filter=None
+    category_filter=None,
 ):
-    index, metadata_by_id = load_search_data()
+    if not user_id:
+        raise ValueError("An authenticated user ID is required.")
 
+    index, metadata_by_id = load_search_data()
     query_vector = embed_query(query)
+
+    search_k = min(candidate_k, index.ntotal)
+
+    if search_k == 0:
+        return []
 
     scores, vector_ids = index.search(
         query_vector,
-        candidate_k
+        search_k,
     )
 
     candidates = []
 
-    for score, vector_id in zip(
-        scores[0],
-        vector_ids[0]
-    ):
+    for score, vector_id in zip(scores[0], vector_ids[0]):
         if vector_id == -1:
             continue
 
@@ -96,12 +93,16 @@ def semantic_search(
         result = metadata_by_id[vector_id].copy()
 
         if category_filter is not None:
-            if result["category"].lower() != category_filter.lower():
+            if str(result.get("category", "")).lower() != category_filter.lower():
                 continue
 
         result["similarity"] = float(score)
-
         candidates.append(result)
+
+    candidates = filter_accessible_documents(
+        candidates,
+        user_id,
+    )
 
     return candidates
 
@@ -110,26 +111,26 @@ def improved_search(
     query,
     user_id=None,
     top_k=5,
-    category_filter=None
+    category_filter=None,
 ):
+    if not user_id:
+        raise ValueError("An authenticated user ID is required.")
+
     print("\nRunning semantic search...")
 
     candidates = semantic_search(
         query=query,
         user_id=user_id,
         candidate_k=20,
-        category_filter=category_filter
+        category_filter=category_filter,
     )
 
-    print(
-        "Candidates retrieved:",
-        len(candidates)
-    )
+    print("Accessible candidates retrieved:", len(candidates))
 
     results = reranker.rerank(
         query=query,
         results=candidates,
-        top_k=top_k
+        top_k=top_k,
     )
 
     return results
